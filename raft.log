@@ -1,0 +1,65 @@
+2025-05-28 11:32:12,515  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-05-28 11:32:12,515  INFO [  0%] env_config  - OPENAI_API_KEY=...............................c89a
+2025-05-28 11:32:12,515  INFO [  0%] env_config  - OPENAI_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
+2025-05-28 11:33:21,032  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-05-28 11:33:21,032  INFO [  0%] env_config  - OPENAI_API_KEY=...............................c89a
+2025-05-28 11:33:21,033  INFO [  0%] env_config  - OPENAI_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
+2025-05-28 11:34:57,009  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-05-28 11:34:57,010  INFO [  0%] env_config  - OPENAI_API_KEY=...............................c89a
+2025-05-28 11:34:57,010  INFO [  0%] env_config  - OPENAI_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
+2025-05-28 11:34:57,670  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\git0411\gorilla\raft\outputs-checkpoints\chunks
+2025-05-28 11:34:57,670  INFO [  0%] raft Retrieving chunks from data\RAFT.pdf of type pdf using the text-embedding-ada-002 model.
+2025-05-28 11:34:57,670  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-05-28 11:43:18,943  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-05-28 11:43:18,943  INFO [  0%] env_config  - OPENAI_API_KEY=...............................c89a
+2025-05-28 11:43:18,943  INFO [  0%] env_config  - OPENAI_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
+2025-05-28 11:43:19,096  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\git0411\gorilla\raft\outputs-checkpoints\chunks
+2025-05-28 11:43:19,096  INFO [  0%] raft Retrieving chunks from data\RAFT.pdf of type pdf using the text-embedding-ada-002 model.
+2025-05-28 11:43:19,097  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-05-28 12:03:44,655  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-05-28 12:03:44,655  INFO [  0%] env_config  - OPENAI_API_KEY=...............................c89a
+2025-05-28 12:03:44,655  INFO [  0%] env_config  - OPENAI_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
+2025-05-28 12:03:44,807  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\git0411\gorilla\raft\outputs-checkpoints\chunks
+2025-05-28 12:03:44,807  INFO [  0%] raft Retrieving chunks from data\RAFT.pdf of type pdf using the text-embedding-ada-002 model.
+2025-05-28 12:03:44,808  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-05-28 13:30:33,238  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-05-28 13:30:33,238  INFO [  0%] env_config  - OPENAI_API_KEY=...............................c89a
+2025-05-28 13:30:33,239  INFO [  0%] env_config  - OPENAI_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
+2025-05-28 13:30:33,396  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\git0411\gorilla\raft\outputs-checkpoints\chunks
+2025-05-28 13:30:33,396  INFO [  0%] raft Retrieving chunks from data\RAFT.pdf of type pdf using the text-embedding-ada-002 model.
+2025-05-28 13:30:33,397  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-05-28 14:00:47,246  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-05-28 14:00:47,246  INFO [  0%] env_config  - OPENAI_API_KEY=...............................c89a
+2025-05-28 14:00:47,246  INFO [  0%] env_config  - OPENAI_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
+2025-05-28 14:00:47,430  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\git0411\gorilla\raft\outputs-checkpoints\chunks
+2025-05-28 14:00:47,431  INFO [  0%] raft Retrieving chunks from data\RAFT.pdf of type pdf using the text-embedding-ada-002 model.
+2025-05-28 14:00:47,431  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-05-28 14:00:49,292  INFO [  0%] raft Using system prompt key gpt
+2025-05-28 14:00:49,292  INFO [  0%] raft Using 2 worker threads
+2025-05-28 14:21:05,988  INFO [  0%] raft Consumed 99099 prompt tokens, 39798 completion tokens, 138897 total tokens
+2025-05-28 14:21:06,173  INFO [  0%] raft Generated 111 question/answer/CoT/documents samples
+2025-05-28 14:21:06,173  INFO [  0%] raft Dataset saved to E:\my_desktop\git0411\gorilla\raft\outputs
+2025-05-28 14:21:06,173  INFO [  0%] raft Done in 1218.93s
+2025-05-28 19:58:26,715  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-05-28 19:58:27,105  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\git0411\gorilla\raft\outputs_test-checkpoints\chunks
+2025-05-28 19:58:27,105  INFO [  0%] raft Retrieving chunks from data\97Æ½°åÏÔÊ¾×ÛÊö_Öì²ý²ý_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-05-28 19:58:27,116  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-05-28 20:01:22,757  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-05-28 20:01:22,909  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\git0411\gorilla\raft\outputs_test-checkpoints\chunks
+2025-05-28 20:01:22,910  INFO [  0%] raft Retrieving chunks from data\97Æ½°åÏÔÊ¾×ÛÊö_Öì²ý²ý_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-05-28 20:01:22,910  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-05-28 20:01:23,437  INFO [  0%] raft Using system prompt key gpt
+2025-05-28 20:01:23,438  INFO [  0%] raft Using 2 worker threads
+2025-05-28 20:05:20,027  INFO [  0%] raft Consumed 18444 prompt tokens, 8543 completion tokens, 26987 total tokens
+2025-05-28 20:05:20,411  INFO [  0%] raft Generated 34 question/answer/CoT/documents samples
+2025-05-28 20:05:20,411  INFO [  0%] raft Dataset saved to E:\my_desktop\git0411\gorilla\raft\outputs_test
+2025-05-28 20:05:20,411  INFO [  0%] raft Done in 237.66s
+2025-05-28 20:21:06,768  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-05-28 20:21:06,924  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\git0411\gorilla\raft\outputs-checkpoints\chunks
+2025-05-28 20:21:06,927  INFO [  0%] raft Using system prompt key gpt
+2025-05-28 20:21:06,927  INFO [  0%] raft Using 2 worker threads
+2025-05-28 20:21:07,630  INFO [  0%] raft Resuming generation from chunk 56/56 and 111 questions
+2025-05-28 20:21:07,730  INFO [  0%] raft Consumed 0 prompt tokens, 0 completion tokens, 0 total tokens
+2025-05-28 20:21:07,782  INFO [  0%] raft Generated 111 question/answer/CoT/documents samples
+2025-05-28 20:21:07,782  INFO [  0%] raft Dataset saved to E:\my_desktop\git0411\gorilla\raft\outputs
+2025-05-28 20:21:07,782  INFO [  0%] raft Done in 1.01s
