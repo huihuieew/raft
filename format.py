@@ -4,6 +4,7 @@ from datasets import Dataset, load_dataset
 from typing import Dict, Literal, Any, get_args
 from logconf import log_setup
 import logging
+import os
 
 """
 This file allows to convert raw HuggingFace Datasets into files suitable to fine tune completion and chat models.
@@ -15,7 +16,7 @@ outputDatasetTypes = list(get_args(OutputDatasetType))
 InputDatasetType = Literal["arrow", "jsonl"]
 inputDatasetTypes = list(get_args(InputDatasetType))
 
-DatasetFormat = Literal["hf", "completion", "chat", "eval"]
+DatasetFormat = Literal["hf", "completion", "chat", "eval", "qa"]
 datasetFormats = list(get_args(DatasetFormat))
 
 default_chat_system_prompt = "The following is a conversation with an AI assistant. The assistant is helpful, clever, friendly and gives concise and accurate answers."
@@ -70,6 +71,7 @@ class DatasetConverter():
             "completion": OpenAiCompletionDatasetFormatter(),
             "chat": OpenAiChatDatasetFormatter(),
             "eval": EvalDatasetFormatter(),
+            "qa": QADatasetFormatter()
         }
         self.exporters = {
             "parquet": ParquetDatasetExporter(),
@@ -87,6 +89,11 @@ class DatasetConverter():
         newds = formatter.format(ds, **params)
         exporter = self.exporters[output_type]
         exporter.export(newds, output_path)
+    def convert_qa(self, ds: Dataset, format: DatasetFormat, output_path: str, output_type: OutputDatasetType):
+        formatter = self.formats[format]
+        newds = formatter.format(ds)
+        exporter = self.exporters[output_type]
+        exporter.export(newds, output_path+'_qa')
 
 class HuggingFaceDatasetFormatter(DatasetFormatter):
     """
@@ -170,6 +177,15 @@ class EvalDatasetFormatter(DatasetFormatter):
         newds = newds.map(lambda examples: {"context": [extract_context(instruction) for instruction in examples['instruction']]}, batched=True)
         return _remove_all_columns_but(newds, keep_columns)
 
+class QADatasetFormatter(DatasetFormatter):
+    """
+    Returns the Dataset in a format suitable for developer to view. Extracts question and cot-answer.
+    """
+    def format(self, ds: Dataset) -> Dataset:
+        newds = ds.filter(lambda example: example['cot_answer'] and example['question'], desc="Filter out empty examples")
+        keep_columns = ['question', 'cot_answer']
+        return _remove_all_columns_but(newds, keep_columns)
+
 def append_extension(path: str, extension: str) -> str:
     suffix = "." + extension
     if not path.endswith(suffix):
@@ -183,8 +199,9 @@ class JsonlDatasetExporter(DatasetExporter):
     """
 
     def export(self, ds: Dataset, output_path: str):
-        ds.to_json(append_extension(output_path, "jsonl"))
-
+        output_file = os.path.join("outputs_jsonl", os.path.basename(output_path))
+        ds.to_json(append_extension(f"outputs_jsonl/{output_file}", "jsonl"), force_ascii=False)
+        # ds.to_json(append_extension(f"outputs_jsonl/{output_path}", "jsonl"), force_ascii=False)
 
 class ParquetDatasetExporter(DatasetExporter):
     """

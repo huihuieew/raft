@@ -4,7 +4,7 @@ from mdc import MDC
 from tqdm import tqdm
 from logconf import log_setup
 import logging
-from typing import Literal, Any, get_args
+from typing import Literal, Any, get_args, List
 import argparse
 from openai import OpenAI, BadRequestError
 import datasets
@@ -26,6 +26,7 @@ from checkpointing import Checkpointing, checkpointed
 import uuid
 import shutil
 from threading import Thread, Event
+import os
 
 log_setup()
 
@@ -36,7 +37,7 @@ logger = logging.getLogger("raft")
 DocType = Literal["api", "pdf", "json", "txt"]
 docTypes = list(get_args(DocType))
 
-SystemPromptKey = Literal["gpt", "llama"]
+SystemPromptKey = Literal["gpt", "llama", "deepseek"]
 systemPromptKeys = list(get_args(SystemPromptKey))
 
 def get_args() -> argparse.Namespace:
@@ -156,10 +157,10 @@ def generate_chunk_instructions(chat_completer: ChatCompleter, chunk: Any, x=5, 
     response = chat_completer(
         model=model,
         messages=[
-            {"role": "system", "content": "You are a synthetic instruction-api pair generator. Given an API endpoint in the form of a JSON object, generate %s example queries of instructions a user could ask and would be answered by invoking the API call. For example, if the given API call is the `service.users().getProfile(userId='me').execute()` call from the Gmail API, an example query could be 'How can I fetch my Gmail account's email address?'" % (x)},
-            {"role": "system", "content": "The API endpoint is a JSON object with required params: user_name, api_name, api_call, api_version, api_arguments, functionality, and optional params: env_requirements, example_code, meta_data, Questions"},
-            {"role": "system", "content": "For instance, if the api call contains: {'user_name': 'felixzhu555', 'api_name': 'Google Maps - Address Validation', 'api_call': 'Client.addressvalidation(addressLines, regionCode=region_code, locality=locality, enableUspsCass=boolean)', 'api_version': '4.10.0', 'api_arguments': {}, 'functionality': 'Validate an address and its components, standardize the address for mailing, and determine the best known geocode for it.', 'env_requirements': ['googlemaps'], 'example_code': 'client = googlemaps.Client(key='YOUR_API_KEY')\nresponse = client.addressvalidation('1600 Amphitheatre Pk', regionCode='US', locality='Mountain View', enableUspsCass=True)', 'meta_data': {'description': 'The googlemaps python client is an abstraction for the Google Maps API that requires python 3.5+. Each Google Maps web service request requires an API key or client ID. API keys are generated in the 'Credentials' page of the 'APIs & Services' tab of Google Cloud console. This key should be kept secret on your server.'}, 'questions': []}, an example instruction would be 'Validate the following address: University Avenue and, Oxford St, Berkeley, CA 94720.'"},
-            {"role": "system", "content": "Don't mention 'API' or use any hints or the name of the API. In one-third of the queries, make sure to include a specific example, like 'Validate this address: 123 Harrison St, Oakland CA'. Include ONLY the queries in your response."},
+            {"role": "system", "content": f"你是一个合成 指令-API对 的生成器。给定一个JSON对象形式的API endpoint，生成{x}个用户可能会问到的示例问题，并且示例问题应该能够被API调用所回答。例如，如果给定的API调用是Gmail API的`service.users().getProfile(userId='me').execute()`调用，一个示例问题可能为'如何获取我的Gmail账户的邮箱地址？'"},
+            {"role": "system", "content": f"API endpoint是一个JSON对象，包含以下必选字段：user_name, api_name, api_call, api_version, api_arguments, functionality, 和可选字段 env_requirements, example_code, meta_data, Questions"},
+            {"role": "system", "content": "例如，如果api调用包含：{'user_name': 'felixzhu555', 'api_name': 'Google Maps - Address Validation', 'api_call': 'Client.addressvalidation(addressLines, regionCode=region_code, locality=locality, enableUspsCass=boolean)', 'api_version': '4.10.0', 'api_arguments': {},'functionality': '验证一个地址和它的组件，将邮件地址标准化，并确定最佳的地理编码。', 'env_requirements': ['googlemaps'], 'example_code': 'client = googlemaps.Client(key='YOUR_API_KEY')\nresponse = client.addressvalidation('1600 Amphitheatre Pk', regionCode='US', locality='Mountain View', enableUspsCass=True)', 'meta_data': {'description': 'googlemaps python客户端是一个对Google Maps API的抽象，它要求Python 3.5+。每个Google Maps web服务请求都需要一个API密钥或客户端ID。API密钥应该在服务器上保密。', 'questions': []}，一个示例说明为：'验证以下地址： University Avenue and, Oxford St, Berkeley, CA 94720.' }"},
+            {"role": "system", "content": "不要提及'API'，或者使用任何提示或API的名称。在三分之一的查询中，请确保包含一个具体的例子，例如'验证这个地址： 123 Harrison St, Oakland CA'。在你的回复中只包含查询。"},
             {"role": "user", "content": str(chunk)}
         ]
     )
@@ -200,6 +201,12 @@ build_qa_messages = {
                 """ % (x)},
             {"role": "system", "content": "The questions should be able to be answered in a few words or less. Include only the questions in your response."},
             {"role": "user", "content": str(chunk)}
+        ],
+    "deepseek": lambda chunk, x : [
+            {"role": "system", "content": f"你是一个合成问答对的生成器。给定一个关于某些话题的上下文，生成{x}个用户可能会问到的示例问题，并且使用该上下文进行回答。例如，如果给定的上下文是维基百科中关于美国的段落，则示例问题可以是“美国的州有多少？”。"},
+            # {"role": "system", "content": "这些问题应该具备一定的难度，并且该上下文应该能够用来回答该问题。在回复中只包含问题。"},
+            {"role": "system", "content": "用中文进行提问，并且这些问题应该用简洁的语言回答。在回复中只包含问题。"},
+            {"role": "user", "content": str(chunk)}
         ]
 }
 
@@ -209,10 +216,13 @@ def generate_instructions_gen(chat_completer: ChatCompleter, chunk: Any, x: int 
     `pdf`, `json`, or `txt`.
     """
     try:
+        # 判断 chunk 是否是 list
+        if isinstance(chunk, list):
+            chunk = "".join(chunk)
         response = chat_completer(
             model=model,
             messages=build_qa_messages[prompt_key](chunk, x),
-            max_tokens=min(25 * x, 512), # 25 tokens per question
+            max_tokens=min(50 * x, 512), # 25 tokens per question
         )
     except BadRequestError as e:
         if e.code == "content_filter":
@@ -290,7 +300,15 @@ prompt_templates = {
         The name of the movement is explicitly mentioned in the same sentence as the "Free Speech Movement."
         Therefore, based on the context provided, we can conclude that the arrest of Jack Weinberg in Sproul Plaza gave rise to the Free Speech Movement.
         <ANSWER>: Free Speech Movement
-    """
+    """,
+    "deepseek": """
+        Question: {question}\nContext: {context}\n
+        使用上述给定的上下文，回答问题。注意：
+        - 首先，请提供有关如何回答问题的详细 reasoning。
+        - 在 reasoning 中，如果需要复制上下文中的某些句子，请将其包含在 ##begin_quote## 和 ##end_quote## 中。 这意味着 ##begin_quote## 和 ##end_quote## 之外的内容不是直接从上下文中复制的。
+        - 结束你的回答，以 final answer 的形式 <ANSWER>: $answer，答案应该简洁。
+        你必须以<Reasoning>: 开头，包含 reasoning 相关的内容；以 <ANSWER>: 开头，包含答案。
+    """,
     }
 
 def encode_question_gen(question: str, chunk: Any, prompt_key : str = "gpt") -> list[str]:
@@ -315,7 +333,7 @@ def generate_label(chat_completer: ChatCompleter, question: str, context: Any, d
         messages=question,
         n=1,
         temperature=0,
-        max_tokens=512,
+        max_tokens=2048,
     )
     response = response.choices[0].message.content
     return response
@@ -323,7 +341,7 @@ def generate_label(chat_completer: ChatCompleter, question: str, context: Any, d
 def generate_question_cot_answer(
         chat_completer: ChatCompleter,
         chunks: list[str], 
-        chunk: str, 
+        chunk2: list[str], 
         chunk_id, 
         question,
         doctype: DocType = "api", 
@@ -346,15 +364,19 @@ def generate_question_cot_answer(
     datapt["question"] = question
 
     # add num_distract distractor docs
-    docs = [chunk]
+    # docs = [chunk]
+    docs = chunk2.copy()
     indices = list(range(0, len(chunks)))
+    # indices = list(range(0, len(chunks), 2))
     indices.remove(chunk_id)
     for j in random.sample(indices, num_distract):
         docs.append(chunks[j])
     # decides whether to add oracle document
     oracle = random.uniform(0, 1) < p
     if not oracle:
-        docs[0] = chunks[random.sample(indices, 1)[0]]
+        # 采样2个文档，并替换docs[0], docs[1]
+        docs[0], docs[1] = chunks[random.sample(indices, 2)]
+        # docs[0] = chunks[random.sample(indices, 1)[0]]
     random.shuffle(docs)
 
     d = {
@@ -365,10 +387,11 @@ def generate_question_cot_answer(
     d["title"].append(["placeholder_title"]*(num_distract+1))
     d["sentences"].append(docs)
     datapt["context"] = d
-    datapt["oracle_context"] = chunk
-
+    # datapt["oracle_context"] = chunk
+    datapt["oracle_context"] = chunk2
+    chunk2str = "\n".join(chunk2)
     # add answer to q
-    datapt["cot_answer"] = generate_label(chat_completer, question, chunk, doctype, model=model, prompt_key=prompt_key)
+    datapt["cot_answer"] = generate_label(chat_completer, question, chunk2str, doctype, model=model, prompt_key=prompt_key)
 
     # construct model instruction 
     context = ""
@@ -424,11 +447,14 @@ def main():
     if args.output_chat_system_prompt and args.output_format != "chat":
         raise Exception("Parameter --output-chat-system-prompt can only be used with --output-format chat")
 
-    OPENAPI_API_KEY = args.openai_key
+    # OPENAPI_API_KEY = args.openai_key
+    OPENAPI_API_KEY = os.getenv("COMPLETION_OPENAI_API_KEY")
     print("Using OpenAI API Key")
     client = build_openai_client(
         api_key=OPENAPI_API_KEY,
-        base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+        base_url=os.getenv("COMPLETION_OPENAI_BASE_URL")
+        # base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+        # base_url="https://ark.cn-beijing.volces.com/api/v3"
     )
     chat_completer = ChatCompleter(client)
 
@@ -482,6 +508,9 @@ def main():
         format_params['completion_column'] = args.output_completion_completion_column
 
     formatter.convert(ds=cot_answers_ds, format=args.output_format, output_path=str(output_path), output_type=args.output_type, params=format_params)
+    # Save as .jsonl format - questions, answers
+    
+    formatter.convert_qa(ds=cot_answers_ds, format="qa", output_path=str(output_path), output_type=args.output_type)
 
     # Warning, this deletes all intermediary checkpoint files
     if auto_clean_checkpoints:
@@ -511,20 +540,20 @@ def stage_generate(chat_completer: ChatCompleter, checkpoints_dir, chunks, num_q
     is_stopping = Event()
 
     @checkpointed(questions_checkpointing)
-    def generate_chunk_instructions_ds(chunk: str, chunk_id: int, doctype: str, *args, **kwargs):
+    def generate_chunk_instructions_ds(chunk2: List[str], chunk_id2: int, doctype: str, *args, **kwargs):
         """
         Generates a dataset of instructions for a given chunk.
         """
-        questions = generate_chunk_instructions(chunk=chunk, *args, **kwargs) if doctype == "api" else generate_instructions_gen(chunk=chunk, *args, **kwargs)
-        chunk_question_pairs = [{"chunk": chunk, "chunk_id": chunk_id, "question": question} for question in questions]
-        questions_ds = Dataset.from_list(chunk_question_pairs)
+        questions = generate_chunk_instructions(chunk=chunk2, *args, **kwargs) if doctype == "api" else generate_instructions_gen(chunk=chunk2, *args, **kwargs)
+        chunk2_question_pairs = [{"chunk": chunk2, "chunk_id": chunk_id2, "question": question} for question in questions]
+        questions_ds = Dataset.from_list(chunk2_question_pairs)
         return questions_ds
 
     @checkpointed(answers_checkpointing)
-    def generate_question_cot_answers(questions_ds, chunk_id: int, chunk: str, *args, **kwargs):
-        def process_example(chunk, question):
+    def generate_question_cot_answers(questions_ds, chunk_id2: int, *args, **kwargs):
+        def process_example(chunk2, question):
             try:
-                cot_answer = generate_question_cot_answer(chunk=chunk, chunk_id=chunk_id, chunks=chunks, question=question, *args, **kwargs)
+                cot_answer = generate_question_cot_answer(chunk2=chunk2, chunk_id=chunk_id2, chunks=chunks, question=question, *args, **kwargs)
             except BadRequestError as e:
                 if e.code == "content_filter":
                     logger.warning(f"Got content filter error, skipping question '{question}': {e.message}")
@@ -533,7 +562,7 @@ def stage_generate(chat_completer: ChatCompleter, checkpoints_dir, chunks, num_q
 
             return cot_answer
 
-        results = [process_example(chunk, question) for chunk, question in zip(questions_ds['chunk'], questions_ds['question'])] if len(questions_ds) > 0 else []
+        results = [process_example(chunk2, question) for chunk2, question in zip(questions_ds['chunk'], questions_ds['question'])] if len(questions_ds) > 0 else []
         results = [r for r in results if r is not None]
         table = pa.Table.from_pylist(results)
         ds = Dataset(table)
@@ -542,9 +571,13 @@ def stage_generate(chat_completer: ChatCompleter, checkpoints_dir, chunks, num_q
     def process_chunk(i):
         if is_stopping.is_set():
             raise StoppingException()
-        chunk = chunks[i]
-        questions_ds = generate_chunk_instructions_ds(chunk=chunk, chunk_id=i, chat_completer=chat_completer, x=num_questions, model=completion_model, doctype=doctype, prompt_key=system_prompt_key)
-        answers_ds = generate_question_cot_answers(questions_ds=questions_ds, chunk=chunk, chunk_id=i, chat_completer=chat_completer, model=completion_model, doctype=doctype, prompt_key=system_prompt_key, num_distract=num_distract, p=p)
+        # 取 i 和 i+1 个chunk
+        if (i+1) >= len(chunks):
+            chunk = [chunks[i]]
+        else:
+            chunk = chunks[i: i+2]  
+        questions_ds = generate_chunk_instructions_ds(chunk2=chunk, chunk_id2=i, chat_completer=chat_completer, x=num_questions, model=completion_model, doctype=doctype, prompt_key=system_prompt_key)
+        answers_ds = generate_question_cot_answers(questions_ds=questions_ds, chunk_id2=i, chat_completer=chat_completer, model=completion_model, doctype=doctype, prompt_key=system_prompt_key, num_distract=num_distract, p=p)
         return answers_ds
 
     futures = []
@@ -582,8 +615,17 @@ def stage_generate(chat_completer: ChatCompleter, checkpoints_dir, chunks, num_q
     tps = 0
     with tqdm(desc="Generating", **tqdm_args) as pbar:
         with ThreadPoolExecutor(max_workers=max_workers) as executor:
-            for i in missing_chunks:
+            # for i in missing_chunks:
+            #     futures.append(executor.submit(process_chunk, i))
+            # # missing_chunks 每2个chunk取一个idx
+            # def to_batch(lst, groupsize):
+            #     for i in range(0, len(lst), groupsize):
+            #         yield lst[i:i+groupsize]
+            # for i in to_batch(missing_chunks, 2):
+            #     futures.append(executor.submit(process_chunk, i))
+            for i in range(0, len(missing_chunks), 2):
                 futures.append(executor.submit(process_chunk, i))
+                
             for future in as_completed(futures):
                 if qa_threshold and gen_questions_count >= qa_threshold:
                     logger.info(f"Met threshold {gen_questions_count} >= {qa_threshold} questions, stopping generation")
