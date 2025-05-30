@@ -16,7 +16,7 @@ outputDatasetTypes = list(get_args(OutputDatasetType))
 InputDatasetType = Literal["arrow", "jsonl"]
 inputDatasetTypes = list(get_args(InputDatasetType))
 
-DatasetFormat = Literal["hf", "completion", "chat", "eval", "qa"]
+DatasetFormat = Literal["hf", "completion", "chat", "eval", "qa", "sft"]
 datasetFormats = list(get_args(DatasetFormat))
 
 default_chat_system_prompt = "The following is a conversation with an AI assistant. The assistant is helpful, clever, friendly and gives concise and accurate answers."
@@ -71,7 +71,8 @@ class DatasetConverter():
             "completion": OpenAiCompletionDatasetFormatter(),
             "chat": OpenAiChatDatasetFormatter(),
             "eval": EvalDatasetFormatter(),
-            "qa": QADatasetFormatter()
+            "qa": QADatasetFormatter(),
+            "sft": SFTDatasetFormatter()
         }
         self.exporters = {
             "parquet": ParquetDatasetExporter(),
@@ -94,6 +95,11 @@ class DatasetConverter():
         newds = formatter.format(ds)
         exporter = self.exporters[output_type]
         exporter.export(newds, output_path+'_qa')
+    def convert_sft(self, ds: Dataset, format: DatasetFormat, output_path: str, output_type: OutputDatasetType):
+        formatter = self.formats[format]
+        newds = formatter.format(ds)
+        exporter = self.exporters[output_type]
+        exporter.export(newds, output_path+'_sft')
 
 class HuggingFaceDatasetFormatter(DatasetFormatter):
     """
@@ -185,6 +191,19 @@ class QADatasetFormatter(DatasetFormatter):
         newds = ds.filter(lambda example: example['cot_answer'] and example['question'], desc="Filter out empty examples")
         keep_columns = ['question', 'cot_answer']
         return _remove_all_columns_but(newds, keep_columns)
+class SFTDatasetFormatter(DatasetFormatter):
+    """
+    Returns the Dataset in a format suitable for developer to view. Extracts question and cot-answer.
+    """
+    def format(self, ds: Dataset) -> Dataset:
+        newds = ds.filter(lambda example: example['cot_answer'] and example['instruction'], desc="Filter out empty examples")
+        keep_columns = ['instruction', 'cot_answer']
+        newds = _remove_all_columns_but(newds, keep_columns)
+        # 添加 input 列
+        newds = newds.map(lambda examples: {"input": ""})
+        # 重命名 cot_answer 为 output
+        newds = newds.rename_columns({'cot_answer': 'output'})
+        return newds
 
 def append_extension(path: str, extension: str) -> str:
     suffix = "." + extension

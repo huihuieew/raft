@@ -65,15 +65,14 @@ class Checkpointing:
 
 def checkpointed(checkpointing: Checkpointing):
     def wrapped(func):
-        def wrapper(chunk_id2, *args, **kwargs):
-            chunk_id = chunk_id2
-            ds = checkpointing.load_checkpoint(chunk_id)
+        def wrapper(chenkpoint_id, *args, **kwargs):
+            ds = checkpointing.load_checkpoint(chenkpoint_id)
             if ds:
                 return ds
-            ds = func(chunk_id2=chunk_id, *args, **kwargs)
-            # ds = func(chunk_id=chunk_id, *args, **kwargs)
+            ds = func(chenkpoint_id=chenkpoint_id, *args, **kwargs)
+            # ds = func(chenkpoint_id=chenkpoint_id, *args, **kwargs)
             if ds.num_rows > 0:
-                checkpointing.save_checkpoint(ds, chunk_id)
+                checkpointing.save_checkpoint(ds, chenkpoint_id)
             return ds
         return wrapper
     return wrapped
