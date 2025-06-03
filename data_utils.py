@@ -1,4 +1,6 @@
 import json
+import logging
+
 def get_jsonl(file_path):
     data = []
     with open(file_path, 'r', encoding='utf-8') as file:
@@ -40,5 +42,6 @@ def jsonl2json(mydir, json_path):
 
 if __name__ == "__main__":
     jsonl_path = "outputs_jsonl/outputs_jsonl/"
-    json_path = "outputs_jsonl/outputs_jsonl/outputs_03.json"
+    json_path = "outputs_jsonl/outputs_jsonl/outputs_05.json"
+    # 把所有的jsonl文件合并到一个json文件中
     jsonl2json(jsonl_path, json_path)

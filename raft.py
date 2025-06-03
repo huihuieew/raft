@@ -733,7 +733,12 @@ def stage_generate(chat_completer: ChatCompleter, checkpoints_dir, chunks, num_q
                 gen_questions_count += len(answers_ds)
                 done_chunks += 1
                 stats = chat_completer.get_stats_and_reset()
-                if stats:
+                # if stats:
+                #     tps = stats.total_tokens / stats.duration
+                #     usage_stats += stats
+                if stats.duration < 0.001:
+                    tps = 0  # 避免除以接近零的小数
+                else:
                     tps = stats.total_tokens / stats.duration
                     usage_stats += stats
                 postfix = {'last tok/s': tps, 'avg tok/s': usage_stats.total_tokens / usage_stats.duration if usage_stats.duration > 0 else 0}

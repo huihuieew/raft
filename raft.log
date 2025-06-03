@@ -879,3 +879,1287 @@ Journal Electronic Publishing House. All rights reserved. http://www.cnki.net
 2025-05-30 20:11:38,269  INFO [  0%] raft Generated 18 question/answer/CoT/documents samples
 2025-05-30 20:11:38,269  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test31
 2025-05-30 20:11:38,269  INFO [  0%] raft Done in 481.33s
+2025-05-30 20:15:12,803  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-05-30 20:15:12,803  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-05-30 20:15:12,803  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-05-30 20:15:12,958  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test33-checkpoints\chunks
+2025-05-30 20:15:12,958  INFO [  0%] raft Retrieving chunks from data\9款38cm(15英寸)TFT_LCD显示器横向评测_张韬_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-05-30 20:15:12,958  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-05-30 20:15:13,046  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-05-30 20:15:13,047  INFO [  0%] raft Using 2 worker threads
+2025-05-30 20:15:27,776  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-05-30 20:15:27,777  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-05-30 20:15:27,777  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-05-30 20:15:27,932  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test34-checkpoints\chunks
+2025-05-30 20:15:27,932  INFO [  0%] raft Retrieving chunks from data\9英寸MIM矩阵式液晶显示器件_陈树民_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-05-30 20:15:27,932  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-05-30 20:15:27,997  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-05-30 20:15:27,997  INFO [  0%] raft Using 2 worker threads
+2025-05-30 20:19:06,884  INFO [  0%] raft Consumed 15076 prompt tokens, 11679 completion tokens, 26755 total tokens
+2025-05-30 20:19:06,942  INFO [  0%] raft Generated 8 question/answer/CoT/documents samples
+2025-05-30 20:19:06,943  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test34
+2025-05-30 20:19:06,943  INFO [  0%] raft Done in 219.17s
+2025-06-03 09:06:53,805  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 09:06:53,828  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 09:06:53,828  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 09:06:54,742  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test33-checkpoints\chunks
+2025-06-03 09:06:54,742  INFO [  0%] raft Retrieving chunks from data\9款38cm(15英寸)TFT_LCD显示器横向评测_张韬_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 09:06:54,753  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 09:06:56,074  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 09:06:56,074  INFO [  0%] raft Using 2 worker threads
+2025-06-03 09:07:52,668  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 09:07:52,668  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 09:07:52,668  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 09:07:52,810  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test35-checkpoints\chunks
+2025-06-03 09:07:52,810  INFO [  0%] raft Retrieving chunks from data\10大新显示技术_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 09:07:52,810  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 09:07:52,880  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 09:07:52,880  INFO [  0%] raft Using 2 worker threads
+2025-06-03 09:15:21,256  INFO [  0%] raft Consumed 40338 prompt tokens, 26511 completion tokens, 66849 total tokens
+2025-06-03 09:15:21,498  INFO [  0%] raft Generated 22 question/answer/CoT/documents samples
+2025-06-03 09:15:21,498  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test35
+2025-06-03 09:15:21,498  INFO [  0%] raft Done in 448.83s
+2025-06-03 09:16:58,646  INFO [  0%] raft Consumed 53740 prompt tokens, 34709 completion tokens, 88449 total tokens
+2025-06-03 09:16:58,896  INFO [  0%] raft Generated 29 question/answer/CoT/documents samples
+2025-06-03 09:16:58,896  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test33
+2025-06-03 09:16:58,896  INFO [  0%] raft Done in 605.09s
+2025-06-03 09:18:06,513  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 09:18:06,513  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 09:18:06,514  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 09:18:06,647  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test36-checkpoints\chunks
+2025-06-03 09:18:06,647  INFO [  0%] raft Retrieving chunks from data\10万象素a-Si_TFT有源矩阵的优化技术_徐重阳_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 09:18:06,647  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 09:18:06,737  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 09:18:06,737  INFO [  0%] raft Using 2 worker threads
+2025-06-03 09:18:23,804  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 09:18:23,804  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 09:18:23,804  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 09:18:23,956  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test37-checkpoints\chunks
+2025-06-03 09:18:23,956  INFO [  0%] raft Retrieving chunks from data\12.7cm彩色AM-OLED显示屏的驱动模块_张繁_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 09:18:23,957  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 09:18:24,020  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 09:18:24,020  INFO [  0%] raft Using 2 worker threads
+2025-06-03 09:24:06,315  INFO [  0%] raft Consumed 24284 prompt tokens, 21126 completion tokens, 45410 total tokens
+2025-06-03 09:24:06,548  INFO [  0%] raft Generated 13 question/answer/CoT/documents samples
+2025-06-03 09:24:06,548  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test36
+2025-06-03 09:24:06,548  INFO [  0%] raft Done in 360.05s
+2025-06-03 09:24:43,194  INFO [  0%] raft Consumed 22482 prompt tokens, 20061 completion tokens, 42543 total tokens
+2025-06-03 09:24:43,271  INFO [  0%] raft Generated 12 question/answer/CoT/documents samples
+2025-06-03 09:24:43,271  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test37
+2025-06-03 09:24:43,272  INFO [  0%] raft Done in 379.47s
+2025-06-03 09:25:15,305  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 09:25:15,305  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 09:25:15,305  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 09:25:15,454  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test38-checkpoints\chunks
+2025-06-03 09:25:15,455  INFO [  0%] raft Retrieving chunks from data\12.7cm彩色AM-OLED显示器分场驱动研究_沈亮_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 09:25:15,455  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 09:25:15,686  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 09:25:15,686  INFO [  0%] raft Using 2 worker threads
+2025-06-03 09:30:01,535  INFO [  0%] raft Consumed 19135 prompt tokens, 16338 completion tokens, 35473 total tokens
+2025-06-03 09:30:01,598  INFO [  0%] raft Generated 12 question/answer/CoT/documents samples
+2025-06-03 09:30:01,598  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test38
+2025-06-03 09:30:01,599  INFO [  0%] raft Done in 286.30s
+2025-06-03 09:38:50,361  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 09:38:50,361  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 09:38:50,361  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 09:38:50,517  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test39-checkpoints\chunks
+2025-06-03 09:38:50,518  INFO [  0%] raft Retrieving chunks from data\12.9英寸高分辨率多色TFT—LCD_师庆华_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 09:38:50,518  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 09:38:50,568  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 09:38:50,568  INFO [  0%] raft Using 2 worker threads
+2025-06-03 09:39:26,350  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 09:39:26,350  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 09:39:26,350  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 09:39:26,501  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test40-checkpoints\chunks
+2025-06-03 09:39:26,501  INFO [  0%] raft Retrieving chunks from data\13.8英寸高分辨率多色TFTLCD_王阳_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 09:39:26,501  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 09:40:59,528  INFO [  0%] raft Consumed 10208 prompt tokens, 6445 completion tokens, 16653 total tokens
+2025-06-03 09:40:59,580  INFO [  0%] raft Generated 5 question/answer/CoT/documents samples
+2025-06-03 09:40:59,580  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test39
+2025-06-03 09:40:59,580  INFO [  0%] raft Done in 129.22s
+2025-06-03 09:41:12,040  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 09:41:12,040  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 09:41:12,040  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 09:41:12,205  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test40-checkpoints\chunks
+2025-06-03 09:41:12,205  INFO [  0%] raft Retrieving chunks from data\13.8英寸高分辨率多色TFT—LCD_王阳_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 09:41:12,205  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 09:41:12,269  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 09:41:12,271  INFO [  0%] raft Using 2 worker threads
+2025-06-03 09:43:29,346  INFO [  0%] raft Consumed 12316 prompt tokens, 7406 completion tokens, 19722 total tokens
+2025-06-03 09:43:29,398  INFO [  0%] raft Generated 6 question/answer/CoT/documents samples
+2025-06-03 09:43:29,398  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test40
+2025-06-03 09:43:29,398  INFO [  0%] raft Done in 137.36s
+2025-06-03 09:47:48,896  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 09:47:48,896  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 09:47:48,896  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 09:47:49,050  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test41-checkpoints\chunks
+2025-06-03 09:47:49,050  INFO [  0%] raft Retrieving chunks from data\17.8cm彩色AMOLED驱动模块的研制_尹盛_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 09:47:49,050  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 09:47:49,103  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 09:47:49,103  INFO [  0%] raft Using 2 worker threads
+2025-06-03 09:51:57,742  INFO [  0%] raft Consumed 20949 prompt tokens, 13586 completion tokens, 34535 total tokens
+2025-06-03 09:51:57,817  INFO [  0%] raft Generated 12 question/answer/CoT/documents samples
+2025-06-03 09:51:57,817  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test41
+2025-06-03 09:51:57,817  INFO [  0%] raft Done in 248.92s
+2025-06-03 09:54:05,948  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 09:54:05,949  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 09:54:05,949  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 09:54:06,093  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test42-checkpoints\chunks
+2025-06-03 09:54:06,093  INFO [  0%] raft Retrieving chunks from data\22cm反射式彩色TFT_LCD_孙再吉_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 09:54:06,093  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 09:54:06,178  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 09:54:06,178  INFO [  0%] raft Using 2 worker threads
+2025-06-03 09:54:43,604  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 09:54:43,604  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 09:54:43,604  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 09:54:43,768  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test43-checkpoints\chunks
+2025-06-03 09:54:43,768  INFO [  0%] raft Retrieving chunks from data\22英寸广色域——HP_L2245w_真水无味_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 09:54:43,768  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 09:54:43,951  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 09:54:43,951  INFO [  0%] raft Using 2 worker threads
+2025-06-03 09:56:13,940  INFO [  0%] raft Consumed 4010 prompt tokens, 2656 completion tokens, 6666 total tokens
+2025-06-03 09:56:13,998  INFO [  0%] raft Generated 2 question/answer/CoT/documents samples
+2025-06-03 09:56:13,998  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test43
+2025-06-03 09:56:13,998  INFO [  0%] raft Done in 90.39s
+2025-06-03 09:56:55,499  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 09:56:55,499  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 09:56:55,499  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 09:56:55,656  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test44-checkpoints\chunks
+2025-06-03 09:56:55,656  INFO [  0%] raft Retrieving chunks from data\80C196KC与液晶显示...174的接口设计及编程实现_冯占英_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 09:56:55,657  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 09:56:55,895  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 09:56:55,895  INFO [  0%] raft Using 2 worker threads
+2025-06-03 10:01:22,420  INFO [  0%] raft Consumed 18827 prompt tokens, 12847 completion tokens, 31674 total tokens
+2025-06-03 10:01:22,479  INFO [  0%] raft Generated 10 question/answer/CoT/documents samples
+2025-06-03 10:01:22,479  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test44
+2025-06-03 10:01:22,479  INFO [  0%] raft Done in 266.98s
+2025-06-03 10:01:42,573  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 10:01:42,573  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 10:01:42,573  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 10:01:42,724  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test45-checkpoints\chunks
+2025-06-03 10:01:42,724  INFO [  0%] raft Retrieving chunks from data\125mm彩色AMOLED的多晶硅TFT基板_孟志国_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 10:01:42,724  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 10:01:42,777  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 10:01:42,777  INFO [  0%] raft Using 2 worker threads
+2025-06-03 10:01:53,442  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 10:01:53,442  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 10:01:53,442  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 10:01:53,596  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test46-checkpoints\chunks
+2025-06-03 10:01:53,596  INFO [  0%] raft Retrieving chunks from data\128×64点阵式OLED的驱动电路_董桂芳_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 10:01:53,597  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 10:01:53,644  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 10:01:53,644  INFO [  0%] raft Using 2 worker threads
+2025-06-03 10:06:18,644  INFO [  0%] raft Consumed 22336 prompt tokens, 15739 completion tokens, 38075 total tokens
+2025-06-03 10:06:18,718  INFO [  0%] raft Generated 12 question/answer/CoT/documents samples
+2025-06-03 10:06:18,718  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test45
+2025-06-03 10:06:18,718  INFO [  0%] raft Done in 276.15s
+2025-06-03 10:07:45,284  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 10:07:45,284  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 10:07:45,284  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 10:07:45,439  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test46-checkpoints\chunks
+2025-06-03 10:07:45,439  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 10:07:45,439  INFO [  0%] raft Using 2 worker threads
+2025-06-03 10:07:45,448  INFO [  0%] raft Resuming generation from chunk 2/10 and 4 questions
+2025-06-03 10:09:52,831  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 10:09:52,831  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 10:09:52,831  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 10:09:52,968  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test46-checkpoints\chunks
+2025-06-03 10:09:52,968  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 10:09:52,984  INFO [  0%] raft Using 2 worker threads
+2025-06-03 10:09:52,984  INFO [  0%] raft Resuming generation from chunk 2/10 and 4 questions
+2025-06-03 10:10:28,166  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 10:10:28,166  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 10:10:28,166  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 10:10:28,319  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test47-checkpoints\chunks
+2025-06-03 10:10:28,319  INFO [  0%] raft Retrieving chunks from data\200mm×200mm_OLED步进投影曝光机_周畅_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 10:10:28,319  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 10:10:28,413  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 10:10:28,414  INFO [  0%] raft Using 2 worker threads
+2025-06-03 10:16:26,477  INFO [  0%] raft Consumed 23879 prompt tokens, 18899 completion tokens, 42778 total tokens
+2025-06-03 10:16:26,704  INFO [  0%] raft Generated 14 question/answer/CoT/documents samples
+2025-06-03 10:16:26,704  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test47
+2025-06-03 10:16:26,704  INFO [  0%] raft Done in 358.54s
+2025-06-03 10:17:10,361  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 10:17:10,361  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 10:17:10,361  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 10:17:10,513  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test48-checkpoints\chunks
+2025-06-03 10:17:10,514  INFO [  0%] raft Retrieving chunks from data\256×64点阵液晶显示器模块_吴训_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 10:17:10,514  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 10:17:10,574  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 10:17:10,574  INFO [  0%] raft Using 2 worker threads
+2025-06-03 10:18:56,897  INFO [  0%] raft Consumed 9222 prompt tokens, 5475 completion tokens, 14697 total tokens
+2025-06-03 10:18:56,945  INFO [  0%] raft Generated 4 question/answer/CoT/documents samples
+2025-06-03 10:18:56,945  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test48
+2025-06-03 10:18:56,946  INFO [  0%] raft Done in 106.59s
+2025-06-03 10:19:23,900  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 10:19:23,900  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 10:19:23,900  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 10:19:24,052  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test49-checkpoints\chunks
+2025-06-03 10:19:24,053  INFO [  0%] raft Retrieving chunks from data\256级灰度OLED驱动电路_陈志明_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 10:19:24,053  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 10:19:24,114  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 10:19:24,114  INFO [  0%] raft Using 2 worker threads
+2025-06-03 10:22:08,288  INFO [  0%] raft Consumed 11507 prompt tokens, 7312 completion tokens, 18819 total tokens
+2025-06-03 10:22:08,531  INFO [  0%] raft Generated 6 question/answer/CoT/documents samples
+2025-06-03 10:22:08,531  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test49
+2025-06-03 10:22:08,531  INFO [  0%] raft Done in 164.63s
+2025-06-03 10:34:12,580  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 10:34:12,581  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 10:34:12,581  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 10:34:12,730  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test50-checkpoints\chunks
+2025-06-03 10:34:12,730  INFO [  0%] raft Retrieving chunks from data\400×640象素液晶显示的研制_杨兆芳_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 10:34:12,731  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 10:34:12,789  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 10:34:12,789  INFO [  0%] raft Using 2 worker threads
+2025-06-03 10:36:23,838  INFO [  0%] raft Consumed 9855 prompt tokens, 5551 completion tokens, 15406 total tokens
+2025-06-03 10:36:24,075  INFO [  0%] raft Generated 5 question/answer/CoT/documents samples
+2025-06-03 10:36:24,075  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test50
+2025-06-03 10:36:24,076  INFO [  0%] raft Done in 131.50s
+2025-06-03 10:36:40,131  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 10:36:40,131  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 10:36:40,131  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 10:36:40,282  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test51-checkpoints\chunks
+2025-06-03 10:36:40,282  INFO [  0%] raft Retrieving chunks from data\640×480_TFT-AMLCD有源层的制备_葛长军_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 10:36:40,282  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 10:36:40,344  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 10:36:40,344  INFO [  0%] raft Using 2 worker threads
+2025-06-03 10:43:28,489  INFO [  0%] raft Consumed 26213 prompt tokens, 21057 completion tokens, 47270 total tokens
+2025-06-03 10:43:28,564  INFO [  0%] raft Generated 14 question/answer/CoT/documents samples
+2025-06-03 10:43:28,564  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test51
+2025-06-03 10:43:28,564  INFO [  0%] raft Done in 408.44s
+2025-06-03 10:43:56,577  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 10:43:56,577  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 10:43:56,577  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 10:43:56,727  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test52-checkpoints\chunks
+2025-06-03 10:43:56,727  INFO [  0%] raft Retrieving chunks from data\640×480像素矩阵OL...ilicon微显示芯片设计_陆超_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 10:43:56,728  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 10:43:56,791  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 10:43:56,792  INFO [  0%] raft Using 2 worker threads
+2025-06-03 10:50:59,371  INFO [  0%] raft Consumed 29656 prompt tokens, 19637 completion tokens, 49293 total tokens
+2025-06-03 10:50:59,439  INFO [  0%] raft Generated 15 question/answer/CoT/documents samples
+2025-06-03 10:50:59,440  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test52
+2025-06-03 10:50:59,440  INFO [  0%] raft Done in 422.87s
+2025-06-03 11:03:21,466  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 11:03:21,467  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 11:03:21,467  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 11:03:21,625  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test53-checkpoints\chunks
+2025-06-03 11:03:21,625  INFO [  0%] raft Retrieving chunks from data\980nm底发射VCSEL的DBR设计与优化_李特_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 11:03:21,626  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 11:03:21,686  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 11:03:21,686  INFO [  0%] raft Using 2 worker threads
+2025-06-03 11:09:24,077  INFO [  0%] raft Consumed 23525 prompt tokens, 19474 completion tokens, 42999 total tokens
+2025-06-03 11:09:24,174  INFO [  0%] raft Generated 13 question/answer/CoT/documents samples
+2025-06-03 11:09:24,174  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test53
+2025-06-03 11:09:24,175  INFO [  0%] raft Done in 362.71s
+2025-06-03 11:09:58,684  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 11:09:58,684  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 11:09:58,684  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 11:09:58,839  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test54-checkpoints\chunks
+2025-06-03 11:09:58,839  INFO [  0%] raft Retrieving chunks from data\1670万种色彩的15英寸TFT液晶显示_金锐_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 11:09:58,840  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 11:09:59,127  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 11:09:59,127  INFO [  0%] raft Using 2 worker threads
+2025-06-03 11:11:12,634  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 11:11:12,634  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 11:11:12,634  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 11:11:12,780  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test55-checkpoints\chunks
+2025-06-03 11:11:12,780  INFO [  0%] raft Retrieving chunks from data\2005_OLED行业一瞥_王力_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 11:11:12,781  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 11:11:12,843  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 11:11:12,843  INFO [  0%] raft Using 2 worker threads
+2025-06-03 11:15:07,632  INFO [  0%] raft Consumed 20355 prompt tokens, 11288 completion tokens, 31643 total tokens
+2025-06-03 11:15:07,692  INFO [  0%] raft Generated 10 question/answer/CoT/documents samples
+2025-06-03 11:15:07,692  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test55
+2025-06-03 11:15:07,692  INFO [  0%] raft Done in 235.06s
+2025-06-03 11:18:26,887  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 11:18:26,887  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 11:18:26,887  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 11:18:27,039  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test56-checkpoints\chunks
+2025-06-03 11:18:27,039  INFO [  0%] raft Retrieving chunks from data\Ⅱ-Ⅵ族化合物薄膜电致发光_钟国柱_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 11:18:27,039  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 11:18:27,105  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 11:18:27,106  INFO [  0%] raft Using 2 worker threads
+2025-06-03 11:37:39,863  INFO [  0%] raft Consumed 78016 prompt tokens, 62565 completion tokens, 140581 total tokens
+2025-06-03 11:37:39,983  INFO [  0%] raft Generated 45 question/answer/CoT/documents samples
+2025-06-03 11:37:39,983  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test56
+2025-06-03 11:37:39,983  INFO [  0%] raft Done in 1153.10s
+2025-06-03 11:39:01,733  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 11:39:01,733  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 11:39:01,733  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 11:39:01,882  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test57-checkpoints\chunks
+2025-06-03 11:39:01,882  INFO [  0%] raft Retrieving chunks from data\A Method for OLED Test_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 11:39:01,883  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 11:39:02,608  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 11:39:02,609  INFO [  0%] raft Using 2 worker threads
+2025-06-03 11:42:50,152  INFO [  0%] raft Consumed 10006 prompt tokens, 10450 completion tokens, 20456 total tokens
+2025-06-03 11:42:50,211  INFO [  0%] raft Generated 10 question/answer/CoT/documents samples
+2025-06-03 11:42:50,211  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test57
+2025-06-03 11:42:50,211  INFO [  0%] raft Done in 228.48s
+2025-06-03 11:49:14,828  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 11:49:14,828  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 11:49:14,828  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 11:49:14,977  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test58-checkpoints\chunks
+2025-06-03 11:49:14,978  INFO [  0%] raft Retrieving chunks from data\A new AC driv...ission AMOLED_张勇文_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 11:49:14,978  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 11:49:15,041  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 11:49:15,041  INFO [  0%] raft Using 2 worker threads
+2025-06-03 11:49:45,593  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 11:49:45,593  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 11:49:45,593  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 11:49:45,742  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test59-checkpoints\chunks
+2025-06-03 11:49:45,742  INFO [  0%] raft Retrieving chunks from data\A new OLED SP...isplay design_赵博华_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 11:49:45,742  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 11:49:45,982  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 11:49:45,983  INFO [  0%] raft Using 2 worker threads
+2025-06-03 11:59:29,207  INFO [  0%] raft Consumed 31090 prompt tokens, 33677 completion tokens, 64767 total tokens
+2025-06-03 11:59:29,294  INFO [  0%] raft Generated 24 question/answer/CoT/documents samples
+2025-06-03 11:59:29,295  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test58
+2025-06-03 11:59:29,295  INFO [  0%] raft Done in 614.47s
+2025-06-03 12:00:28,420  INFO [  0%] raft Consumed 35947 prompt tokens, 36405 completion tokens, 72352 total tokens
+2025-06-03 12:00:28,511  INFO [  0%] raft Generated 28 question/answer/CoT/documents samples
+2025-06-03 12:00:28,512  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test59
+2025-06-03 12:00:28,512  INFO [  0%] raft Done in 642.92s
+2025-06-03 12:00:43,650  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 12:00:43,651  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 12:00:43,651  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 12:00:43,798  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test60-checkpoints\chunks
+2025-06-03 12:00:43,798  INFO [  0%] raft Retrieving chunks from data\A physical ch...e a-IGZO TFTs_Minxi CAI_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 12:00:43,798  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 12:00:43,937  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 12:00:43,937  INFO [  0%] raft Using 2 worker threads
+2025-06-03 12:00:50,486  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 12:00:50,486  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 12:00:50,486  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 12:00:50,637  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test61-checkpoints\chunks
+2025-06-03 12:00:50,638  INFO [  0%] raft Retrieving chunks from data\A_purely_orga...ar-white_OLED_Jing Sun_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 12:00:50,638  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 12:00:50,723  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 12:00:50,723  INFO [  0%] raft Using 2 worker threads
+2025-06-03 12:11:33,404  INFO [  0%] raft Consumed 32782 prompt tokens, 37503 completion tokens, 70285 total tokens
+2025-06-03 12:11:33,481  INFO [  0%] raft Generated 24 question/answer/CoT/documents samples
+2025-06-03 12:11:33,481  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test60
+2025-06-03 12:11:33,482  INFO [  0%] raft Done in 649.83s
+2025-06-03 12:13:34,101  INFO [  0%] raft Consumed 40600 prompt tokens, 41677 completion tokens, 82277 total tokens
+2025-06-03 12:13:34,196  INFO [  0%] raft Generated 30 question/answer/CoT/documents samples
+2025-06-03 12:13:34,196  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test61
+2025-06-03 12:13:34,196  INFO [  0%] raft Done in 763.71s
+2025-06-03 13:30:56,903  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 13:30:56,903  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 13:30:56,903  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 13:30:57,062  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test62-checkpoints\chunks
+2025-06-03 13:30:57,062  INFO [  0%] raft Retrieving chunks from data\AD9883在平板显示视频接口中的应用_胡建民_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 13:30:57,062  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 13:30:57,121  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 13:30:57,121  INFO [  0%] raft Using 2 worker threads
+2025-06-03 13:31:04,026  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 13:31:04,026  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 13:31:04,026  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 13:31:04,177  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test63-checkpoints\chunks
+2025-06-03 13:31:04,177  INFO [  0%] raft Retrieving chunks from data\ADS_TFT-LCD漏光敏感性影响因素研究与改善_冯伟_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 13:31:04,178  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 13:31:04,237  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 13:31:04,237  INFO [  0%] raft Using 2 worker threads
+2025-06-03 13:35:29,422  INFO [  0%] raft Consumed 20932 prompt tokens, 14656 completion tokens, 35588 total tokens
+2025-06-03 13:35:29,476  INFO [  0%] raft Generated 11 question/answer/CoT/documents samples
+2025-06-03 13:35:29,477  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test62
+2025-06-03 13:35:29,477  INFO [  0%] raft Done in 272.58s
+2025-06-03 13:35:44,284  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 13:35:44,284  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 13:35:44,284  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 13:35:44,434  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test64-checkpoints\chunks
+2025-06-03 13:35:44,434  INFO [  0%] raft Retrieving chunks from data\ADS_TFT-LCD贴合产品按压漏光研究及改善_桂继维_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 13:35:44,434  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 13:35:44,495  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 13:35:44,495  INFO [  0%] raft Using 2 worker threads
+2025-06-03 13:40:03,547  INFO [  0%] raft Consumed 45977 prompt tokens, 30453 completion tokens, 76430 total tokens
+2025-06-03 13:40:03,624  INFO [  0%] raft Generated 24 question/answer/CoT/documents samples
+2025-06-03 13:40:03,624  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test63
+2025-06-03 13:40:03,624  INFO [  0%] raft Done in 539.60s
+2025-06-03 13:40:46,613  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 13:40:46,613  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 13:40:46,613  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 13:40:46,761  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test65-checkpoints\chunks
+2025-06-03 13:40:46,762  INFO [  0%] raft Retrieving chunks from data\ADS模式TFT-LCD的显示原理研究_刘同海_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 13:40:46,762  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 13:40:46,842  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 13:40:46,842  INFO [  0%] raft Using 2 worker threads
+2025-06-03 13:42:30,442  INFO [  0%] raft Consumed 9593 prompt tokens, 5468 completion tokens, 15061 total tokens
+2025-06-03 13:42:30,490  INFO [  0%] raft Generated 4 question/answer/CoT/documents samples
+2025-06-03 13:42:30,490  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test65
+2025-06-03 13:42:30,490  INFO [  0%] raft Done in 103.88s
+2025-06-03 13:42:42,745  INFO [  0%] raft Consumed 34727 prompt tokens, 22040 completion tokens, 56767 total tokens
+2025-06-03 13:42:42,820  INFO [  0%] raft Generated 19 question/answer/CoT/documents samples
+2025-06-03 13:42:42,821  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test64
+2025-06-03 13:42:42,821  INFO [  0%] raft Done in 418.54s
+2025-06-03 13:42:44,780  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 13:42:44,780  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 13:42:44,780  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 13:42:44,928  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test66-checkpoints\chunks
+2025-06-03 13:42:44,929  INFO [  0%] raft Retrieving chunks from data\ADS双栅线结构高透像素设计_王小元_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 13:42:44,929  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 13:42:44,992  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 13:42:44,992  INFO [  0%] raft Using 2 worker threads
+2025-06-03 13:43:21,705  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 13:43:21,705  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 13:43:21,705  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 13:43:21,856  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test67-checkpoints\chunks
+2025-06-03 13:43:21,857  INFO [  0%] raft Retrieving chunks from data\ADS液晶面板划痕Mura研究_李晓吉_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 13:43:21,857  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 13:43:21,916  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 13:43:21,916  INFO [  0%] raft Using 2 worker threads
+2025-06-03 13:48:10,934  INFO [  0%] raft Consumed 30090 prompt tokens, 17304 completion tokens, 47394 total tokens
+2025-06-03 13:48:10,997  INFO [  0%] raft Generated 15 question/answer/CoT/documents samples
+2025-06-03 13:48:10,998  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test66
+2025-06-03 13:48:10,998  INFO [  0%] raft Done in 326.22s
+2025-06-03 13:48:25,522  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 13:48:25,522  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 13:48:25,522  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 13:48:25,671  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test68-checkpoints\chunks
+2025-06-03 13:48:25,671  INFO [  0%] raft Retrieving chunks from data\Ag纳米线掺杂的液晶显示器件的电-光特性_赵东宇_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 13:48:25,672  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 13:48:25,730  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 13:48:25,730  INFO [  0%] raft Using 2 worker threads
+2025-06-03 13:52:07,435  INFO [  0%] raft Consumed 44653 prompt tokens, 27873 completion tokens, 72526 total tokens
+2025-06-03 13:52:07,516  INFO [  0%] raft Generated 23 question/answer/CoT/documents samples
+2025-06-03 13:52:07,516  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test67
+2025-06-03 13:52:07,517  INFO [  0%] raft Done in 525.81s
+2025-06-03 13:52:21,051  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 13:52:21,051  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 13:52:21,052  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 13:52:21,198  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test69-checkpoints\chunks
+2025-06-03 13:52:21,198  INFO [  0%] raft Retrieving chunks from data\Ag阴极沉积速率对顶发射有机发光器件性能的影响_侯建华_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 13:52:21,199  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 13:52:21,260  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 13:52:21,260  INFO [  0%] raft Using 2 worker threads
+2025-06-03 13:52:33,009  INFO [  0%] raft Consumed 26881 prompt tokens, 13930 completion tokens, 40811 total tokens
+2025-06-03 13:52:33,071  INFO [  0%] raft Generated 13 question/answer/CoT/documents samples
+2025-06-03 13:52:33,071  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test68
+2025-06-03 13:52:33,071  INFO [  0%] raft Done in 247.55s
+2025-06-03 13:54:15,056  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 13:54:15,056  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 13:54:15,056  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 13:54:15,205  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test70-checkpoints\chunks
+2025-06-03 13:54:15,206  INFO [  0%] raft Retrieving chunks from data\AIE材料助发光器件走出平面,迈向高维_孙景志_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 13:54:15,206  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 13:54:15,268  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 13:54:15,268  INFO [  0%] raft Using 2 worker threads
+2025-06-03 13:56:19,130  INFO [  0%] raft Consumed 9955 prompt tokens, 6527 completion tokens, 16482 total tokens
+2025-06-03 13:56:19,179  INFO [  0%] raft Generated 6 question/answer/CoT/documents samples
+2025-06-03 13:56:19,180  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test70
+2025-06-03 13:56:19,180  INFO [  0%] raft Done in 124.13s
+2025-06-03 13:56:36,367  INFO [  0%] raft Consumed 16483 prompt tokens, 12337 completion tokens, 28820 total tokens
+2025-06-03 13:56:36,420  INFO [  0%] raft Generated 10 question/answer/CoT/documents samples
+2025-06-03 13:56:36,420  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test69
+2025-06-03 13:56:36,420  INFO [  0%] raft Done in 255.37s
+2025-06-03 13:58:07,713  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 13:58:07,713  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 13:58:07,713  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 13:58:07,864  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test71-checkpoints\chunks
+2025-06-03 13:58:07,864  INFO [  0%] raft Retrieving chunks from data\a-IGZO_IZO厚度比对TFT特性的影响研究_潘东_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 13:58:07,865  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 13:58:08,115  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 13:58:08,115  INFO [  0%] raft Using 2 worker threads
+2025-06-03 13:58:14,693  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 13:58:14,693  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 13:58:14,693  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 13:58:14,844  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test72-checkpoints\chunks
+2025-06-03 13:58:14,844  INFO [  0%] raft Retrieving chunks from data\AIT玻璃衬底非晶硅薄膜的固相晶化研究_郑文_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 13:58:14,845  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 13:58:15,031  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 13:58:15,031  INFO [  0%] raft Using 2 worker threads
+2025-06-03 14:02:43,656  INFO [  0%] raft Consumed 17620 prompt tokens, 13433 completion tokens, 31053 total tokens
+2025-06-03 14:02:43,885  INFO [  0%] raft Generated 10 question/answer/CoT/documents samples
+2025-06-03 14:02:43,886  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test72
+2025-06-03 14:02:43,886  INFO [  0%] raft Done in 269.19s
+2025-06-03 14:05:51,638  INFO [  0%] raft Consumed 42247 prompt tokens, 25098 completion tokens, 67345 total tokens
+2025-06-03 14:05:51,711  INFO [  0%] raft Generated 18 question/answer/CoT/documents samples
+2025-06-03 14:05:51,711  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test71
+2025-06-03 14:05:51,711  INFO [  0%] raft Done in 464.00s
+2025-06-03 14:11:06,212  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 14:11:06,213  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 14:11:06,213  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 14:11:06,373  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test73-checkpoints\chunks
+2025-06-03 14:11:06,373  INFO [  0%] raft Retrieving chunks from data\Al_2O_3_PMMA交...薄膜制备及OLED封装性能_周雄图_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 14:11:06,373  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 14:11:06,443  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 14:11:06,443  INFO [  0%] raft Using 2 worker threads
+2025-06-03 14:11:13,437  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 14:11:13,437  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 14:11:13,437  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 14:11:13,586  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test74-checkpoints\chunks
+2025-06-03 14:11:13,586  INFO [  0%] raft Retrieving chunks from data\Al_2O_3_SiN_X...___H__TFT_的研究_陈斌.md0000_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 14:11:13,587  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 14:11:13,648  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 14:11:13,648  INFO [  0%] raft Using 2 worker threads
+2025-06-03 14:15:54,880  INFO [  0%] raft Consumed 15280 prompt tokens, 15139 completion tokens, 30419 total tokens
+2025-06-03 14:15:54,938  INFO [  0%] raft Generated 10 question/answer/CoT/documents samples
+2025-06-03 14:15:54,938  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test74
+2025-06-03 14:15:54,938  INFO [  0%] raft Done in 281.50s
+2025-06-03 14:16:06,904  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 14:16:06,904  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 14:16:06,904  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 14:16:07,053  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test75-checkpoints\chunks
+2025-06-03 14:16:07,054  INFO [  0%] raft Retrieving chunks from data\Al_2O_3薄层修饰Si...O-TFTs器件的性能研究_郭永林_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 14:16:07,054  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 14:16:07,113  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 14:16:07,113  INFO [  0%] raft Using 2 worker threads
+2025-06-03 14:23:42,872  INFO [  0%] raft Consumed 53322 prompt tokens, 42175 completion tokens, 95497 total tokens
+2025-06-03 14:23:42,969  INFO [  0%] raft Generated 34 question/answer/CoT/documents samples
+2025-06-03 14:23:42,969  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test73
+2025-06-03 14:23:42,969  INFO [  0%] raft Done in 756.76s
+2025-06-03 14:23:54,491  INFO [  0%] raft Consumed 37156 prompt tokens, 26323 completion tokens, 63479 total tokens
+2025-06-03 14:23:54,569  INFO [  0%] raft Generated 23 question/answer/CoT/documents samples
+2025-06-03 14:23:54,569  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test75
+2025-06-03 14:23:54,569  INFO [  0%] raft Done in 467.67s
+2025-06-03 14:24:15,876  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 14:24:15,876  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 14:24:15,876  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 14:24:16,034  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test76-checkpoints\chunks
+2025-06-03 14:24:16,034  INFO [  0%] raft Retrieving chunks from data\Al_2O_3沉积功率对共...n-O薄膜晶体管性能的影响_武明珠_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 14:24:16,034  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 14:24:16,270  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 14:24:16,270  INFO [  0%] raft Using 2 worker threads
+2025-06-03 14:24:22,113  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 14:24:22,114  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 14:24:22,114  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 14:24:22,264  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test77-checkpoints\chunks
+2025-06-03 14:24:22,265  INFO [  0%] raft Retrieving chunks from data\Al_Ti合金栅a-Si_TFT研究_熊绍珍_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 14:24:22,265  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 14:24:22,328  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 14:24:22,328  INFO [  0%] raft Using 2 worker threads
+2025-06-03 14:30:41,253  INFO [  0%] raft Consumed 25920 prompt tokens, 18870 completion tokens, 44790 total tokens
+2025-06-03 14:30:41,492  INFO [  0%] raft Generated 16 question/answer/CoT/documents samples
+2025-06-03 14:30:41,492  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test77
+2025-06-03 14:30:41,492  INFO [  0%] raft Done in 379.38s
+2025-06-03 14:31:27,027  INFO [  0%] raft Consumed 28388 prompt tokens, 23830 completion tokens, 52218 total tokens
+2025-06-03 14:31:27,099  INFO [  0%] raft Generated 16 question/answer/CoT/documents samples
+2025-06-03 14:31:27,099  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test76
+2025-06-03 14:31:27,099  INFO [  0%] raft Done in 431.23s
+2025-06-03 14:31:41,784  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 14:31:41,784  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 14:31:41,784  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 14:31:41,941  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test78-checkpoints\chunks
+2025-06-03 14:31:41,941  INFO [  0%] raft Retrieving chunks from data\AlGaInP_GaInP...OCVD外延片光学特性测试_王雅芳_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 14:31:41,941  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 14:31:42,282  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 14:31:42,538  INFO [  0%] raft Using 2 worker threads
+2025-06-03 14:31:49,974  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 14:31:49,974  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 14:31:49,974  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 14:31:50,126  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test79-checkpoints\chunks
+2025-06-03 14:31:50,126  INFO [  0%] raft Retrieving chunks from data\AlInGaN_GaN异质结构材料生长及特性研究_贾德宇_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 14:31:50,127  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 14:31:50,189  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 14:31:50,189  INFO [  0%] raft Using 2 worker threads
+2025-06-03 14:35:24,681  INFO [  0%] raft Consumed 13873 prompt tokens, 11811 completion tokens, 25684 total tokens
+2025-06-03 14:35:24,735  INFO [  0%] raft Generated 8 question/answer/CoT/documents samples
+2025-06-03 14:35:24,735  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test79
+2025-06-03 14:35:24,735  INFO [  0%] raft Done in 214.76s
+2025-06-03 14:35:47,875  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 14:35:47,875  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 14:35:47,875  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 14:35:48,026  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test80-checkpoints\chunks
+2025-06-03 14:35:48,026  INFO [  0%] raft Retrieving chunks from data\Alq_3_HAT-CN叠...发光器件的激子调控机制探究_李万娇_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 14:35:48,026  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 14:35:48,366  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 14:35:48,366  INFO [  0%] raft Using 2 worker threads
+2025-06-03 14:36:45,626  INFO [  0%] raft Consumed 22154 prompt tokens, 16203 completion tokens, 38357 total tokens
+2025-06-03 14:36:45,692  INFO [  0%] raft Generated 12 question/answer/CoT/documents samples
+2025-06-03 14:36:45,692  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test78
+2025-06-03 14:36:45,692  INFO [  0%] raft Done in 303.91s
+2025-06-03 14:39:23,746  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 14:39:23,746  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 14:39:23,746  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 14:39:23,909  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test81-checkpoints\chunks
+2025-06-03 14:39:23,910  INFO [  0%] raft Retrieving chunks from data\Alq_3光学特性研究的综合实验设计_杨凤_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 14:39:23,910  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 14:39:23,972  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 14:39:23,972  INFO [  0%] raft Using 2 worker threads
+2025-06-03 14:48:06,254  INFO [  0%] raft Consumed 37594 prompt tokens, 26842 completion tokens, 64436 total tokens
+2025-06-03 14:48:06,335  INFO [  0%] raft Generated 23 question/answer/CoT/documents samples
+2025-06-03 14:48:06,335  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test81
+2025-06-03 14:48:06,335  INFO [  0%] raft Done in 522.59s
+2025-06-03 14:48:18,804  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 14:48:18,804  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 14:48:18,804  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 14:48:18,955  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test82-checkpoints\chunks
+2025-06-03 14:48:18,955  INFO [  0%] raft Retrieving chunks from data\Alq_3厚度以及沉积速率对OLED性能的影响_牟强_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 14:48:18,955  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 14:48:19,017  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 14:48:19,017  INFO [  0%] raft Using 2 worker threads
+2025-06-03 14:52:51,361  INFO [  0%] raft Consumed 18203 prompt tokens, 13377 completion tokens, 31580 total tokens
+2025-06-03 14:52:51,423  INFO [  0%] raft Generated 11 question/answer/CoT/documents samples
+2025-06-03 14:52:51,423  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test82
+2025-06-03 14:52:51,424  INFO [  0%] raft Done in 272.62s
+2025-06-03 14:53:07,722  INFO [  0%] raft Consumed 72792 prompt tokens, 56303 completion tokens, 129095 total tokens
+2025-06-03 14:53:07,873  INFO [  0%] raft Generated 39 question/answer/CoT/documents samples
+2025-06-03 14:53:07,873  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test80
+2025-06-03 14:53:07,874  INFO [  0%] raft Done in 1040.00s
+2025-06-03 14:53:11,073  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 14:53:11,073  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 14:53:11,073  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 14:53:11,225  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test83-checkpoints\chunks
+2025-06-03 14:53:11,225  INFO [  0%] raft Retrieving chunks from data\Alq_3有机发光二极管中的超小磁场效应_张勇_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 14:53:11,226  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 14:53:11,288  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 14:53:11,288  INFO [  0%] raft Using 2 worker threads
+2025-06-03 14:53:23,489  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 14:53:23,489  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 14:53:23,489  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 14:53:23,645  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test84-checkpoints\chunks
+2025-06-03 14:53:23,648  INFO [  0%] raft Retrieving chunks from data\Alq_3有机发光二极管中的激子湮灭过程及其磁场效应_张勇_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 14:53:23,648  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 14:53:23,711  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 14:53:23,711  INFO [  0%] raft Using 2 worker threads
+2025-06-03 15:04:15,127  INFO [  0%] raft Consumed 44150 prompt tokens, 33784 completion tokens, 77934 total tokens
+2025-06-03 15:04:15,220  INFO [  0%] raft Generated 25 question/answer/CoT/documents samples
+2025-06-03 15:04:15,220  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test83
+2025-06-03 15:04:15,220  INFO [  0%] raft Done in 664.15s
+2025-06-03 15:04:44,076  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 15:04:44,076  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 15:04:44,076  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 15:04:44,237  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test85-checkpoints\chunks
+2025-06-03 15:04:44,237  INFO [  0%] raft Retrieving chunks from data\Alq_3有机发光二极管中的正负磁电导转变_张勇_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 15:04:44,237  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 15:04:44,301  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 15:04:44,301  INFO [  0%] raft Using 2 worker threads
+2025-06-03 15:06:39,778  INFO [  0%] raft Consumed 51486 prompt tokens, 43601 completion tokens, 95087 total tokens
+2025-06-03 15:06:40,014  INFO [  0%] raft Generated 31 question/answer/CoT/documents samples
+2025-06-03 15:06:40,014  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test84
+2025-06-03 15:06:40,014  INFO [  0%] raft Done in 796.53s
+2025-06-03 15:11:02,456  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 15:11:02,456  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 15:11:02,457  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 15:11:02,614  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test86-checkpoints\chunks
+2025-06-03 15:11:02,626  INFO [  0%] raft Retrieving chunks from data\Al栅a-Si_TFT栅绝缘膜研究_熊绍珍_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 15:11:02,626  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 15:11:02,737  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 15:11:02,737  INFO [  0%] raft Using 2 worker threads
+2025-06-03 15:12:54,655  INFO [  0%] raft Consumed 32795 prompt tokens, 26208 completion tokens, 59003 total tokens
+2025-06-03 15:12:54,725  INFO [  0%] raft Generated 18 question/answer/CoT/documents samples
+2025-06-03 15:12:54,725  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test85
+2025-06-03 15:12:54,725  INFO [  0%] raft Done in 490.65s
+2025-06-03 15:13:55,694  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 15:13:55,695  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 15:13:55,695  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 15:13:55,849  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test87-checkpoints\chunks
+2025-06-03 15:13:55,849  INFO [  0%] raft Retrieving chunks from data\AM_OLED_OLED的“明日之星”_王力_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 15:13:55,849  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 15:13:55,930  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 15:13:55,930  INFO [  0%] raft Using 2 worker threads
+2025-06-03 15:16:22,969  INFO [  0%] raft Consumed 21496 prompt tokens, 16095 completion tokens, 37591 total tokens
+2025-06-03 15:16:23,031  INFO [  0%] raft Generated 13 question/answer/CoT/documents samples
+2025-06-03 15:16:23,031  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test86
+2025-06-03 15:16:23,031  INFO [  0%] raft Done in 320.58s
+2025-06-03 15:18:36,340  INFO [  0%] raft Consumed 18410 prompt tokens, 13369 completion tokens, 31779 total tokens
+2025-06-03 15:18:36,408  INFO [  0%] raft Generated 11 question/answer/CoT/documents samples
+2025-06-03 15:18:36,409  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test87
+2025-06-03 15:18:36,409  INFO [  0%] raft Done in 280.72s
+2025-06-03 15:18:47,515  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 15:18:47,515  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 15:18:47,515  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 15:18:47,666  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test88-checkpoints\chunks
+2025-06-03 15:18:48,094  INFO [  0%] raft Retrieving chunks from data\AM_OLED显示屏灰度驱动芯片电路的设计_冉峰_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 15:18:48,095  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 15:18:48,154  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 15:18:48,155  INFO [  0%] raft Using 2 worker threads
+2025-06-03 15:18:55,032  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 15:18:55,032  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 15:18:55,032  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 15:18:55,187  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test89-checkpoints\chunks
+2025-06-03 15:18:55,187  INFO [  0%] raft Retrieving chunks from data\AM－LCD用TFT有源矩阵的性能研究_张凤　_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 15:18:55,201  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 15:18:55,262  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 15:18:55,263  INFO [  0%] raft Using 2 worker threads
+2025-06-03 15:22:20,948  INFO [  0%] raft Consumed 16738 prompt tokens, 11041 completion tokens, 27779 total tokens
+2025-06-03 15:22:21,002  INFO [  0%] raft Generated 9 question/answer/CoT/documents samples
+2025-06-03 15:22:21,003  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test88
+2025-06-03 15:22:21,003  INFO [  0%] raft Done in 213.49s
+2025-06-03 15:26:06,323  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 15:26:06,323  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 15:26:06,323  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 15:26:06,481  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test90-checkpoints\chunks
+2025-06-03 15:26:06,481  INFO [  0%] raft Retrieving chunks from data\AMOLED_TV产品与市场发展趋势_Kevin Liao_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 15:26:06,482  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 15:26:06,547  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 15:26:06,547  INFO [  0%] raft Using 2 worker threads
+2025-06-03 15:29:29,408  INFO [  0%] raft Consumed 11962 prompt tokens, 8215 completion tokens, 20177 total tokens
+2025-06-03 15:29:29,463  INFO [  0%] raft Generated 7 question/answer/CoT/documents samples
+2025-06-03 15:29:29,464  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test90
+2025-06-03 15:29:29,464  INFO [  0%] raft Done in 203.14s
+2025-06-03 15:29:44,599  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 15:29:44,599  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 15:29:44,599  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 15:29:44,751  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test91-checkpoints\chunks
+2025-06-03 15:29:44,751  INFO [  0%] raft Retrieving chunks from data\AMOLED_未来的软性显示技术_郑华琦_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 15:29:44,752  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 15:29:44,816  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 15:29:44,816  INFO [  0%] raft Using 2 worker threads
+2025-06-03 15:31:37,316  INFO [  0%] raft Consumed 49929 prompt tokens, 40187 completion tokens, 90116 total tokens
+2025-06-03 15:31:37,559  INFO [  0%] raft Generated 28 question/answer/CoT/documents samples
+2025-06-03 15:31:37,559  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test89
+2025-06-03 15:31:37,559  INFO [  0%] raft Done in 762.53s
+2025-06-03 15:33:20,867  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 15:33:20,867  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 15:33:20,867  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 15:33:21,020  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test92-checkpoints\chunks
+2025-06-03 15:33:21,020  INFO [  0%] raft Retrieving chunks from data\AMOLED-TV更环保(英文)_Ken Werner_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 15:33:21,020  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 15:33:21,083  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 15:33:21,083  INFO [  0%] raft Using 2 worker threads
+2025-06-03 15:34:52,499  INFO [  0%] raft Consumed 22183 prompt tokens, 16359 completion tokens, 38542 total tokens
+2025-06-03 15:34:52,559  INFO [  0%] raft Generated 12 question/answer/CoT/documents samples
+2025-06-03 15:34:52,559  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test91
+2025-06-03 15:34:52,559  INFO [  0%] raft Done in 307.96s
+2025-06-03 15:38:54,444  INFO [  0%] raft Consumed 8405 prompt tokens, 12420 completion tokens, 20825 total tokens
+2025-06-03 15:38:54,501  INFO [  0%] raft Generated 7 question/answer/CoT/documents samples
+2025-06-03 15:38:54,501  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test92
+2025-06-03 15:38:54,501  INFO [  0%] raft Done in 333.64s
+2025-06-03 15:39:06,789  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 15:39:06,789  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 15:39:06,789  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 15:39:06,942  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test93-checkpoints\chunks
+2025-06-03 15:39:06,942  INFO [  0%] raft Retrieving chunks from data\AMOLED不良MAP自动缺陷定位方法研究_曾建风_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 15:39:06,942  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 15:39:07,003  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 15:39:07,004  INFO [  0%] raft Using 2 worker threads
+2025-06-03 15:39:12,252  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 15:39:12,252  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 15:39:12,252  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 15:39:12,407  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test94-checkpoints\chunks
+2025-06-03 15:39:12,408  INFO [  0%] raft Retrieving chunks from data\AMOLED除泡工艺中智能搬送及分拣系统的设计与实现_田娜_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 15:39:12,408  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 15:39:12,472  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 15:39:12,472  INFO [  0%] raft Using 2 worker threads
+2025-06-03 15:45:08,846  INFO [  0%] raft Consumed 26281 prompt tokens, 18842 completion tokens, 45123 total tokens
+2025-06-03 15:45:08,917  INFO [  0%] raft Generated 14 question/answer/CoT/documents samples
+2025-06-03 15:45:08,917  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test94
+2025-06-03 15:45:08,917  INFO [  0%] raft Done in 356.67s
+2025-06-03 15:45:23,278  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 15:45:23,278  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 15:45:23,278  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 15:45:23,430  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test95-checkpoints\chunks
+2025-06-03 15:45:23,430  INFO [  0%] raft Retrieving chunks from data\AMOLED大尺寸化面临的技术挑战_张斌_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 15:45:23,431  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 15:45:23,519  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 15:45:23,520  INFO [  0%] raft Using 2 worker threads
+2025-06-03 15:46:13,876  INFO [  0%] raft Consumed 28661 prompt tokens, 22252 completion tokens, 50913 total tokens
+2025-06-03 15:46:13,950  INFO [  0%] raft Generated 17 question/answer/CoT/documents samples
+2025-06-03 15:46:13,950  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test93
+2025-06-03 15:46:13,950  INFO [  0%] raft Done in 427.16s
+2025-06-03 15:48:31,237  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 15:48:31,237  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 15:48:31,237  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 15:48:31,391  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test96-checkpoints\chunks
+2025-06-03 15:48:31,392  INFO [  0%] raft Retrieving chunks from data\AMOLED的图像缩放及时序控制方案_尹盛_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 15:48:31,392  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 15:48:31,454  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 15:48:31,454  INFO [  0%] raft Using 2 worker threads
+2025-06-03 15:50:51,627  INFO [  0%] raft Consumed 24493 prompt tokens, 16669 completion tokens, 41162 total tokens
+2025-06-03 15:50:51,693  INFO [  0%] raft Generated 16 question/answer/CoT/documents samples
+2025-06-03 15:50:51,693  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test95
+2025-06-03 15:50:51,694  INFO [  0%] raft Done in 328.42s
+2025-06-03 15:52:19,868  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 15:52:19,868  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 15:52:19,868  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 15:52:20,020  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test97-checkpoints\chunks
+2025-06-03 15:52:20,021  INFO [  0%] raft Retrieving chunks from data\AM-OLED的像素电路集锦(二)_应根裕_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 15:52:20,021  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 15:52:20,261  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 15:52:20,261  INFO [  0%] raft Using 2 worker threads
+2025-06-03 15:56:58,784  INFO [  0%] raft Consumed 27368 prompt tokens, 24030 completion tokens, 51398 total tokens
+2025-06-03 15:56:59,032  INFO [  0%] raft Generated 17 question/answer/CoT/documents samples
+2025-06-03 15:56:59,032  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test96
+2025-06-03 15:56:59,033  INFO [  0%] raft Done in 507.80s
+2025-06-03 16:00:23,825  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 16:00:23,826  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 16:00:23,826  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 16:00:23,979  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test98-checkpoints\chunks
+2025-06-03 16:00:23,979  INFO [  0%] raft Retrieving chunks from data\AM-OLED的像素电路集锦(一)_应根裕_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 16:00:23,980  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 16:00:24,045  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 16:00:24,045  INFO [  0%] raft Using 2 worker threads
+2025-06-03 16:03:36,351  INFO [  0%] raft Consumed 48264 prompt tokens, 32898 completion tokens, 81162 total tokens
+2025-06-03 16:03:36,436  INFO [  0%] raft Generated 26 question/answer/CoT/documents samples
+2025-06-03 16:03:36,436  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test97
+2025-06-03 16:03:36,436  INFO [  0%] raft Done in 676.57s
+2025-06-03 16:12:35,235  INFO [  0%] raft Consumed 54877 prompt tokens, 37014 completion tokens, 91891 total tokens
+2025-06-03 16:12:35,323  INFO [  0%] raft Generated 29 question/answer/CoT/documents samples
+2025-06-03 16:12:35,324  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test98
+2025-06-03 16:12:35,324  INFO [  0%] raft Done in 731.50s
+2025-06-03 16:25:03,966  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 16:25:03,966  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 16:25:03,967  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 16:25:04,120  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test99-checkpoints\chunks
+2025-06-03 16:25:04,120  INFO [  0%] raft Retrieving chunks from data\AMOLED电流镜像像素电路的稳定性分析_曹伟_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 16:25:04,120  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 16:25:04,206  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 16:25:04,206  INFO [  0%] raft Using 2 worker threads
+2025-06-03 16:25:09,646  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 16:25:09,646  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 16:25:09,646  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 16:25:09,799  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test100-checkpoints\chunks
+2025-06-03 16:25:09,799  INFO [  0%] raft Retrieving chunks from data\AMOLED电视功率管理解决方案_JT LEE_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 16:25:09,799  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 16:25:09,862  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 16:25:09,862  INFO [  0%] raft Using 2 worker threads
+2025-06-03 16:29:29,416  INFO [  0%] raft Consumed 15670 prompt tokens, 12318 completion tokens, 27988 total tokens
+2025-06-03 16:29:29,652  INFO [  0%] raft Generated 10 question/answer/CoT/documents samples
+2025-06-03 16:29:29,652  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test100
+2025-06-03 16:29:29,652  INFO [  0%] raft Done in 260.01s
+2025-06-03 16:29:42,922  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 16:29:42,922  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 16:29:42,922  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 16:29:43,080  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test101-checkpoints\chunks
+2025-06-03 16:29:43,081  INFO [  0%] raft Retrieving chunks from data\AMOLED电视机商业化中的新兴技术_Hye Dong Kim_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 16:29:43,081  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 16:29:43,664  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 16:29:43,664  INFO [  0%] raft Using 2 worker threads
+2025-06-03 16:31:03,286  INFO [  0%] raft Consumed 23262 prompt tokens, 18867 completion tokens, 42129 total tokens
+2025-06-03 16:31:03,350  INFO [  0%] raft Generated 14 question/answer/CoT/documents samples
+2025-06-03 16:31:03,350  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test99
+2025-06-03 16:31:03,350  INFO [  0%] raft Done in 359.38s
+2025-06-03 16:31:54,700  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 16:31:54,701  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 16:31:54,701  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 16:31:54,854  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test102-checkpoints\chunks
+2025-06-03 16:31:54,854  INFO [  0%] raft Retrieving chunks from data\AMOLED灰阶补偿算法研究_张磊_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 16:31:54,855  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 16:31:54,916  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 16:31:54,916  INFO [  0%] raft Using 2 worker threads
+2025-06-03 16:36:05,645  INFO [  0%] raft Consumed 27543 prompt tokens, 19564 completion tokens, 47107 total tokens
+2025-06-03 16:36:05,714  INFO [  0%] raft Generated 18 question/answer/CoT/documents samples
+2025-06-03 16:36:05,714  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test101
+2025-06-03 16:36:05,715  INFO [  0%] raft Done in 382.80s
+2025-06-03 16:37:01,169  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 16:37:01,170  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 16:37:01,170  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 16:37:01,325  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test103-checkpoints\chunks
+2025-06-03 16:37:01,325  INFO [  0%] raft Retrieving chunks from data\AMOLED技术发展现状及良率问题分析_魏亚东_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 16:37:01,326  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 16:37:01,389  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 16:37:01,389  INFO [  0%] raft Using 2 worker threads
+2025-06-03 16:37:41,399  INFO [  0%] raft Consumed 26017 prompt tokens, 18757 completion tokens, 44774 total tokens
+2025-06-03 16:37:41,464  INFO [  0%] raft Generated 15 question/answer/CoT/documents samples
+2025-06-03 16:37:41,464  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test102
+2025-06-03 16:37:41,464  INFO [  0%] raft Done in 346.77s
+2025-06-03 16:38:34,365  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 16:38:34,366  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 16:38:34,366  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 16:38:34,514  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test104-checkpoints\chunks
+2025-06-03 16:38:34,514  INFO [  0%] raft Retrieving chunks from data\AMOLED技术领域全球专利布局分析_罗佳秀_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 16:38:34,514  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 16:38:34,574  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 16:38:34,574  INFO [  0%] raft Using 2 worker threads
+2025-06-03 16:40:42,903  INFO [  0%] raft Consumed 17404 prompt tokens, 11288 completion tokens, 28692 total tokens
+2025-06-03 16:40:42,962  INFO [  0%] raft Generated 9 question/answer/CoT/documents samples
+2025-06-03 16:40:42,962  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test103
+2025-06-03 16:40:42,962  INFO [  0%] raft Done in 221.79s
+2025-06-03 16:40:57,934  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 16:40:57,934  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 16:40:57,934  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 16:40:58,096  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test105-checkpoints\chunks
+2025-06-03 16:40:58,097  INFO [  0%] raft Retrieving chunks from data\AM-OLED技术专利申请分析_张曦_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 16:40:58,097  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 16:40:58,166  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 16:40:58,166  INFO [  0%] raft Using 2 worker threads
+2025-06-03 16:44:53,090  INFO [  0%] raft Consumed 23792 prompt tokens, 18123 completion tokens, 41915 total tokens
+2025-06-03 16:44:53,153  INFO [  0%] raft Generated 14 question/answer/CoT/documents samples
+2025-06-03 16:44:53,153  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test104
+2025-06-03 16:44:53,153  INFO [  0%] raft Done in 378.79s
+2025-06-03 16:47:23,762  INFO [  0%] raft Consumed 28257 prompt tokens, 19608 completion tokens, 47865 total tokens
+2025-06-03 16:47:23,837  INFO [  0%] raft Generated 17 question/answer/CoT/documents samples
+2025-06-03 16:47:23,837  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test105
+2025-06-03 16:47:23,838  INFO [  0%] raft Done in 385.91s
+2025-06-03 16:47:37,404  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 16:47:37,405  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 16:47:37,405  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 16:47:37,566  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test106-checkpoints\chunks
+2025-06-03 16:47:37,566  INFO [  0%] raft Retrieving chunks from data\AMOLED控制电路中内嵌I_2C控制核的研究与实现_郝大收_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 16:47:37,566  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 16:47:37,784  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 16:47:37,784  INFO [  0%] raft Using 2 worker threads
+2025-06-03 16:47:42,642  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 16:47:42,642  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 16:47:42,642  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 16:47:42,794  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test107-checkpoints\chunks
+2025-06-03 16:47:42,795  INFO [  0%] raft Retrieving chunks from data\AMOLED亮点不良修复方法_朱世楠_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 16:47:42,795  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 16:48:38,565  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 16:48:38,565  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 16:48:38,565  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 16:48:38,716  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test107-checkpoints\chunks
+2025-06-03 16:48:38,716  INFO [  0%] raft Retrieving chunks from data\AMOLED亮点不良修复方法_朱世楠_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 16:48:38,717  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 16:49:09,906  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 16:49:09,906  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 16:49:09,906  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 16:49:10,060  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test107-checkpoints\chunks
+2025-06-03 16:49:10,060  INFO [  0%] raft Retrieving chunks from data\AMOLED亮点不良修复方法_朱世楠_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 16:49:10,060  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 16:49:29,495  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 16:49:29,496  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 16:49:29,496  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 16:49:29,647  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test108-checkpoints\chunks
+2025-06-03 16:49:29,648  INFO [  0%] raft Retrieving chunks from data\AMOLED屏上驱动电路的设计_朱艳菊_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 16:49:29,648  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 16:52:20,803  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 16:52:20,804  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 16:52:20,804  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 16:52:20,954  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test107-checkpoints\chunks
+2025-06-03 16:52:20,954  INFO [  0%] raft Retrieving chunks from data\AMOLED亮点不良修复方法_朱世楠_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 16:52:20,954  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 16:52:21,018  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 16:52:21,018  INFO [  0%] raft Using 2 worker threads
+2025-06-03 16:54:00,666  INFO [  0%] raft Consumed 27892 prompt tokens, 19794 completion tokens, 47686 total tokens
+2025-06-03 16:54:01,232  INFO [  0%] raft Generated 17 question/answer/CoT/documents samples
+2025-06-03 16:54:01,232  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test106
+2025-06-03 16:54:01,232  INFO [  0%] raft Done in 383.83s
+2025-06-03 16:55:34,815  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 16:55:34,815  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 16:55:34,815  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 16:55:34,962  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test108-checkpoints\chunks
+2025-06-03 16:55:34,962  INFO [  0%] raft Retrieving chunks from data\AMOLED屏上驱动电路的设计_朱艳菊_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 16:55:34,963  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 16:55:35,039  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 16:55:35,040  INFO [  0%] raft Using 2 worker threads
+2025-06-03 16:59:00,134  INFO [  0%] raft Consumed 15993 prompt tokens, 10483 completion tokens, 26476 total tokens
+2025-06-03 16:59:00,189  INFO [  0%] raft Generated 9 question/answer/CoT/documents samples
+2025-06-03 16:59:00,189  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test108
+2025-06-03 16:59:00,189  INFO [  0%] raft Done in 205.38s
+2025-06-03 16:59:34,193  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 16:59:34,193  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 16:59:34,193  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 16:59:34,352  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test109-checkpoints\chunks
+2025-06-03 16:59:34,353  INFO [  0%] raft Retrieving chunks from data\AMOLED驱动电路和LINUX下驱动程序设计_李国强_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 16:59:34,353  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 16:59:34,430  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 16:59:34,430  INFO [  0%] raft Using 2 worker threads
+2025-06-03 17:00:53,941  INFO [  0%] raft Consumed 40449 prompt tokens, 25541 completion tokens, 65990 total tokens
+2025-06-03 17:00:54,019  INFO [  0%] raft Generated 22 question/answer/CoT/documents samples
+2025-06-03 17:00:54,019  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test107
+2025-06-03 17:00:54,019  INFO [  0%] raft Done in 513.22s
+2025-06-03 17:04:37,606  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 17:04:37,606  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 17:04:37,607  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 17:04:37,758  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test110-checkpoints\chunks
+2025-06-03 17:04:37,759  INFO [  0%] raft Retrieving chunks from data\AMOLED驱动管阈值的补偿方法综述_杨必文_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 17:04:37,759  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 17:04:37,842  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 17:04:37,843  INFO [  0%] raft Using 2 worker threads
+2025-06-03 17:05:36,315  INFO [  0%] raft Consumed 20820 prompt tokens, 18771 completion tokens, 39591 total tokens
+2025-06-03 17:05:36,419  INFO [  0%] raft Generated 12 question/answer/CoT/documents samples
+2025-06-03 17:05:36,419  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test109
+2025-06-03 17:05:36,419  INFO [  0%] raft Done in 362.23s
+2025-06-03 17:11:18,488  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 17:11:18,488  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 17:11:18,488  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 17:11:18,666  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test111-checkpoints\chunks
+2025-06-03 17:11:18,666  INFO [  0%] raft Retrieving chunks from data\AM-OLED驱动控制芯片的COB封装与测试_高艳丽_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 17:11:18,667  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 17:11:18,745  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 17:11:18,745  INFO [  0%] raft Using 2 worker threads
+2025-06-03 17:11:24,848  INFO [    ] openai._base_client Retrying request to /chat/completions in 0.429945 seconds
+2025-06-03 17:12:56,901  INFO [  0%] raft Consumed 31617 prompt tokens, 25907 completion tokens, 57524 total tokens
+2025-06-03 17:12:56,976  INFO [  0%] raft Generated 19 question/answer/CoT/documents samples
+2025-06-03 17:12:56,976  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test110
+2025-06-03 17:12:56,976  INFO [  0%] raft Done in 499.37s
+2025-06-03 17:14:24,579  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 17:14:24,579  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 17:14:24,579  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 17:14:24,730  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test112-checkpoints\chunks
+2025-06-03 17:14:24,731  INFO [  0%] raft Retrieving chunks from data\AM-OLED驱动控制芯片的测试电路设计_高艳丽_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 17:14:24,731  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 17:14:24,790  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 17:14:24,790  INFO [  0%] raft Using 2 worker threads
+2025-06-03 17:15:56,220  INFO [  0%] raft Consumed 17051 prompt tokens, 13996 completion tokens, 31047 total tokens
+2025-06-03 17:15:56,452  INFO [  0%] raft Generated 11 question/answer/CoT/documents samples
+2025-06-03 17:15:56,452  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test111
+2025-06-03 17:15:56,452  INFO [  0%] raft Done in 277.97s
+2025-06-03 17:16:11,236  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 17:16:11,236  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 17:16:11,236  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 17:16:11,387  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test113-checkpoints\chunks
+2025-06-03 17:16:11,388  INFO [  0%] raft Retrieving chunks from data\AM-OLED驱动控制芯片中电荷泵的设计_周静_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 17:16:11,388  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 17:16:11,448  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 17:16:11,448  INFO [  0%] raft Using 2 worker threads
+2025-06-03 17:16:42,195  INFO [  0%] raft Consumed 10375 prompt tokens, 7067 completion tokens, 17442 total tokens
+2025-06-03 17:16:42,242  INFO [  0%] raft Generated 5 question/answer/CoT/documents samples
+2025-06-03 17:16:42,243  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test112
+2025-06-03 17:16:42,243  INFO [  0%] raft Done in 137.66s
+2025-06-03 17:22:31,728  INFO [  0%] raft Consumed 25750 prompt tokens, 18654 completion tokens, 44404 total tokens
+2025-06-03 17:22:31,797  INFO [  0%] raft Generated 15 question/answer/CoT/documents samples
+2025-06-03 17:22:31,798  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test113
+2025-06-03 17:22:31,798  INFO [  0%] raft Done in 380.56s
+2025-06-03 17:22:46,973  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 17:22:46,974  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 17:22:46,974  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 17:22:47,137  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test114-checkpoints\chunks
+2025-06-03 17:22:47,137  INFO [  0%] raft Retrieving chunks from data\AM-OLED驱动芯片内置SRAM控制方法研究_汪宏志_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 17:22:47,138  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 17:22:47,201  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 17:22:47,201  INFO [  0%] raft Using 2 worker threads
+2025-06-03 17:22:51,156  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 17:22:51,157  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 17:22:51,157  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 17:22:51,309  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test115-checkpoints\chunks
+2025-06-03 17:22:51,309  INFO [  0%] raft Retrieving chunks from data\AMOLED头盔显示器光学系统设计及视空间评价_范海英_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 17:22:51,309  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 17:22:51,370  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 17:22:51,370  INFO [  0%] raft Using 2 worker threads
+2025-06-03 17:24:30,783  INFO [  0%] raft Consumed 8156 prompt tokens, 5494 completion tokens, 13650 total tokens
+2025-06-03 17:24:31,069  INFO [  0%] raft Generated 4 question/answer/CoT/documents samples
+2025-06-03 17:24:31,069  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test114
+2025-06-03 17:24:31,070  INFO [  0%] raft Done in 104.10s
+2025-06-03 17:27:41,092  INFO [  0%] raft Consumed 20943 prompt tokens, 16343 completion tokens, 37286 total tokens
+2025-06-03 17:27:41,328  INFO [  0%] raft Generated 13 question/answer/CoT/documents samples
+2025-06-03 17:27:41,328  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test115
+2025-06-03 17:27:41,328  INFO [  0%] raft Done in 290.17s
+2025-06-03 17:28:19,423  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 17:28:19,423  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 17:28:19,423  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 17:28:19,581  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test116-checkpoints\chunks
+2025-06-03 17:28:19,581  INFO [  0%] raft Retrieving chunks from data\AM-OLED微型显示器在红外系统中的应用_李延东_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 17:28:19,582  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 17:28:19,660  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 17:28:19,660  INFO [  0%] raft Using 2 worker threads
+2025-06-03 17:28:23,381  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 17:28:23,381  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 17:28:23,382  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 17:28:23,538  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test117-checkpoints\chunks
+2025-06-03 17:28:23,539  INFO [  0%] raft Retrieving chunks from data\AMOLED显示屏驱动芯片...emura数据的烧录与读取_杨国忠_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 17:28:23,539  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 17:28:23,603  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 17:28:23,603  INFO [  0%] raft Using 2 worker threads
+2025-06-03 17:34:55,765  INFO [  0%] raft Consumed 27015 prompt tokens, 21370 completion tokens, 48385 total tokens
+2025-06-03 17:34:56,781  INFO [  0%] raft Generated 17 question/answer/CoT/documents samples
+2025-06-03 17:34:56,782  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test117
+2025-06-03 17:34:56,782  INFO [  0%] raft Done in 393.40s
+2025-06-03 17:35:18,911  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 17:35:18,911  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 17:35:18,911  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 17:35:19,064  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test118-checkpoints\chunks
+2025-06-03 17:35:19,064  INFO [  0%] raft Retrieving chunks from data\AMOLED显示屏驱动芯片...IPI-DSI的研究与实现_张洁_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 17:35:19,065  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 17:35:19,308  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 17:35:19,308  INFO [  0%] raft Using 2 worker threads
+2025-06-03 17:35:28,700  INFO [  0%] raft Consumed 29596 prompt tokens, 22071 completion tokens, 51667 total tokens
+2025-06-03 17:35:28,770  INFO [  0%] raft Generated 17 question/answer/CoT/documents samples
+2025-06-03 17:35:28,770  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test116
+2025-06-03 17:35:28,770  INFO [  0%] raft Done in 429.35s
+2025-06-03 17:37:25,761  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 17:37:25,761  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 17:37:25,761  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 17:37:25,929  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test119-checkpoints\chunks
+2025-06-03 17:37:25,929  INFO [  0%] raft Retrieving chunks from data\AMOLED显示器件夜视兼容特性分析_赵小珍_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 17:37:25,929  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 17:37:25,999  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 17:37:25,999  INFO [  0%] raft Using 2 worker threads
+2025-06-03 17:41:42,290  INFO [  0%] raft Consumed 24244 prompt tokens, 19290 completion tokens, 43534 total tokens
+2025-06-03 17:41:42,359  INFO [  0%] raft Generated 14 question/answer/CoT/documents samples
+2025-06-03 17:41:42,359  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test118
+2025-06-03 17:41:42,359  INFO [  0%] raft Done in 383.45s
+2025-06-03 17:44:22,351  INFO [  0%] raft Consumed 27548 prompt tokens, 20916 completion tokens, 48464 total tokens
+2025-06-03 17:44:22,425  INFO [  0%] raft Generated 17 question/answer/CoT/documents samples
+2025-06-03 17:44:22,425  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test119
+2025-06-03 17:44:22,425  INFO [  0%] raft Done in 416.67s
+2025-06-03 17:53:39,860  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 17:53:39,861  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 17:53:39,861  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 17:53:40,021  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test120-checkpoints\chunks
+2025-06-03 17:53:40,021  INFO [  0%] raft Retrieving chunks from data\AMOLED像素电路的设计与仿真研究_沈匿_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 17:53:40,021  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 17:53:40,108  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 17:53:40,108  INFO [  0%] raft Using 2 worker threads
+2025-06-03 17:53:44,102  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 17:53:44,102  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 17:53:44,103  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 17:53:44,289  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test121-checkpoints\chunks
+2025-06-03 17:53:44,291  INFO [  0%] raft Retrieving chunks from data\AM-OLED像素驱动电路的研究_李震梅_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 17:53:44,291  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 17:53:44,359  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 17:53:44,359  INFO [  0%] raft Using 2 worker threads
+2025-06-03 18:01:00,552  INFO [  0%] raft Consumed 30372 prompt tokens, 23300 completion tokens, 53672 total tokens
+2025-06-03 18:01:00,811  INFO [  0%] raft Generated 18 question/answer/CoT/documents samples
+2025-06-03 18:01:00,812  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test121
+2025-06-03 18:01:00,812  INFO [  0%] raft Done in 436.71s
+2025-06-03 18:01:13,116  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 18:01:13,116  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 18:01:13,117  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 18:01:13,271  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test122-checkpoints\chunks
+2025-06-03 18:01:13,271  INFO [  0%] raft Retrieving chunks from data\AM-OLED像素驱动电路的研究_杨佳_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 18:01:13,271  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 18:01:13,334  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 18:01:13,334  INFO [  0%] raft Using 2 worker threads
+2025-06-03 18:03:02,956  INFO [  0%] raft Consumed 8900 prompt tokens, 5922 completion tokens, 14822 total tokens
+2025-06-03 18:03:03,004  INFO [  0%] raft Generated 4 question/answer/CoT/documents samples
+2025-06-03 18:03:03,004  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test122
+2025-06-03 18:03:03,005  INFO [  0%] raft Done in 109.89s
+2025-06-03 18:03:08,057  INFO [  0%] raft Consumed 33715 prompt tokens, 30361 completion tokens, 64076 total tokens
+2025-06-03 18:03:08,138  INFO [  0%] raft Generated 21 question/answer/CoT/documents samples
+2025-06-03 18:03:08,138  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test120
+2025-06-03 18:03:08,138  INFO [  0%] raft Done in 568.28s
+2025-06-03 18:03:23,545  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 18:03:23,545  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 18:03:23,545  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 18:03:23,699  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test123-checkpoints\chunks
+2025-06-03 18:03:23,699  INFO [  0%] raft Retrieving chunks from data\AMOLED像素驱动电路及其驱动系统_周志伟_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 18:03:23,700  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 18:03:23,763  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 18:03:23,763  INFO [  0%] raft Using 2 worker threads
+2025-06-03 18:03:28,675  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 18:03:28,675  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 18:03:28,676  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 18:03:28,832  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test124-checkpoints\chunks
+2025-06-03 18:03:28,832  INFO [  0%] raft Retrieving chunks from data\AMOLED制备关键技术研究_吕琳_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 18:03:28,832  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 18:03:28,894  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 18:03:28,894  INFO [  0%] raft Using 2 worker threads
+2025-06-03 18:08:22,202  INFO [  0%] raft Consumed 21660 prompt tokens, 17033 completion tokens, 38693 total tokens
+2025-06-03 18:08:22,263  INFO [  0%] raft Generated 12 question/answer/CoT/documents samples
+2025-06-03 18:08:22,264  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test123
+2025-06-03 18:08:22,264  INFO [  0%] raft Done in 298.72s
+2025-06-03 18:08:41,113  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 18:08:41,113  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 18:08:41,113  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 18:08:41,272  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test125-checkpoints\chunks
+2025-06-03 18:08:41,272  INFO [  0%] raft Retrieving chunks from data\AMOLED子像素渲染算法研究_徐京_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 18:08:41,272  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 18:08:41,341  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 18:08:41,342  INFO [  0%] raft Using 2 worker threads
+2025-06-03 18:12:19,870  INFO [  0%] raft Consumed 38983 prompt tokens, 28726 completion tokens, 67709 total tokens
+2025-06-03 18:12:19,945  INFO [  0%] raft Generated 23 question/answer/CoT/documents samples
+2025-06-03 18:12:19,945  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test124
+2025-06-03 18:12:19,946  INFO [  0%] raft Done in 531.27s
+2025-06-03 18:12:38,908  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 18:12:38,909  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 18:12:38,909  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 18:12:39,064  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test126-checkpoints\chunks
+2025-06-03 18:12:39,064  INFO [  0%] raft Retrieving chunks from data\An integrated...Ts for AMOLED_赵丽晴_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 18:12:39,064  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 18:12:39,130  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 18:12:39,130  INFO [  0%] raft Using 2 worker threads
+2025-06-03 18:17:26,096  INFO [  0%] raft Consumed 37878 prompt tokens, 27761 completion tokens, 65639 total tokens
+2025-06-03 18:17:26,193  INFO [  0%] raft Generated 23 question/answer/CoT/documents samples
+2025-06-03 18:17:26,193  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test125
+2025-06-03 18:17:26,194  INFO [  0%] raft Done in 525.08s
+2025-06-03 18:19:50,900  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 18:19:50,900  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 18:19:50,900  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 18:19:51,054  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test127-checkpoints\chunks
+2025-06-03 18:19:51,054  INFO [  0%] raft Retrieving chunks from data\AOI检测技术应用及在印刷式OLED发展方向_许剑_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 18:19:51,054  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 18:19:51,131  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 18:19:51,132  INFO [  0%] raft Using 2 worker threads
+2025-06-03 18:20:31,157  INFO [  0%] raft Consumed 21369 prompt tokens, 23800 completion tokens, 45169 total tokens
+2025-06-03 18:20:31,225  INFO [  0%] raft Generated 18 question/answer/CoT/documents samples
+2025-06-03 18:20:31,226  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test126
+2025-06-03 18:20:31,226  INFO [  0%] raft Done in 472.32s
+2025-06-03 18:22:45,633  INFO [  0%] raft Consumed 11115 prompt tokens, 7289 completion tokens, 18404 total tokens
+2025-06-03 18:22:45,685  INFO [  0%] raft Generated 6 question/answer/CoT/documents samples
+2025-06-03 18:22:45,685  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test127
+2025-06-03 18:22:45,685  INFO [  0%] raft Done in 174.79s
+2025-06-03 19:15:04,957  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 19:15:04,957  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 19:15:04,957  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 19:15:05,138  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test128-checkpoints\chunks
+2025-06-03 19:15:05,138  INFO [  0%] raft Retrieving chunks from data\ArF准分子激光晶化非晶硅薄膜微结构研究_黄香平_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 19:15:05,139  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 19:15:05,464  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 19:15:05,465  INFO [  0%] raft Using 2 worker threads
+2025-06-03 19:15:10,109  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 19:15:10,110  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 19:15:10,110  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 19:15:10,269  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test129-checkpoints\chunks
+2025-06-03 19:15:10,269  INFO [  0%] raft Retrieving chunks from data\ARM7全彩OLED驱动控制电路设计_张翔_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 19:15:10,270  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 19:15:10,333  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 19:15:10,333  INFO [  0%] raft Using 2 worker threads
+2025-06-03 19:22:09,224  INFO [  0%] raft Consumed 26128 prompt tokens, 20606 completion tokens, 46734 total tokens
+2025-06-03 19:22:09,294  INFO [  0%] raft Generated 16 question/answer/CoT/documents samples
+2025-06-03 19:22:09,294  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test128
+2025-06-03 19:22:09,294  INFO [  0%] raft Done in 424.34s
+2025-06-03 19:22:26,807  INFO [  0%] raft Consumed 24528 prompt tokens, 20745 completion tokens, 45273 total tokens
+2025-06-03 19:22:26,879  INFO [  0%] raft Generated 16 question/answer/CoT/documents samples
+2025-06-03 19:22:26,880  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test129
+2025-06-03 19:22:26,880  INFO [  0%] raft Done in 436.77s
+2025-06-03 19:36:05,079  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 19:36:05,079  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 19:36:05,079  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 19:36:05,235  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test130-checkpoints\chunks
+2025-06-03 19:36:05,235  INFO [  0%] raft Retrieving chunks from data\ARM9芯片EP9315驱动TFT-LCD的研究_张恒_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 19:36:05,235  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 19:36:05,297  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 19:36:05,297  INFO [  0%] raft Using 2 worker threads
+2025-06-03 19:36:11,503  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 19:36:11,504  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 19:36:11,504  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 19:36:11,659  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test131-checkpoints\chunks
+2025-06-03 19:36:11,659  INFO [  0%] raft Retrieving chunks from data\ARM芯片S3C2410驱动TFT-LCD的研究_张义磊_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 19:36:11,660  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 19:36:11,723  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 19:36:11,724  INFO [  0%] raft Using 2 worker threads
+2025-06-03 19:41:00,629  INFO [  0%] raft Consumed 17972 prompt tokens, 15445 completion tokens, 33417 total tokens
+2025-06-03 19:41:00,691  INFO [  0%] raft Generated 11 question/answer/CoT/documents samples
+2025-06-03 19:41:00,691  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test130
+2025-06-03 19:41:00,692  INFO [  0%] raft Done in 295.61s
+2025-06-03 19:41:19,924  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 19:41:19,924  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 19:41:19,924  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 19:41:20,078  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test132-checkpoints\chunks
+2025-06-03 19:41:20,078  INFO [  0%] raft Retrieving chunks from data\ArrayTFT基板Open类不良的研究_余舒娴_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 19:41:20,078  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 19:41:20,142  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 19:41:20,142  INFO [  0%] raft Using 2 worker threads
+2025-06-03 19:41:26,268  INFO [    ] openai._base_client Retrying request to /chat/completions in 0.483419 seconds
+2025-06-03 19:45:23,766  INFO [  0%] raft Consumed 25859 prompt tokens, 29979 completion tokens, 55838 total tokens
+2025-06-03 19:45:24,035  INFO [  0%] raft Generated 15 question/answer/CoT/documents samples
+2025-06-03 19:45:24,035  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test131
+2025-06-03 19:45:24,035  INFO [  0%] raft Done in 552.53s
+2025-06-03 19:46:16,129  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 19:46:16,129  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 19:46:16,129  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 19:46:16,289  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test133-checkpoints\chunks
+2025-06-03 19:46:16,289  INFO [  0%] raft Retrieving chunks from data\a－Si TFT LCD像素电压跃变效应及其补偿方法_张凤 _llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 19:46:16,289  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 19:46:56,384  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 19:46:56,384  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 19:46:56,384  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 19:46:56,537  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test134-checkpoints\chunks
+2025-06-03 19:46:56,537  INFO [  0%] raft Retrieving chunks from data\a－Si TFT－LCD黑白视频投影显示_李树山_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 19:46:56,537  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 19:48:01,202  INFO [  0%] raft Consumed 30276 prompt tokens, 22120 completion tokens, 52396 total tokens
+2025-06-03 19:48:01,273  INFO [  0%] raft Generated 19 question/answer/CoT/documents samples
+2025-06-03 19:48:01,273  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test132
+2025-06-03 19:48:01,273  INFO [  0%] raft Done in 401.35s
+2025-06-03 19:52:33,875  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 19:52:33,876  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 19:52:33,876  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 19:52:34,030  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test135-checkpoints\chunks
+2025-06-03 19:52:34,030  INFO [  0%] raft Retrieving chunks from data\a—Si TFT复合栅绝缘...极氧化Ta_2O_5的研究_熊绍珍_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 19:52:34,031  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 19:52:54,763  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 19:52:54,763  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 19:52:54,763  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 19:52:54,917  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test161-checkpoints\chunks
+2025-06-03 19:52:54,917  INFO [  0%] raft Retrieving chunks from data\AV_TFT-LCD显示驱动的影响行为分析_张永栋_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 19:52:54,918  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 19:52:54,993  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 19:52:54,993  INFO [  0%] raft Using 2 worker threads
+2025-06-03 19:53:37,097  INFO [  0%] env_config Resolved OpenAI env vars with 'COMPLETION' prefix:
+2025-06-03 19:53:37,097  INFO [  0%] env_config  - OPENAI_API_KEY=................................0c58
+2025-06-03 19:53:37,097  INFO [  0%] env_config  - OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+2025-06-03 19:53:37,252  INFO [  0%] raft Using checkpoint chunks E:\my_desktop\code0528\raft\outputs_test162-checkpoints\chunks
+2025-06-03 19:53:37,252  INFO [  0%] raft Retrieving chunks from data\AZTO有源层厚度对薄膜晶体管性能的影响_胡小强_llm_correct.md of type txt using the text-embedding-ada-002 model.
+2025-06-03 19:53:37,252  INFO [  0%] env_config Resolved OpenAI env vars with 'EMBEDDING' prefix:
+2025-06-03 19:53:37,668  INFO [  0%] raft Using system prompt key deepseek-v2
+2025-06-03 19:53:37,668  INFO [  0%] raft Using 2 worker threads
+2025-06-03 19:56:05,805  INFO [  0%] raft Consumed 16803 prompt tokens, 10538 completion tokens, 27341 total tokens
+2025-06-03 19:56:05,863  INFO [  0%] raft Generated 9 question/answer/CoT/documents samples
+2025-06-03 19:56:05,863  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test161
+2025-06-03 19:56:05,863  INFO [  0%] raft Done in 191.10s
+2025-06-03 19:58:01,432  INFO [  0%] raft Consumed 19871 prompt tokens, 13617 completion tokens, 33488 total tokens
+2025-06-03 19:58:01,679  INFO [  0%] raft Generated 11 question/answer/CoT/documents samples
+2025-06-03 19:58:01,679  INFO [  0%] raft Dataset saved to E:\my_desktop\code0528\raft\outputs_test162
+2025-06-03 19:58:01,679  INFO [  0%] raft Done in 264.58s
