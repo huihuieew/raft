@@ -503,7 +503,7 @@ def build_or_load_chunks(
         OPENAPI_API_KEY: str,
         embedding_model: str,
         checkpoints_dir: Path, 
-        ):
+    ):
     """
     Builds chunks and checkpoints them if asked
     """
