@@ -2,6 +2,7 @@ from typing import List, Any
 import json
 from openai import BadRequestError, OpenAI
 import os
+from volcenginesdkarkruntime import Ark
 
 def get_chunkstr(chunks: List[dict]):
     chunkstr = ""
@@ -26,3 +27,14 @@ def build_openai_client_chat(env_prefix : str = "COMPLETION", **kwargs: Any) -> 
     )
 
     return client.chat.completions.create
+
+def build_doubao_embedding(env_prefix : str = "COMPLETION", **kwargs: Any) -> Ark:
+    """
+    Build OpenAI client based on the environment variables.
+    """
+
+    emb_client = Ark(
+        api_key=os.getenv("COMPLETION_OPENAI_API_KEY"),
+    )
+
+    return emb_client.embeddings.create
