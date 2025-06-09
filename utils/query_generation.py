@@ -4,7 +4,6 @@ import os
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import json
 from tqdm import tqdm
-# from common_utils import *
 from utils.common_utils import *
 
 
@@ -67,7 +66,6 @@ b) 周密性：过程需要科学严谨，逐步思考，确保问题和对应�
 【格式要求】：用中文输出。当前阶段只设计问题，不输出答案。严格按照以下格式输出你设计的问题：
 [[1]] 第1个问题
 [[2]] 第2个问题
-[[3]] 第3个问题 
 
 [学术论文的开始]
 {academic_paper}
@@ -142,7 +140,7 @@ def gen_query(chunks_path, chat_model, questions_path):
         print(f"{questions_path} exists. Skipping...")
         return 
     articles_chunks = load_articles(chunks_path)
-    print(f"len(articles_chunks) = {len(articles_chunks)}")
+    print(f"articles: {len(articles_chunks)}")
     for a_name, chunks in articles_chunks.items():
         a_chunks = chunks
         print(f"processing {a_name}")

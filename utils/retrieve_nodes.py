@@ -17,6 +17,7 @@ from utils.common_utils import load_articles, build_doubao_embedding
 from llama_index.core.base.embeddings.base import BaseEmbedding
 import os
 from llama_index.core.query_engine import RetrieverQueryEngine
+from pydantic import SkipValidation
 
 # 4. 创建自定义的检索器
 class CustomRetriever(BaseRetriever):
@@ -54,7 +55,7 @@ class CustomRetriever(BaseRetriever):
         return retrieve_nodes
 
 class DouBaoEmbedding(BaseEmbedding):
-    emb_model: any = None  # 声明字段，避免 pydantic 等框架报错
+    emb_model: SkipValidation[Any] = None  # 声明字段，避免 pydantic 等框架报错
     def __init__(self, model_name: str = "doubao-embedding-text-240715", emb_model: Any = None, **kwargs):
         super().__init__(**kwargs)
         self.model_name = model_name
@@ -101,15 +102,14 @@ def get_doubao_embedding(model="doubao-embedding-text-240715"):
     return embedding_model
 
 def get_retriever(
-    docstore_path="llama_index/docstore.json",
-    chroma_db="llama_index/chroma_db01",
-    chroma_name="sc_collection",
-    storage_dir="llama_index/vector_index01",
+    docstore_path,
+    chroma_db,
+    storage_dir,
     similarity_top_k=10
 ):
     docstore = SimpleDocumentStore.from_persist_path(docstore_path)
     db = chromadb.PersistentClient(path=chroma_db)
-    chroma_collection = db.get_or_create_collection(name=chroma_name)
+    chroma_collection = db.get_or_create_collection(name="sc_collection")
     vector_store = ChromaVectorStore(chroma_collection=chroma_collection)
     storage_context = StorageContext.from_defaults(
         persist_dir=storage_dir,
@@ -139,19 +139,59 @@ def get_retriever(
     )
     return custom_retriever
 
+# 重排
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
+import torch
+model_name = r"C:\Users\Administrator\.cache\modelscope\hub\models\BAAI\bge-reranker-large"
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForSequenceClassification.from_pretrained(model_name)
+
+def rerank_chunks(query, chunks):
+    """
+    对 chunks 进行重新排序
+    
+    参数:
+        query: 查询文本
+        chunks: 待排序的 chunks 列表
+        model: reranker 模型
+        tokenizer: 对应的 tokenizer
+        top_k: 返回前 k 个结果，None 表示返回全部
+        
+    返回:
+        排序后的 chunks 列表
+    """
+    # 准备模型输入
+    features = tokenizer(
+        [query]*len(chunks),
+        [chunk["chunk"] for chunk in chunks],
+        padding=True,
+        truncation=True,
+        return_tensors="pt",
+    )
+    # 计算分数
+    with torch.no_grad():
+        scores = model(**features).logits.squeeze()
+    # 将分数添加到每个 chunk 中
+    for i, chunk in enumerate(chunks):
+        chunk["score"] = float(scores[i])
+    # 降序排序
+    sorted_chunks = sorted(chunks, key=lambda x: x["score"], reverse=True)
+    return sorted_chunks
+
+# 检索文档
 from llama_index.postprocessor.flag_embedding_reranker import FlagEmbeddingReranker
 reranker_model = r"C:\Users\Administrator\.cache\modelscope\hub\models\BAAI\bge-reranker-large"
 reranker = FlagEmbeddingReranker(
     model=reranker_model, top_n=int(os.getenv("top_n"))
 )
-retriever = get_retriever(
-    docstore_path=os.getenv("docstore_path"), 
-    chroma_db=os.getenv("chroma_db"), 
-    chroma_name=os.getenv("chroma_name"), 
-    storage_dir=os.getenv("storage_dir"), 
-    similarity_top_k=int(os.getenv("similarity_top_k"))
-)
-def get_reranked_nodes(query):
+
+def get_query_engine():
+    retriever = get_retriever(
+        docstore_path=os.getenv("docstore_path"), 
+        chroma_db=os.getenv("chroma_db"), 
+        storage_dir=os.getenv("storage_dir"), 
+        similarity_top_k=int(os.getenv("similarity_top_k"))
+    )
     Settings.llm = None
     query_engine = RetrieverQueryEngine.from_args(
         llm=None,
@@ -159,9 +199,11 @@ def get_reranked_nodes(query):
         retriever=retriever, 
         node_postprocessors=[reranker]
     )
+    return query_engine
+def get_reranked_nodes(query, query_engine):
     response = query_engine.query(query)
-    print(f"len(response.source_nodes): {len(response.source_nodes)}")
     return response.source_nodes
+
 
 
 

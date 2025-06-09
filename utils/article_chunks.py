@@ -90,26 +90,15 @@ def build_or_load_chunks(
     """
     Builds chunks and checkpoints them if asked
     """
-    # chunks_ds: Dataset = None
     chunks = None
-    # checkpoints_chunks_path = checkpoints_dir / "chunks"
-    # logger.info(f"Using checkpoint chunks {checkpoints_chunks_path}")
-    # if checkpoints_chunks_path.exists():
-    #     chunks_ds = Dataset.load_from_disk(checkpoints_chunks_path)
-    #     chunks = chunks_ds
-    #     chunks_list = chunks
 
     if not chunks:
         chunks, filename = get_chunks(datapath, doctype, CHUNK_SIZE)
         chunks_dict = [
             {"chunk": chunk, "source": filename, "chunk_id": str(uuid.uuid4())}
-            for idx, chunk in enumerate(chunks)
+            for chunk in chunks
         ]
-        
-    # if not chunks_ds:
-    #     chunks_table = pa.table({ "chunk": chunks, "source": [filename] * len(chunks), "chunk_id": range(len(chunks)) })
-        # chunks_ds = Dataset(chunks_table)
-        # chunks_ds.save_to_disk(checkpoints_chunks_path)
+
     return chunks_dict, filename
 
 def save_chunks(chunks, article_name, filename):
@@ -131,7 +120,6 @@ def save_chunks(chunks, article_name, filename):
     
 def gen_chunks(data_dir, chunks_path, start_idx=None, end_idx=None):
     if os.path.exists(chunks_path):
-        # articles_chunks = load_articles(chunks_path)
         print(f"{chunks_path} exists. Skipping...")
         return 
     filenames = read_file_names(data_dir, ext=".md")
@@ -144,5 +132,5 @@ def gen_chunks(data_dir, chunks_path, start_idx=None, end_idx=None):
         chunks_dict, a_name = build_or_load_chunks(data_path, "md", 512)
         save_chunks(chunks_dict, a_name, chunks_path)
         count += len(chunks_dict)
-    print(f"len(chunks_all) = {count}")
+    print(f"all chunks: {count}")
     return articles
