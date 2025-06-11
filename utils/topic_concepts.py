@@ -1,0 +1,404 @@
+import os 
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from tqdm import tqdm
+from utils.common_utils import load_articles, get_chunkstr
+import json
+from typing import Any
+from jsonschema import validate, ValidationError
+import demjson
+import logging
+logging.basicConfig(filename='failed_responses.log', level=logging.ERROR)
+
+def get_chunk4(i, chunks):
+    # 取 i 和 i+4 个chunk
+    if (i+4) >= len(chunks):
+        chunk4 = chunks[i:]
+    else:
+        chunk4 = chunks[i: i+4] 
+    return chunk4
+def save_chunk4(chunk4_list, article_name, filename):
+    # 判断 filename 是否存在，如果存在则追加写入，否则创建新文件
+    if os.path.exists(filename):
+        with open(filename, 'r', encoding="utf-8") as f:
+            existing = json.load(f)
+        # 检查 article_name 是否已经存在于 questions 中
+        if article_name in existing:
+            existing[article_name].extend(chunk4_list)
+        else:
+            existing[article_name] = chunk4_list
+        with open(filename, 'w', encoding="utf-8") as f:
+            json.dump(existing, f, ensure_ascii=False, indent=4)
+    else:
+        with open(filename, 'w', encoding="utf-8") as f:
+            json.dump({article_name: chunk4_list}, f, ensure_ascii=False, indent=4)
+    print(f"Chunk4 saved to {filename}")
+
+def trans_chunk4(chunks_path, chunk4_path):
+    if os.path.exists(chunk4_path):
+        print(f"{chunk4_path} exists. Skipping...")
+        return 
+    articles_chunks = load_articles(chunks_path)
+    # print(f"articles: {len(articles_chunks)}")
+    for a_name, a_chunks in articles_chunks.items():
+        # print(f"processing {a_name}")
+        chunk4_list = []
+        for i in range(0, len(a_chunks), 4):
+            chunk4 = get_chunk4(i, a_chunks)
+            if len(chunk4) > 2:
+                chunk4_list.append(chunk4)
+        save_chunk4(chunk4_list, a_name, chunk4_path)
+        print(f"done {a_name} chunk4.")
+        
+
+def save_topics(topics, article_name, topics_path):
+    filename = topics_path
+    os.makedirs(os.path.dirname(filename), exist_ok=True)  # 自动创建目录
+    # 判断 filename 是否存在，如果存在则追加写入，否则创建新文件
+    if os.path.exists(filename):
+        with open(filename, 'r', encoding="utf-8") as f:
+            existing = json.load(f)
+        # 检查 article_name 是否已经存在于 questions 中
+        if article_name in existing:
+            existing[article_name].append(topics)
+        else:
+            existing[article_name] = [topics]
+        with open(filename, 'w', encoding="utf-8") as f:
+            json.dump(existing, f, ensure_ascii=False, indent=4)
+    else:
+        with open(filename, 'w', encoding="utf-8") as f:
+            json.dump({article_name: [topics]}, f, ensure_ascii=False, indent=4)
+    print(f"Topics saved to {filename}")
+
+prompt_topics = {
+    "synthllm": """Here is an article crawl from the web, which our classifier has identified as having significant educational value for
+        students learning math.
+        Your task is to analyze this article and extract educational materials, specifically focusing on topics and key
+        concepts that can enhance students’ understanding of mathematics and improve their problem-solving skills.
+        Pay special attention to uncommon but important mathematical concepts that are crucial for a deeper understanding.
+        ## Tasks
+        1. **Determine Educational Level:**
+        - Identify the appropriate educational level for the article based on its content. Choose from the
+        following options:
+        - Primary School
+        - Middle School
+        - High School
+        - College
+        - Graduate School
+        - Competition
+        - Other
+        2. **Identify Subject Area:**
+        - Specify the primary subject area of mathematics to which the article belongs (e.g., Calculus,
+        Geometry, Algebra, etc.).
+        3. **Extract Topics and Key Concepts:**
+        - **Topics:**
+        - List **1 to 5** main topics covered in the article.
+        - Use terms commonly recognized in academia or industry.
+        - **Key Concepts:**
+        - For each identified topic, list **5 to 20** related key concepts.
+        - Ensure these concepts are clearly articulated using standard academic or industry terms.
+        ## Guidelines:
+        - **Terminology:** Use precise and widely recognized academic or industry terminology for subjects, topics, and
+        key concepts to maintain consistency and clarity.
+        - **Educational Level Selection:** If appropriate, restrict the educational level to one of the following: "Primary
+        School", "Middle School", "High School", "College", "Graduate School", or "Competition" to ensure accurate
+        categorization.
+        ## Text
+        {{ text }}
+        ## Output Format
+        <level>Educational Level</level>
+        <subject>Subject Area</subject>
+        <topic> Topics:
+        1. topic 1
+        2. topic 2
+        </topic>
+        <key_concept>
+        Key Concepts:
+        1. topic 1:
+        1.1. key concept
+        1.2. key concept
+        ...
+        2. topic 2:
+        2.1. key concept
+        ... ...
+        </key_concept>
+        ## Output""",
+    "deepseek-v2": """以下是一篇研究论文。  
+        您的任务是分析这篇文章并提取教学材料，特别关注能够增强对目标领域的理解并提高其问题解决能力的主题和关键概念。  
+        请重点关注那些对深入理解目标领域至关重要但不常见的重要领域概念。  
+
+        ## 任务：
+        1. 确定学科领域：
+        明确文章所属的主要学科领域。  
+        2. 提取主题与关键概念：
+        主题：  
+            列出文章中涵盖的 1至3个 主要主题。  
+            使用学术界或行业中公认的术语。  
+        关键概念：  
+            针对每个已确定的主题，列出 3至10个 相关关键概念。  
+            确保这些概念使用标准的学术或行业术语清晰表述。  
+
+        ## 指南：
+        术语使用： 使用精确且广泛认可的学术或行业术语来描述学科、主题和关键概念，以确保一致性和清晰性。  
+
+        ## 论文内容
+        {{ text }}
+        ## 输出格式
+        <subject>学科领域</subject>
+        <topic> 话题:
+        1. 话题1
+        2. 话题2
+        </topic>
+        <key_concept>
+        关键概念:
+        1. 话题1:
+        1.1. 关键概念1
+        1.2. 关键概念2
+        ...
+        2. 话题2:
+        2.1. 关键概念1
+        ... ...
+        </key_concept>
+        ## 输出"""
+}
+def gen_topic_prompt(chunk4: list[dict]) -> list[str]:
+    """
+    Encode multiple prompt instructions into a single string for the general case (`pdf`, `json`, or `txt`).
+    """
+    
+    messages = []
+    chunkstr = get_chunkstr(chunk4)
+    prompt = prompt_topics[os.getenv("PROMPT_KEY")].replace("{{ text }}", chunkstr)
+    messages.append({"role": "system", "content": "You are a helpful question answerer who can provide an answer given a question and relevant context."})
+    messages.append({"role": "user", "content": prompt})
+    return messages
+
+def generate_topics(chat_completer: Any, chunk4: list[dict]) -> str | None:
+    """
+    Generates the label / answer to `question` using `context` and deepseek.
+    """
+    messages = gen_topic_prompt(chunk4)
+    response = chat_completer(
+        model=os.getenv("GENERATION_MODEL"),
+        messages=messages,
+        n=1,
+        temperature=0,
+        max_tokens=2048,
+    )
+    topics_concepts = response.choices[0].message.content
+    topics = {
+        "topics": topics_concepts,
+        "oracle_chunks": chunk4,
+    }
+    return topics
+
+def gen_topics(chunk4_path, topics_path, chat_model):
+    if os.path.exists(topics_path):
+        print(f"{topics_path} exists. Skipping...")
+        return 
+    articles_chunk4 = load_articles(chunk4_path)
+    for a_name, a_chunk4 in articles_chunk4.items():
+        futures = []
+        num_chunks = len(a_chunk4)
+        with tqdm(total=num_chunks, desc="Topicing", unit="file") as pbar:
+            with ThreadPoolExecutor(max_workers=2) as executor:
+                for chunk4 in a_chunk4:
+                    futures.append(executor.submit(generate_topics, chat_model, chunk4))
+                for future in as_completed(futures):
+                    topics = future.result()
+                    pbar.update(1)
+                    save_topics(topics, a_name, topics_path)
+                print(f"done {a_name} topics.")
+
+prompt_questions = {
+    "synthllm": """As a senior **math** instructor, your task is to create **diverse and challenging computation-based math
+        questions**. These questions should demonstrate the application of the provided topics and key concepts while
+        enhancing students’ reasoning and critical-thinking skills. Ensure that questions are **non-redundant**, precise,
+        and engaging.
+        ### Guidelines for Creating Diverse and Challenging Computation-based Questions:
+        1. **Concept Selection**:
+        - Randomly select **up to 2-3 distinct key concepts** from the provided list for each question.
+        - Ensure **broad coverage** of the provided concepts across the generated questions, avoiding over-reliance
+        on a limited subset of concepts.
+        - Avoid repeating the same **concept combinations** or **computational approach** across questions.
+        2. **Diversity and Challenge**:
+        - Ensure that each question explores **different combinations of key concepts** and is **sufficiently
+        challenging** (e.g., requiring multi-step computations, integrating real-world scenarios, involving abstract or
+        advanced reasoning.).
+        3. **Clarity and Precision**:
+        - Verify that the questions are **logically sound**.
+        - Use precise and unambiguous language.
+        - Write all mathematical expressions or formulas in LaTeX for clarity.
+        - Clearly state all assumptions or conditions.
+        4. **Reference Material**:
+        - Use the provided **reference article** as a source of inspiration for generating **unique, diverse, and
+        challenging questions**.
+        - The reference material is intended to:
+        - Supplement the concept list by introducing **novel perspectives**, **contexts**, or **applications**.
+        - Help create questions that are **more complex, realistic, or uncommon** in traditional teaching scenarios.
+        - Serve as a resource to craft **real-world scenarios** or **abstract extensions** beyond the given concepts.
+        5. **Output Diversity**:
+        - Create between **1 to 5 questions**.
+        - Ensure each question is unique in **structure**, **approach**, and **concept usage**.
+        - Minimize the use of **sub-questions**, unless they are essential to the problem’s complexity.
+        - The answer should either be exact, or if not possible, then the question should clearly say the answer is only
+        expected to be approximately correct.
+        ### Inputs:
+        - **Article**:
+        {{ text }}
+        - **Concept List**:
+        {{ concept }}
+        #### Output Format:
+        [
+            {
+                "concepts": ["concept1", "Only insert 2-3 concepts here"],
+                "question": "Only insert question here"
+            },
+            {
+                "concepts": ["concept1", "concept2", "Only insert 2-3 concepts here"],
+                "question": "Only insert question here"
+            }
+        ]""",
+    "deepseek-v2": """作为一名课程讲师，您的任务是设计多样化且具有挑战性的计算类问题。这些问题应能体现所提供主题和关键概念的应用，同时提升学生的推理和批判性思维能力。确保问题不重复、表述精确且具有吸引力。  
+        设计多样化挑战性计算类问题的指南：
+        1. 概念选择：  
+        从提供的列表中随机选取2-3个不同的关键概念用于每个问题。  
+        确保选取的关键概念属于同一个主题。
+        确保生成的题目广泛覆盖所提供的概念，避免过度依赖少数概念。  
+        避免在不同问题中重复相同的概念组合或计算方式。  
+        
+        2. 多样性与挑战性：  
+        每个问题应探索不同的关键概念组合，并具备足够的挑战性（例如，需要多步计算、结合现实场景、涉及抽象或高阶推理）。  
+        
+        3. 清晰性与精确性：  
+        确保问题逻辑严谨。  
+        使用明确且无歧义的语言。  
+        清晰说明所有假设或条件。  
+        
+        4. 参考资料使用：  
+        利用提供的参考文章作为灵感来源，生成独特、多样且具有挑战性的问题。  
+        参考资料的作用包括：  
+            通过引入新颖视角、背景或应用场景补充概念列表。  
+            帮助设计更复杂、贴近实际或非传统教学场景的问题。  
+            作为资源，扩展出现实案例或抽象延伸的问题。  
+            
+        5. 输出多样性：  
+        生成1至3个问题。  
+        确保每个问题在结构、解题思路和概念运用上均独一无二。  
+        除非必要，尽量减少子问题的使用。  
+        答案应为精确解；若无法实现，需明确说明允许近似答案。  
+        
+        输入：
+        论文文本：  
+        {{ text }}  
+        概念列表：  
+        {{ concept }}  
+
+        输出格式：
+        [
+            {
+
+                "concepts": ["概念1", "仅填入2-3个概念"],  
+                "question": "仅填入问题"  
+            },  
+            {
+                "concepts": ["概念1", "概念2", "仅填入2-3个概念"],  
+                "question": "仅填入问题"  
+            }
+        ]"""
+}
+def gen_question_prompt(topics: dict) -> list[str]:
+    """
+    Encode multiple prompt instructions into a single string for the general case (`pdf`, `json`, or `txt`).
+    """
+    
+    messages = []
+    chunkstr = get_chunkstr(topics["oracle_chunks"])
+    prompt = prompt_questions[os.getenv("PROMPT_KEY")].replace("{{ text }}", chunkstr).replace("{{ concept }}", topics["topics"])
+    messages.append({"role": "system", "content": "You are a helpful question answerer who can provide an answer given a question and relevant context."})
+    messages.append({"role": "user", "content": prompt})
+    return messages
+QUESTION_SCHEMA = {
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "question": {"type": "string"},
+            "concepts": {"type": "array", "items": {"type": "string"}},
+        },
+        "required": ["question", "concepts"],
+    }
+}
+def clean_and_parse(json_str):
+    # 去除 Markdown 的 ```json 和 ```
+    cleaned = json_str.strip().removeprefix('```json').removesuffix('```').strip()
+    try:
+        return demjson.decode(cleaned)
+    except demjson.JSONDecodeError as e:
+        logging.error(f"JSON 解码错误: {e}")
+        return None
+def generate_questions(chat_completer: Any, topics: dict) -> str | None:
+    """
+    Generates the label / answer to `question` using `context` and deepseek.
+    """
+    messages = gen_question_prompt(topics)
+    response = chat_completer(
+        model=os.getenv("GENERATION_MODEL"),
+        messages=messages,
+        n=1,
+        temperature=0,
+        max_tokens=2048,
+    )
+    questions = response.choices[0].message.content
+    try:
+        output_questions = clean_and_parse(questions)
+        # output_questions = json.loads(questions)
+        validate(instance=output_questions, schema=QUESTION_SCHEMA)
+    except (json.JSONDecodeError, ValidationError) as e:
+        logging.error(f"Failed to parse response:\n{questions}\nError: {e}")
+        output_questions = []
+    return output_questions, topics
+
+def save_questions(questions, topics, article_name, filename):
+    questions_list = []
+    for question in questions:
+        question_ele = {
+            **question,
+            **topics
+        }
+        if "oracle_chunks" not in question_ele:
+            question_ele["oracle_chunks"] = topics["chunk4"]
+            # 删除 question_ele["chunk4"]
+            del question_ele["chunk4"]
+        questions_list.append(question_ele)
+    # 判断 filename 是否存在，如果存在则追加写入，否则创建新文件
+    if os.path.exists(filename):
+        with open(filename, 'r', encoding="utf-8") as f:
+            existing_questions = json.load(f)
+        # 检查 article_name 是否已经存在于 questions 中
+        if article_name in existing_questions:
+            existing_questions[article_name].extend(questions_list)
+        else:
+            existing_questions[article_name] = questions_list
+        with open(filename, 'w', encoding="utf-8") as f:
+            json.dump(existing_questions, f, ensure_ascii=False, indent=4)
+    else:
+        with open(filename, 'w', encoding="utf-8") as f:
+            json.dump({article_name: questions_list}, f, ensure_ascii=False, indent=4)
+    print(f"Questions saved to {filename}")
+
+def gen_questions_with_topic(topics_path, question_path, chat_model) -> list[str]:
+    if os.path.exists(question_path):
+        print(f"{question_path} exists. Skipping...")
+        return 
+    articles_topics = load_articles(topics_path)
+    for a_name, a_topics in articles_topics.items():
+        futures = []
+        with tqdm(total=len(a_topics), desc="Questioning", unit="file") as pbar:
+            with ThreadPoolExecutor(max_workers=2) as executor:
+                for topics in a_topics:
+                    futures.append(executor.submit(generate_questions, chat_model, topics))
+                for future in as_completed(futures):
+                    questions, topics = future.result()
+                    pbar.update(1)
+                    save_questions(questions, topics, a_name, question_path)
+                print(f"done {a_name} questions.")

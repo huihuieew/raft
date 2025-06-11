@@ -35,11 +35,11 @@ def data_synthesis_pipeline(data_dir, chunks_path, embeddings_path, questions_pa
     embedding_time = time.time() - main_start
     chat_model = build_openai_client_chat()
     gen_query(chunks_path, chat_model, questions_path)
-    question_time = embedding_time - main_start
+    question_time = time.time() - embedding_time
     gen_answer(questions_path, chat_model, answers_path)
-    answer_time = question_time - main_start
+    answer_time = time.time() - question_time
     syn_data(chunks_path, answers_path, syndatas_path, num_distract)
-    syndata_time = answer_time - main_start
+    syndata_time = time.time() - answer_time
     return embedding_time, question_time, answer_time, syndata_time
     
     
@@ -66,11 +66,11 @@ if __name__ == "__main__":
         start_idx=args.start_idx, 
         end_idx=args.end_idx
     )
-    print(f"embedding time: {time1}s")
-    print(f"question time: {time2}s")
-    print(f"answer time: {time3}s")
-    print(f"syndata time: {time4}s")
-    print(f"total time: {time.time() - main_start}s")
+    print(f"embedding time: {time1 / 60}min")
+    print(f"question time: {time2 / 60}min")
+    print(f"answer time: {time3 / 60}min")
+    print(f"syndata time: {time4 / 60}min")
+    print(f"total time: {(time.time() - main_start) / 60}min")
     
     
     

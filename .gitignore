@@ -6,3 +6,4 @@ data/
 vector_index*/
 llama_index*/
 utils/__pycache__
+*.log

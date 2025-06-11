@@ -4,6 +4,8 @@ from openai import BadRequestError, OpenAI
 import os
 from volcenginesdkarkruntime import Ark
 
+
+
 def get_chunkstr(chunks: List[dict]):
     chunkstr = ""
     for idx,chunk in enumerate(chunks):
