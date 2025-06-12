@@ -6,41 +6,6 @@ import json
 from tqdm import tqdm
 
 prompt_templates = {
-    "gpt": """
-        Question: {question}\nContext: {context}\n
-        Answer this question using the information given in the context above. Here is things to pay attention to: 
-        - First provide step-by-step reasoning on how to answer the question. 
-        - In the reasoning, if you need to copy paste some sentences from the context, include them in ##begin_quote## and ##end_quote##. This would mean that things outside of ##begin_quote## and ##end_quote## are not directly copy paste from the context. 
-        - End your response with final answer in the form <ANSWER>: $answer, the answer should be succinct.
-        You MUST begin your final answer with the tag "<ANSWER>:".
-    """,
-    "llama": """
-        Question: {question}
-        Context: {context}
-
-        Answer this question using the information given in the context above.
-        
-        Instructions:
-        - Provide step-by-step reasoning on how to answer the question.
-        - Explain which parts of the context are meaningful and why.
-        - Copy paste the relevant sentences from the context in ##begin_quote## and ##end_quote##.
-        - Provide a summary of how you reached your answer.
-        - End your response with the final answer in the form <ANSWER>: $answer, the answer should be succinct.
-        - You MUST begin your final answer with the tag "<ANSWER>:".
-
-        Here are some samples:
-
-        Example question: What movement did the arrest of Jack Weinberg in Sproul Plaza give rise to?
-        Example answer: To answer the question, we need to identify the movement that was sparked by the arrest of Jack Weinberg in Sproul Plaza. 
-        The context provided gives us the necessary information to determine this.
-        First, we look for the part of the context that directly mentions Jack Weinberg's arrest. 
-        We find it in the sentence: ##begin_quote##The arrest in Sproul Plaza of Jack Weinberg, a recent Berkeley alumnus and chair of Campus CORE, 
-        prompted a series of student-led acts of formal remonstrance and civil disobedience that ultimately gave rise to the Free Speech Movement##end_quote##.
-        From this sentence, we understand that the arrest of Jack Weinberg led to student-led acts which then gave rise to a specific movement. 
-        The name of the movement is explicitly mentioned in the same sentence as the "Free Speech Movement."
-        Therefore, based on the context provided, we can conclude that the arrest of Jack Weinberg in Sproul Plaza gave rise to the Free Speech Movement.
-        <ANSWER>: Free Speech Movement
-    """,
     "deepseek": """
         Question: {question}\nContext: {context}\n
         使用上述给定的上下文，回答问题。注意：
@@ -49,6 +14,21 @@ prompt_templates = {
         - 结束你的回答，以 final answer 的形式 <ANSWER>: $answer，答案应该简洁。
         你必须以<Reasoning>: 开头，包含 reasoning 相关的内容；以 <ANSWER>: 开头，包含答案。
     """,
+    "deepseek-v1": """{
+        "instruction":"你是一个半导体显示领域的资深专家，你掌握TFT、OLED、LCD、QLED、EE、Design等显示半导体显示领域内的相关知识。请根据输入中的切片信息和问题进行回答。切片信息是可能相关的资料，切片信息的内容庞杂，不一定会包含目标答案，请仔细阅读每个切片后再作答，不得出现错误。",
+        "input": {
+            "context": "{context}",
+            "question": "{question}"
+        },
+        "output": {
+            "answer": "根据切片中提供的有效信息对问题进行详尽的回答，推荐分点回答格式。"
+        },
+        "requirements": {
+            "criteria": "根据提供的切片信息提取有效信息进行回答",
+            "format": "输出内容必须用中文作答。",
+            "reasoning" : "在系统内部的think推理过程中，请将参考用到的上下文内容包含在 ##begin_quote## 和 ##end_quote## 中。 "
+        }
+    }""",
     "deepseek-v2": """{
         "instruction":"你是一个半导体显示领域的资深专家，你掌握TFT、OLED、LCD、QLED、EE、Design等显示半导体显示领域内的相关知识。请根据输入中的切片信息和问题进行回答。切片信息是可能相关的资料，切片信息的内容庞杂，不一定会包含目标答案，请仔细阅读每个切片后再作答，不得出现错误。",
         "input": {
@@ -64,27 +44,27 @@ prompt_templates = {
         }
     }"""
 }
-def gen_answer_prompt(question: str, chunk4: list[dict], prompt_key : str = "gpt") -> list[str]:
+def gen_answer_prompt(question: str, chunk4: list[dict]) -> list[str]:
     """
     Encode multiple prompt instructions into a single string for the general case (`pdf`, `json`, or `txt`).
     """
     
     messages = []
     chunkstr = get_chunkstr(chunk4)
-    prompt = prompt_templates[prompt_key].replace("{question}", question).replace("{context}", chunkstr)
-    messages.append({"role": "system", "content": "You are a helpful question answerer who can provide an answer given a question and relevant context."})
+    prompt = prompt_templates[os.getenv("PROMPT_KEY")].replace("{question}", question).replace("{context}", chunkstr)
+    messages.append({"role": "system", "content": "你是一个十分有帮助的RAG问题回答者，你可以根据问题和相关上下文提供答案。"})
     messages.append({"role": "user", "content": prompt})
     return messages
 
-def generate_label(chat_completer: Any, question_dict: dict, model: str = None, prompt_key : str = "deepseek-v2") -> str | None:
+def generate_label(chat_completer: Any, question_dict: dict) -> str | None:
     """
     Generates the label / answer to `question` using `context` and deepseek.
     """
     chunk4 = question_dict["oracle_chunks"]
     question = question_dict["question"]
-    messages = gen_answer_prompt(question, chunk4, prompt_key)
+    messages = gen_answer_prompt(question, chunk4)
     response = chat_completer(
-        model=model,
+        model=os.getenv("GENERATION_MODEL"),
         messages=messages,
         n=1,
         temperature=0,
@@ -124,7 +104,7 @@ def gen_answer(questions_path, chat_model, answers_path):
         with tqdm(total=num_questions, desc="Answering", unit="file") as pbar:
             with ThreadPoolExecutor(max_workers=2) as executor:
                 for question_dict in question_dicts:
-                    futures.append(executor.submit(generate_label, chat_model, question_dict, model=" deepseek-r1-250120", prompt_key="deepseek-v2"))
+                    futures.append(executor.submit(generate_label, chat_model, question_dict))
                 for future in as_completed(futures):
                     response, reasoning_content, question_dict = future.result()
                     pbar.update(1)

@@ -74,7 +74,7 @@ b) 周密性：过程需要科学严谨，逐步思考，确保问题和对应�
         ]
 }
 
-def generate_instructions_gen(chat_completer: Any, chunk: Any, x: int = 2, model: str = None, prompt_key : str = "deepseek-v2") -> list[str]:
+def generate_instructions_gen(chat_completer: Any, chunk: Any, x: int = 2) -> list[str]:
     """
     Generates `x` questions / use cases for `chunk`. Used when the input document is of general types 
     `pdf`, `json`, or `txt`.
@@ -86,8 +86,8 @@ def generate_instructions_gen(chat_completer: Any, chunk: Any, x: int = 2, model
             chunk2str = get_chunkstr(chunk)
             chunk = chunk2str
         response = chat_completer(
-            model=model,
-            messages=build_qa_messages[prompt_key](chunk, x),
+            model=os.getenv("GENERATION_MODEL"),
+            messages=build_qa_messages[os.getenv("PROMPT_KEY")](chunk, x),
             max_tokens=min(100 * x, 512), # 25 tokens per question
         )
     except BadRequestError as e:
@@ -152,7 +152,7 @@ def gen_query(chunks_path, chat_model, questions_path):
                 for i in range(0, len(a_chunks), 4):
                     chunk4 = get_chunk4(i, a_chunks)
                     if len(chunk4) > 2:
-                        futures.append(executor.submit(generate_instructions_gen, chat_model, chunk4, x=2, model=" deepseek-r1-250120", prompt_key="deepseek-v2"))
+                        futures.append(executor.submit(generate_instructions_gen, chat_model, chunk4, x=2))
                 for future in as_completed(futures):
                     questions, chunk4f = future.result()
                     # print(f"processing {a_name} questions {len(questions)}")
