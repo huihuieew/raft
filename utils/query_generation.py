@@ -151,7 +151,8 @@ def gen_query(chunks_path, chat_model, questions_path):
             with ThreadPoolExecutor(max_workers=2) as executor:
                 for i in range(0, len(a_chunks), 4):
                     chunk4 = get_chunk4(i, a_chunks)
-                    if len(chunk4) > 2:
+                    # if len(chunk4) > 2:
+                    if chunk4:
                         futures.append(executor.submit(generate_instructions_gen, chat_model, chunk4, x=2))
                 for future in as_completed(futures):
                     questions, chunk4f = future.result()

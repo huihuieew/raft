@@ -4,7 +4,16 @@ from openai import BadRequestError, OpenAI
 import os
 from volcenginesdkarkruntime import Ark
 
-
+def get_chunk4(i, chunks):
+    chunknum = int(os.getenv("CHUNK_NUM"))
+    # 取 i 和 i+4 个chunk
+    if (i+chunknum) >= len(chunks):
+        chunk4 = chunks[i:]
+        if len(chunk4) < int(os.getenv("CHUNK_NUM_MIN")):
+            return None
+    else:
+        chunk4 = chunks[i: i + chunknum] 
+    return chunk4
 
 def get_chunkstr(chunks: List[dict]):
     chunkstr = ""

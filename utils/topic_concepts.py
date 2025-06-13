@@ -1,7 +1,7 @@
 import os 
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from tqdm import tqdm
-from utils.common_utils import load_articles, get_chunkstr
+from utils.common_utils import load_articles, get_chunkstr, get_chunk4
 import json
 from typing import Any
 from jsonschema import validate, ValidationError
@@ -9,13 +9,14 @@ import demjson
 import logging
 logging.basicConfig(filename='failed_responses.log', level=logging.ERROR)
 
-def get_chunk4(i, chunks):
-    # 取 i 和 i+4 个chunk
-    if (i+4) >= len(chunks):
-        chunk4 = chunks[i:]
-    else:
-        chunk4 = chunks[i: i+4] 
-    return chunk4
+# def get_chunk4(i, chunks):
+#     # 取 i 和 i+4 个chunk
+#     if (i+4) >= len(chunks):
+#         chunk4 = chunks[i:]
+#     else:
+#         chunk4 = chunks[i: i+4] 
+#     return chunk4
+
 def save_chunk4(chunk4_list, article_name, filename):
     # 判断 filename 是否存在，如果存在则追加写入，否则创建新文件
     if os.path.exists(filename):
@@ -44,7 +45,8 @@ def trans_chunk4(chunks_path, chunk4_path):
         chunk4_list = []
         for i in range(0, len(a_chunks), 4):
             chunk4 = get_chunk4(i, a_chunks)
-            if len(chunk4) > 2:
+            # if len(chunk4) > 2:
+            if chunk4:
                 chunk4_list.append(chunk4)
         save_chunk4(chunk4_list, a_name, chunk4_path)
         print(f"done {a_name} chunk4.")
@@ -441,7 +443,7 @@ def gen_question_prompt(topics: dict) -> list[str]:
     messages = []
     chunkstr = get_chunkstr(topics["oracle_chunks"])
     prompt = prompt_questions[os.getenv("PROMPT_KEY")].replace("{x}", "2").replace("{{ text }}", chunkstr).replace("{{ concept }}", topics["topics"])
-    messages.append({"role": "system", "content": "You are a helpful question answerer who can provide an answer given a question and relevant context."})
+    messages.append({"role": "system", "content": "你是一个乐于助人的半导体显示技术领域的专家。"})
     messages.append({"role": "user", "content": prompt})
     return messages
 QUESTION_SCHEMA = {
