@@ -5,6 +5,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import json
 from tqdm import tqdm
 from utils.common_utils import *
+from utils.retrieve_nodes import rerank_chunks
 
 
 build_qa_messages = {
@@ -113,9 +114,11 @@ def get_chunk4(i, chunks):
 def save_questions(questions, chunk4, article_name, filename):
     questions_list = []
     for question in questions:
+        sorted_chunks = rerank_chunks(question, chunk4)
         question_dict = {
             "question": question,
             "oracle_chunks": chunk4,
+            "sorted_chunks": sorted_chunks,
         }
         questions_list.append(question_dict)
     # 判断 filename 是否存在，如果存在则追加写入，否则创建新文件

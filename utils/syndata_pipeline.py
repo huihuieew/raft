@@ -2,7 +2,7 @@ from utils.article_chunks import gen_chunks
 from utils.common_utils import build_openai_client_chat
 from utils.query_generation import gen_query
 from utils.answer_generation import gen_answer
-from utils.data_synthesis import syn_data
+from utils.data_synthesis import syn_data, syn_data_v2
 from utils.vector_store import get_embedding_then_storage
 import time
 import argparse
@@ -38,7 +38,8 @@ def data_synthesis_pipeline(data_dir, chunks_path, embeddings_path, questions_pa
     question_time = time.time() - embedding_time
     gen_answer(questions_path, chat_model, answers_path)
     answer_time = time.time() - question_time
-    syn_data(chunks_path, answers_path, syndatas_path, num_distract)
+    # syn_data(chunks_path, answers_path, syndatas_path, num_distract)
+    syn_data_v2(answers_path, syndatas_path)
     syndata_time = time.time() - answer_time
     return embedding_time, question_time, answer_time, syndata_time
     
