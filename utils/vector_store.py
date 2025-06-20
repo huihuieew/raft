@@ -100,3 +100,13 @@ def get_embedding_then_storage(
     get_chunk_with_embedding(chunk_path, embedding_path)
     storage_embedding_nodes(embedding_path)
     print(f"保存至{embedding_path}成功！")
+
+def get_embedding_no_storage(
+    chunk_path,
+    embedding_path,
+):
+    if os.path.exists(embedding_path):
+        print(f"{embedding_path} exists. Skipping...")
+        return
+    get_chunk_with_embedding(chunk_path, embedding_path)
+    print(f"保存至{embedding_path}成功！")

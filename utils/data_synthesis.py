@@ -147,7 +147,6 @@ def syn_data_v2(answers_path, syndatas_path):
         print(f"{syndatas_path} exists. Skipping...")
         return
     articles_answers = load_articles(answers_path)
-    # query_engine = get_query_engine()
     for a_name,qa_dicts in articles_answers.items():
         datasyn_list = []
         datasyn_list1 = []
@@ -156,13 +155,6 @@ def syn_data_v2(answers_path, syndatas_path):
             sorted_chunks = qa_dict["sorted_chunks"]
             question = qa_dict["question"]
             reasoning_answer = qa_dict["reasoning_answer"]
-            
-            # 添加干扰文档
-            # docs = [chunk.copy() for chunk in qa_dict["oracle_chunks"]]
-            # distract_chunks = get_distract_chunks(question, chunk4, num_distract, query_engine, p=1.0)
-            # docs.extend(distract_chunks)
-            # sorted_chunks = rerank_chunks(question, docs)
-            # docs = sorted_chunks
             
             # 合成数据            
             datasyn = {
@@ -209,3 +201,5 @@ def syn_data_v2(answers_path, syndatas_path):
         syndatas_path1 = syndatas_path.replace(".json", "_instruction.json")
         save_syndatas(datasyn_list1, syndatas_path1)
         print(f"done {a_name} syndata.")
+
+
