@@ -1,0 +1,13 @@
+{
+  "prompts": {
+    "query": "Instruct: Given a web search query, retrieve relevant passages that answer the query\nQuery:",
+    "document": ""
+  },
+  "default_prompt_name": null,
+  "similarity_fn_name": "cosine",
+  "__version__": {
+    "sentence_transformers": "4.1.0",
+    "transformers": "4.52.4",
+    "pytorch": "2.2.2"
+  }
+}
