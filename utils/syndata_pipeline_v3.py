@@ -11,6 +11,9 @@ import time
 import argparse
 import sys
 print(sys.executable)
+
+# syndata_pipeline_v3
+# 检索其它文档中的随机文档作为干扰文档
 def get_args() -> argparse.Namespace:
     """
     Parses and returns the arguments specified by the user's command

@@ -4,6 +4,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import os 
 import json
 from tqdm import tqdm
+from utils.retrieve_nodes import rerank_chunks
 
 prompt_templates = {
     "deepseek": """
@@ -87,7 +88,25 @@ def generate_label(chat_completer: Any, question_dict: dict) -> str | None:
     reasoning_content = response.choices[0].message.reasoning_content
     response = response.choices[0].message.content
     return response, reasoning_content, question_dict
-                
+
+def generate_label_with_sorted_chunk(chat_completer: Any, question_dict: dict) -> str | None:
+    """
+    Generates the label / answer to `question` using `context` and deepseek.
+    """
+    sorted_chunks = question_dict["sorted_chunks"]
+    question = question_dict["question"]
+    messages = gen_answer_prompt(question, sorted_chunks)
+    response = chat_completer(
+        model=os.getenv("GENERATION_MODEL"),
+        messages=messages,
+        n=1,
+        temperature=0,
+        max_tokens=2048,
+    )
+    reasoning_content = response.choices[0].message.reasoning_content
+    response = response.choices[0].message.content
+    return response, reasoning_content, question_dict
+               
 def save_answers(response, reasoning_content, question_dict, article_name, answers_path):
     question_dict["reasoning_answer"] = f"<think>{reasoning_content}\n</think>\n\n{response}"
     # 判断 filename 是否存在，如果存在则追加写入，否则创建新文件
@@ -115,12 +134,18 @@ def gen_answer(questions_path, chat_model, answers_path):
     for a_name,question_dicts in articles_questions.items():
         futures = []
         num_questions = len(question_dicts)
-        with tqdm(total=num_questions, desc="Answering", unit="file") as pbar:
-            with ThreadPoolExecutor(max_workers=2) as executor:
+        with tqdm(total=num_questions, desc="Answering", unit="ans") as pbar:
+            with ThreadPoolExecutor(max_workers=8) as executor:
                 for question_dict in question_dicts:
-                    futures.append(executor.submit(generate_label, chat_model, question_dict))
+                    oracle_chunks = question_dict["oracle_chunks"]
+                    question = question_dict["question"]
+                    if "sorted_chunks" not in question_dict:
+                        sorted_chunks = rerank_chunks(question, oracle_chunks)
+                        question_dict["sorted_chunks"] = sorted_chunks
+                    futures.append(executor.submit(generate_label_with_sorted_chunk, chat_model, question_dict))
                 for future in as_completed(futures):
                     response, reasoning_content, question_dict = future.result()
                     pbar.update(1)
                     save_answers(response, reasoning_content, question_dict, a_name, answers_path)
                 print(f"done {a_name} answers.")
+

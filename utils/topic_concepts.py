@@ -2,10 +2,11 @@ import os
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from tqdm import tqdm
 from utils.common_utils import load_articles, get_chunkstr, get_chunk4
+from utils.retrieve_nodes import rerank_chunks
 import json
+import json5
 from typing import Any
 from jsonschema import validate, ValidationError
-import demjson
 import logging
 logging.basicConfig(filename='failed_responses.log', level=logging.ERROR)
 
@@ -458,12 +459,20 @@ QUESTION_SCHEMA = {
     }
 }
 def clean_and_parse(json_str):
-    # 去除 Markdown 的 ```json 和 ```
-    cleaned = json_str.strip().removeprefix('```json').removesuffix('```').strip()
+    # 更健壮的清理逻辑，处理各种可能的Markdown格式
+    cleaned = json_str.strip()
+    # 处理可能的Markdown代码块
+    if cleaned.startswith('```') and cleaned.endswith('```'):
+        # 去除代码块标记
+        cleaned = cleaned[3:-3].strip()
+        # 如果还有json前缀（如```json）
+        if cleaned.lower().startswith('json'):
+            cleaned = cleaned[4:].strip()
     try:
-        return demjson.decode(cleaned)
-    except demjson.JSONDecodeError as e:
-        logging.error(f"JSON 解码错误: {e}")
+        return json5.loads(cleaned)  # 主要修改点
+    except json.JSONDecodeError as e:  # 修改异常类型
+        # logging.error(f"JSON 解码错误: {e}")
+        print(f"JSON Decode Error: {e}")
         return None
 def generate_questions(chat_completer: Any, topics: dict) -> str | None:
     """
@@ -498,6 +507,8 @@ def save_questions(questions, topics, article_name, filename):
             question_ele["oracle_chunks"] = topics["chunk4"]
             # 删除 question_ele["chunk4"]
             del question_ele["chunk4"]
+        sorted_chunks = rerank_chunks(question, question_ele["oracle_chunks"])
+        question_ele["sorted_chunks"] = sorted_chunks
         questions_list.append(question_ele)
     # 判断 filename 是否存在，如果存在则追加写入，否则创建新文件
     if os.path.exists(filename):
