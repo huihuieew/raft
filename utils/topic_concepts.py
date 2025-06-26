@@ -5,18 +5,12 @@ from utils.common_utils import load_articles, get_chunkstr, get_chunk4
 from utils.retrieve_nodes import rerank_chunks
 import json
 import json5
+import random
 from typing import Any
 from jsonschema import validate, ValidationError
 import logging
 logging.basicConfig(filename='failed_responses.log', level=logging.ERROR)
 
-# def get_chunk4(i, chunks):
-#     # 取 i 和 i+4 个chunk
-#     if (i+4) >= len(chunks):
-#         chunk4 = chunks[i:]
-#     else:
-#         chunk4 = chunks[i: i+4] 
-#     return chunk4
 
 def save_chunk4(chunk4_list, article_name, filename):
     # 判断 filename 是否存在，如果存在则追加写入，否则创建新文件
@@ -44,9 +38,8 @@ def trans_chunk4(chunks_path, chunk4_path):
     for a_name, a_chunks in articles_chunks.items():
         # print(f"processing {a_name}")
         chunk4_list = []
-        for i in range(0, len(a_chunks), 4):
+        for i in range(0, len(a_chunks), int(os.getenv("CHUNK_NUM"))):
             chunk4 = get_chunk4(i, a_chunks)
-            # if len(chunk4) > 2:
             if chunk4:
                 chunk4_list.append(chunk4)
         save_chunk4(chunk4_list, a_name, chunk4_path)
@@ -526,6 +519,64 @@ def save_questions(questions, topics, article_name, filename):
             json.dump({article_name: questions_list}, f, ensure_ascii=False, indent=4)
     print(f"Questions saved to {filename}")
 
+def load_other_chunks(article_name, chunk4_path):
+    articles_chunks = load_articles(chunk4_path)
+    chunk4_list = []
+    for a_name, a_chunks in articles_chunks.items():
+        if a_name != article_name:
+            for chunk4 in a_chunks:
+                chunk4_list.extend(chunk4)
+    print(f"all chunks - chunk4_list: {len(chunk4_list)}")
+    return chunk4_list
+def sort_noisy_chunks(filename):
+    with open(filename, 'r', encoding="utf-8") as f:
+        existing_questions = json.load(f)
+        for a_name, a_topics in tqdm(existing_questions.items(), desc="Sorted chunks."):
+            for question_ele in tqdm(a_topics, desc="question_ele"):
+                if "score" in question_ele["sorted_chunks"][0]:
+                    print(f"score exists. Skipping...")
+                    return 
+                question = question_ele["question"]
+                noisy_chunks = question_ele["sorted_chunks"]
+                sorted_chunks = rerank_chunks(question, noisy_chunks)
+                question_ele["sorted_chunks"] = sorted_chunks
+    with open(filename, 'w', encoding="utf-8") as f:
+        json.dump(existing_questions, f, ensure_ascii=False, indent=4)
+        print(f"转换sorted_chunks成功。")
+
+def save_questions_v3(questions, topics, article_name, filename, chunk4_path):
+    questions_list = []
+    all_chunks = load_other_chunks(article_name, chunk4_path)
+    for question in questions:
+        question_ele = {
+            **question,
+            **topics
+        }
+        distract_chunks = random.sample(all_chunks, 3)
+        # print(f"oracle_chunks: {len(question_ele['oracle_chunks'])}")
+        noisy_chunks = distract_chunks + question_ele["oracle_chunks"]
+        question_ele["sorted_chunks"] = noisy_chunks
+        # sorted_chunks = rerank_chunks(question["question"], noisy_chunks)
+        # question_ele["sorted_chunks"] = sorted_chunks
+        # print(f"sorted_chunks: {len(sorted_chunks)}")
+        questions_list.append(question_ele)
+    # 判断 filename 是否存在，如果存在则追加写入，否则创建新文件
+    if os.path.exists(filename):
+        with open(filename, 'r', encoding="utf-8") as f:
+            existing_questions = json.load(f)
+        # 检查 article_name 是否已经存在于 questions 中
+        if article_name in existing_questions:
+            existing_questions[article_name].extend(questions_list)
+        else:
+            existing_questions[article_name] = questions_list
+        with open(filename, 'w', encoding="utf-8") as f:
+            json.dump(existing_questions, f, ensure_ascii=False, indent=4)
+    else:
+        with open(filename, 'w', encoding="utf-8") as f:
+            json.dump({article_name: questions_list}, f, ensure_ascii=False, indent=4)
+    print(f"Questions saved to {filename}")
+
+
 def gen_questions_with_topic(topics_path, question_path, chat_model) -> list[str]:
     if os.path.exists(question_path):
         print(f"{question_path} exists. Skipping...")
@@ -543,4 +594,20 @@ def gen_questions_with_topic(topics_path, question_path, chat_model) -> list[str
                     save_questions(questions, topics, a_name, question_path)
                 print(f"done {a_name} questions.")
 
+def gen_questions_with_topic_v3(topics_path, question_path, chat_model, chunk4_path) -> list[str]:
+    if os.path.exists(question_path):
+        print(f"{question_path} exists. Skipping...")
+        return 
+    articles_topics = load_articles(topics_path)
+    for a_name, a_topics in articles_topics.items():
+        futures = []
+        with tqdm(total=len(a_topics), desc="Questioning", unit="file") as pbar:
+            with ThreadPoolExecutor(max_workers=int(os.getenv("MAX_workers"))) as executor:
+                for topics in a_topics:
+                    futures.append(executor.submit(generate_questions, chat_model, topics))
+                for future in as_completed(futures):
+                    questions, topics = future.result()
+                    pbar.update(1)
+                    save_questions_v3(questions, topics, a_name, question_path, chunk4_path)
+                print(f"done {a_name} questions.")
 

@@ -2,9 +2,9 @@ from utils.common_utils import build_openai_client_chat
 from utils.article_chunks import gen_chunks
 from utils.topic_concepts import trans_chunk4
 from utils.topic_concepts import gen_topics
-from utils.topic_concepts import gen_questions_with_topic
+from utils.topic_concepts import gen_questions_with_topic_v3, sort_noisy_chunks
 from utils.query_generation import gen_query
-from utils.answer_generation import gen_answer
+from utils.answer_generation import gen_answer_v3
 from utils.data_synthesis import syn_data_v2
 from utils.vector_store import get_embedding_no_storage
 import time
@@ -48,10 +48,12 @@ def data_synthesis_pipeline(data_dir, chunks_path, chunk4_path, topics_path, que
     # topics_path = "outputs_topics/article_topics03.json"
     # question_path = "outputs_questions/article_question_with_topic04.json"
     # chat_model = build_openai_client_chat()
-    gen_questions_with_topic(topics_path, questions_path, chat_model)
+    gen_questions_with_topic_v3(topics_path, questions_path, chat_model, chunk4_path)
+    sort_noisy_chunks(questions_path)
     # gen_query(chunks_path, chat_model, questions_path)
     question_time = time.time() - topic_time
-    gen_answer(questions_path, chat_model, answers_path)
+    # gen_answer(questions_path, chat_model, answers_path)
+    gen_answer_v3(questions_path, chat_model, answers_path)
     answer_time = time.time() - question_time
     syn_data_v2(answers_path, syndatas_path)
     syndata_time = time.time() - answer_time

@@ -127,7 +127,6 @@ def save_answers(response, reasoning_content, question_dict, article_name, answe
 
 def gen_answer(questions_path, chat_model, answers_path):
     if os.path.exists(answers_path):
-        # articles_answers = load_articles(answers_path)
         print(f"{answers_path} exists. Skipping...")
         return 
     articles_questions = load_articles(questions_path)
@@ -148,4 +147,23 @@ def gen_answer(questions_path, chat_model, answers_path):
                     pbar.update(1)
                     save_answers(response, reasoning_content, question_dict, a_name, answers_path)
                 print(f"done {a_name} answers.")
+
+def gen_answer_v3(questions_path, chat_model, answers_path):
+    if os.path.exists(answers_path):
+        print(f"{answers_path} exists. Skipping...")
+        return 
+    articles_questions = load_articles(questions_path)
+    for a_name,question_dicts in articles_questions.items():
+        futures = []
+        num_questions = len(question_dicts)
+        with tqdm(total=num_questions, desc="Answering", unit="ans") as pbar:
+            with ThreadPoolExecutor(max_workers=8) as executor:
+                for question_dict in question_dicts:
+                    futures.append(executor.submit(generate_label_with_sorted_chunk, chat_model, question_dict))
+                for future in as_completed(futures):
+                    response, reasoning_content, question_dict = future.result()
+                    pbar.update(1)
+                    save_answers(response, reasoning_content, question_dict, a_name, answers_path)
+                print(f"done {a_name} answers.")
+
 
