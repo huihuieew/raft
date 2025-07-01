@@ -4,10 +4,8 @@ from tqdm import tqdm
 from pathlib import Path
 from typing import Literal
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-# from math import ceil
 import json
 import uuid
-# from common_utils import load_articles
 from utils.common_utils import load_articles
 
 DocType = Literal["txt", "md"]
@@ -71,11 +69,7 @@ def get_doc_chunks(
         text = str(data)
     else:
         raise TypeError("Document is not one of the accepted types: api, pdf, json, txt")
-    
-    # num_chunks = ceil(len(text) / chunk_size)
-    # logger.debug(f"Splitting text into {num_chunks} chunks.")
 
-    # text_splitter = SemanticChunker(embeddings, number_of_chunks=num_chunks)
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=0)
     chunks = text_splitter.create_documents([text])
     chunks = [chunk.page_content for chunk in chunks]

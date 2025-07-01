@@ -11,7 +11,6 @@ from jsonschema import validate, ValidationError
 import logging
 logging.basicConfig(filename='failed_responses.log', level=logging.ERROR)
 
-
 def save_chunk4(chunk4_list, article_name, filename):
     # 判断 filename 是否存在，如果存在则追加写入，否则创建新文件
     if os.path.exists(filename):
@@ -28,15 +27,13 @@ def save_chunk4(chunk4_list, article_name, filename):
         with open(filename, 'w', encoding="utf-8") as f:
             json.dump({article_name: chunk4_list}, f, ensure_ascii=False, indent=4)
     print(f"Chunk4 saved to {filename}")
-
+# 1
 def trans_chunk4(chunks_path, chunk4_path):
     if os.path.exists(chunk4_path):
         print(f"{chunk4_path} exists. Skipping...")
         return 
     articles_chunks = load_articles(chunks_path)
-    # print(f"articles: {len(articles_chunks)}")
     for a_name, a_chunks in articles_chunks.items():
-        # print(f"processing {a_name}")
         chunk4_list = []
         for i in range(0, len(a_chunks), int(os.getenv("CHUNK_NUM"))):
             chunk4 = get_chunk4(i, a_chunks)
@@ -45,25 +42,6 @@ def trans_chunk4(chunks_path, chunk4_path):
         save_chunk4(chunk4_list, a_name, chunk4_path)
         print(f"done {a_name} chunk4.")
         
-
-def save_topics(topics, article_name, topics_path):
-    filename = topics_path
-    os.makedirs(os.path.dirname(filename), exist_ok=True)  # 自动创建目录
-    # 判断 filename 是否存在，如果存在则追加写入，否则创建新文件
-    if os.path.exists(filename):
-        with open(filename, 'r', encoding="utf-8") as f:
-            existing = json.load(f)
-        # 检查 article_name 是否已经存在于 questions 中
-        if article_name in existing:
-            existing[article_name].append(topics)
-        else:
-            existing[article_name] = [topics]
-        with open(filename, 'w', encoding="utf-8") as f:
-            json.dump(existing, f, ensure_ascii=False, indent=4)
-    else:
-        with open(filename, 'w', encoding="utf-8") as f:
-            json.dump({article_name: [topics]}, f, ensure_ascii=False, indent=4)
-    print(f"Topics saved to {filename}")
 
 prompt_topics = {
     "synthllm": """Here is an article crawl from the web, which our classifier has identified as having significant educational value for
@@ -193,6 +171,25 @@ prompt_topics = {
         </key_concept>
         ## 输出"""
 }
+def save_topics(topics, article_name, topics_path):
+    filename = topics_path
+    os.makedirs(os.path.dirname(filename), exist_ok=True)  # 自动创建目录
+    # 判断 filename 是否存在，如果存在则追加写入，否则创建新文件
+    if os.path.exists(filename):
+        with open(filename, 'r', encoding="utf-8") as f:
+            existing = json.load(f)
+        # 检查 article_name 是否已经存在于 questions 中
+        if article_name in existing:
+            existing[article_name].append(topics)
+        else:
+            existing[article_name] = [topics]
+        with open(filename, 'w', encoding="utf-8") as f:
+            json.dump(existing, f, ensure_ascii=False, indent=4)
+    else:
+        with open(filename, 'w', encoding="utf-8") as f:
+            json.dump({article_name: [topics]}, f, ensure_ascii=False, indent=4)
+    print(f"Topics saved to {filename}")
+
 def gen_topic_prompt(chunk4: list[dict]) -> list[str]:
     """
     Encode multiple prompt instructions into a single string for the general case (`pdf`, `json`, or `txt`).
@@ -223,7 +220,7 @@ def generate_topics(chat_completer: Any, chunk4: list[dict]) -> str | None:
         "oracle_chunks": chunk4,
     }
     return topics
-
+# 2
 def gen_topics(chunk4_path, topics_path, chat_model):
     if os.path.exists(topics_path):
         print(f"{topics_path} exists. Skipping...")
@@ -241,6 +238,151 @@ def gen_topics(chunk4_path, topics_path, chat_model):
                     pbar.update(1)
                     save_topics(topics, a_name, topics_path)
                 print(f"done {a_name} topics.")
+
+# 2.2
+from typing import List, Dict, Any
+# def get_chunkstr(chunk4: List[Dict]) -> str:
+#     """将chunk4列表中的文本内容拼接成一个字符串"""
+#     return "\n".join([chunk["text"] for chunk in chunk4])
+
+def gen_topic_prompt(chunk4: List[Dict]) -> List[Dict]:
+    """
+    生成主题提取的prompt消息
+    """
+    messages = []
+    chunkstr = get_chunkstr(chunk4)
+    prompt = prompt_topics[os.getenv("PROMPT_KEY")].replace("{{ text }}", chunkstr)
+    
+    messages.append({"role": "system", "content": "You are a helpful question answerer who can provide an answer given a question and relevant context."})
+    messages.append({"role": "user", "content": prompt})
+    return messages
+
+def chunk4_to_jsonl(chunk4_path: str, output_jsonl_path: str):
+    """
+    将chunk4数据转换为jsonl格式的批量请求文件
+    
+    参数:
+        chunk4_path: 包含chunk4数据的JSON文件路径
+        output_jsonl_path: 输出的jsonl文件路径
+        prompt_key: 使用的prompt模板键名 (默认为"deepseek")
+    """
+    # 加载chunk4数据
+    with open(chunk4_path, 'r', encoding='utf-8') as f:
+        articles_chunk4 = json.load(f)
+    
+    # 创建输出目录（如果不存在）
+    os.makedirs(os.path.dirname(output_jsonl_path), exist_ok=True)
+    
+    with open(output_jsonl_path, 'w', encoding='utf-8') as f:
+        request_id = 1
+        
+        # 遍历每篇文章及其chunk4数据
+        for article_name, chunk4_list in articles_chunk4.items():
+            for chunk4 in chunk4_list:
+                # 生成prompt消息
+                messages = gen_topic_prompt(chunk4)
+                
+                # 构建请求体
+                request_body = {
+                    "custom_id": f"request-{request_id}",
+                    "body": {
+                        "messages": messages,
+                        # "max_tokens": 2048,
+                        # "top_p": 1,
+                        # "temperature": 0
+                    }
+                }
+                
+                # 写入jsonl文件
+                f.write(json.dumps(request_body, ensure_ascii=False) + '\n')
+                request_id += 1
+    
+    print(f"转换完成，结果已保存到 {output_jsonl_path}")
+
+import os
+import json
+from typing import Dict, Any, List
+from tqdm import tqdm
+
+def process_response_file(response_path: str, chunk4_path: str, topics_path: str):
+    """
+    处理响应结果文件，并将结果保存到topics_path
+    
+    参数:
+        response_path: 响应结果文件路径
+        chunk4_path: 原始chunk4数据文件路径
+        topics_path: 结果保存路径
+    """
+    # 加载响应结果数据
+    with open(response_path, 'r', encoding='utf-8') as f:
+        responses = [json.loads(line) for line in f]
+    
+    # 加载原始chunk4数据
+    with open(chunk4_path, 'r', encoding='utf-8') as f:
+        articles_chunk4 = json.load(f)
+    
+    # 创建结果目录（如果不存在）
+    os.makedirs(os.path.dirname(topics_path), exist_ok=True)
+    
+    # 初始化结果字典
+    results = {}
+    if os.path.exists(topics_path):
+        with open(topics_path, 'r', encoding='utf-8') as f:
+            results = json.load(f)
+    
+    # 构建custom_id到article_name和chunk4的映射
+    id_mapping = {}
+    request_id = 1
+    for article_name, chunk4_list in articles_chunk4.items():
+        for chunk4 in chunk4_list:
+            id_mapping[f"request-{request_id}"] = (article_name, chunk4)
+            request_id += 1
+    
+    # 处理每个响应
+    for response in tqdm(responses, desc="Processing responses"):
+        custom_id = response.get("custom_id")
+        if not custom_id or custom_id not in id_mapping:
+            continue
+        
+        article_name, chunk4 = id_mapping[custom_id]
+        
+        # 提取响应内容
+        if response.get("error") is not None:
+            print(f"Error in response {custom_id}: {response['error']}")
+            continue
+        
+        try:
+            response_body = response.get("response", {}).get("body", {})
+            choices = response_body.get("choices", [])
+            if not choices:
+                continue
+            
+            content = choices[0].get("message", {}).get("content", "")
+            
+            # 构建结果对象
+            topics = {
+                "topics": content,
+                "oracle_chunks": chunk4
+            }
+            
+            # 保存结果
+            if article_name in results:
+                results[article_name].append(topics)
+            else:
+                results[article_name] = [topics]
+                
+        except Exception as e:
+            print(f"Error processing response {custom_id}: {str(e)}")
+            continue
+    
+    # 保存最终结果
+    with open(topics_path, 'w', encoding='utf-8') as f:
+        json.dump(results, f, ensure_ascii=False, indent=4)
+    
+    print(f"处理完成，结果已保存到 {topics_path}")
+
+
+
 
 prompt_questions = {
     "synthllm": """As a senior **math** instructor, your task is to create **diverse and challenging computation-based math
@@ -590,7 +732,7 @@ def gen_questions_with_topic(topics_path, question_path, chat_model) -> list[str
                     pbar.update(1)
                     save_questions(questions, topics, a_name, question_path)
                 print(f"done {a_name} questions.")
-
+# 3
 def gen_questions_with_topic_v3(topics_path, question_path, chat_model, chunk4_path) -> list[str]:
     if os.path.exists(question_path):
         print(f"{question_path} exists. Skipping...")
