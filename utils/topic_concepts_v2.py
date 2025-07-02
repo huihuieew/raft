@@ -382,8 +382,6 @@ def process_response_file(response_path: str, chunk4_path: str, topics_path: str
     print(f"处理完成，结果已保存到 {topics_path}")
 
 
-
-
 prompt_questions = {
     "synthllm": """As a senior **math** instructor, your task is to create **diverse and challenging computation-based math
         questions**. These questions should demonstrate the application of the provided topics and key concepts while
@@ -571,6 +569,52 @@ b) 周密性：过程需要科学严谨，逐步思考，确保问题和对应�
     }
 ]"""
 }
+
+prompt_questions = {
+    "deepseek-v2": """你是一位半导体显示技术领域的资深专家，擅长根据提供的主题和关键概念设计问题。你的职责是从论文中生成问题和相应的答案，问题和相应的答案对需要提供给资深的人员学习，问题和相应的答案的质量要高。请根据输入的学术论文内容以及主题和关键概念，生成{x}个需要逻辑推理才能解答的高质量技术问题，请确保这些问题能够直接从论文中找到答案。这些问题将用于资深研究人员的专业能力评估，需满足以下要求：
+【核心要求】
+概念选择：  
+a) 从提供的列表中随机选取2-3个不同的关键概念用于每个问题。
+b) 确保每个问题选取的关键概念属于同一个主题。
+c) 确保生成的题目广泛覆盖所提供的概念，避免过度依赖少数概念。  
+d) 避免在不同问题中重复相同的概念组合方式。
+
+问题设计准则：
+a) 首先你需要阅读全文，并判断哪些文本中涉及到逻辑推理的内容。然后你需要根据逻辑推理的内容设计相应的问题。
+b) 问题必须基于论文中的技术原理进行设计，问题的描述必须明确清晰全面，问题中主语或名词的描述必须要精准、全面且具备通用性，专有名词应该让行业人员都能看懂。
+c) 问题中请不要引用文献或者文章定义的专有名词，请结合你自身半导体的显示领域的知识和文章内容，生成普适通用的问题，在不阅读论文的情况也能正常理解问题所表达的含义。
+d) 问题中的名词描述不可以缩写，需要与论文中的描述一致。例如论文中提到的是“OLED材料”，问题中不能简化为“材料”。例如论文中提到的是“LTPS器件”，问题中不能简化为“器件”。
+e) 不要针对于论文中的某个特定示例进行提问，问题尽量使顶尖科学家在不阅读论文的情况下也能理解和回答。且问题不能包含“书本”、“论文”、“本文”、“本实验”、“报道”、“xx等人的研究”等相关信息； 
+
+科学严谨性：
+a) 因果链：问题需呈现完整技术逻辑链（如：机制A如何影响参数B，进而导致现象C）
+b) 周密性：过程需要科学严谨，逐步思考，确保问题和对应的答案来源于论文的内容。且答案需要能在论文中完全找到详细的描述。
+问题简洁：问题要凝练简洁。
+
+【禁止事项】
+× 禁止使用"本文/本研究/本实验"等论文自指表述
+× 禁止提问孤立概念（如：XX技术的定义是什么）
+× 禁止超出论文技术范围的假设性问题
+
+【输入】：
+论文文本：  
+{{ text }}  
+概念列表：  
+{{ concept }}  
+
+【格式要求】：用中文输出。当前阶段只设计问题，不输出答案。严格按照以下格式输出你设计的问题：
+[
+    {
+
+        "concepts": ["概念1", "仅填入2-3个概念"],  
+        "question": "仅填入问题"  
+    },  
+    {
+        "concepts": ["概念1", "概念2", "仅填入2-3个概念"],  
+        "question": "仅填入问题"  
+    }
+]"""
+}
 def gen_question_prompt(topics: dict) -> list[str]:
     """
     Encode multiple prompt instructions into a single string for the general case (`pdf`, `json`, or `txt`).
@@ -631,36 +675,6 @@ def generate_questions(chat_completer: Any, topics: dict) -> str | None:
         output_questions = []
     return output_questions, topics
 
-def save_questions(questions, topics, article_name, filename):
-    questions_list = []
-    for question in questions:
-        question_ele = {
-            **question,
-            **topics
-        }
-        if "oracle_chunks" not in question_ele:
-            question_ele["oracle_chunks"] = topics["chunk4"]
-            # 删除 question_ele["chunk4"]
-            del question_ele["chunk4"]
-        sorted_chunks = rerank_chunks(question, question_ele["oracle_chunks"])
-        question_ele["sorted_chunks"] = sorted_chunks
-        questions_list.append(question_ele)
-    # 判断 filename 是否存在，如果存在则追加写入，否则创建新文件
-    if os.path.exists(filename):
-        with open(filename, 'r', encoding="utf-8") as f:
-            existing_questions = json.load(f)
-        # 检查 article_name 是否已经存在于 questions 中
-        if article_name in existing_questions:
-            existing_questions[article_name].extend(questions_list)
-        else:
-            existing_questions[article_name] = questions_list
-        with open(filename, 'w', encoding="utf-8") as f:
-            json.dump(existing_questions, f, ensure_ascii=False, indent=4)
-    else:
-        with open(filename, 'w', encoding="utf-8") as f:
-            json.dump({article_name: questions_list}, f, ensure_ascii=False, indent=4)
-    print(f"Questions saved to {filename}")
-
 def load_other_chunks(article_name, chunk4_path):
     articles_chunks = load_articles(chunk4_path)
     chunk4_list = []
@@ -668,7 +682,7 @@ def load_other_chunks(article_name, chunk4_path):
         if a_name != article_name:
             for chunk4 in a_chunks:
                 chunk4_list.extend(chunk4)
-    print(f"all chunks - chunk4_list: {len(chunk4_list)}")
+    # print(f"all chunks - chunk4_list: {len(chunk4_list)}")
     return chunk4_list
 def sort_noisy_chunks(filename):
     with open(filename, 'r', encoding="utf-8") as f:
@@ -685,6 +699,75 @@ def sort_noisy_chunks(filename):
     with open(filename, 'w', encoding="utf-8") as f:
         json.dump(existing_questions, f, ensure_ascii=False, indent=4)
         print(f"转换sorted_chunks成功。")
+def sort_noisy_chunks_v2(filename: str) -> None:
+    """
+    对问题中的噪声chunks进行重新排序并保存
+    参数:
+        filename: 包含问题的JSON文件路径
+    """
+    try:
+        # 1. 加载文件
+        with open(filename, 'r', encoding="utf-8") as f:
+            existing_questions = json.load(f)
+            
+            # 检查是否已经是处理过的数据
+            if any("score" in q["sorted_chunks"][0] 
+                  for questions in existing_questions.values() 
+                  for q in questions):
+                print("数据已处理过，跳过排序")
+                return
+            
+            # 2. 处理每个问题
+            total_articles = len(existing_questions)
+            with tqdm(existing_questions.items(), 
+                     desc="处理文章中", 
+                     unit="article",
+                     total=total_articles) as article_pbar:
+                
+                for a_name, a_topics in article_pbar:
+                    article_pbar.set_postfix(article=a_name[:10])
+                    
+                    # 使用leave=False避免嵌套进度条混乱
+                    with tqdm(a_topics, 
+                             desc="处理问题", 
+                             unit="question",
+                             leave=False) as question_pbar:
+                        
+                        for question_ele in question_pbar:
+                            try:
+                                # 3. 重新排序chunks
+                                question = question_ele["question"]
+                                noisy_chunks = question_ele["sorted_chunks"]
+                                sorted_chunks = rerank_chunks(question, noisy_chunks)
+                                question_ele["sorted_chunks"] = sorted_chunks
+                                
+                                # 更新进度条状态
+                                question_pbar.set_postfix(q_len=len(noisy_chunks))
+                                
+                            except KeyError as e:
+                                print(f"问题格式错误，缺少必要字段: {e}")
+                                continue
+                            except Exception as e:
+                                print(f"处理问题时出错: {e}")
+                                continue
+                    
+                    # 每处理完一篇文章后保存一次（更安全）
+                    with open(filename, 'w', encoding="utf-8") as f:
+                        json.dump(existing_questions, f, 
+                                 ensure_ascii=False, 
+                                 indent=4)
+    
+    except json.JSONDecodeError:
+        print(f"文件 {filename} 不是有效的JSON格式")
+        return
+    except FileNotFoundError:
+        print(f"文件 {filename} 不存在")
+        return
+    except Exception as e:
+        print(f"处理文件时发生未知错误: {e}")
+        return
+    
+    print(f"成功处理并保存文件: {filename}")
 
 def save_questions_v3(questions, topics, article_name, filename, chunk4_path):
     questions_list = []
@@ -694,7 +777,7 @@ def save_questions_v3(questions, topics, article_name, filename, chunk4_path):
             **question,
             **topics
         }
-        nums_distract = os.getenv("NUM_distract")
+        nums_distract = int(os.getenv("NUM_distract"))
         distract_chunks = random.sample(all_chunks, nums_distract)
         noisy_chunks = distract_chunks + question_ele["oracle_chunks"]
         question_ele["sorted_chunks"] = noisy_chunks
@@ -713,25 +796,8 @@ def save_questions_v3(questions, topics, article_name, filename, chunk4_path):
     else:
         with open(filename, 'w', encoding="utf-8") as f:
             json.dump({article_name: questions_list}, f, ensure_ascii=False, indent=4)
-    print(f"Questions saved to {filename}")
+    # print(f"Questions saved to {filename}")
 
-
-def gen_questions_with_topic(topics_path, question_path, chat_model) -> list[str]:
-    if os.path.exists(question_path):
-        print(f"{question_path} exists. Skipping...")
-        return 
-    articles_topics = load_articles(topics_path)
-    for a_name, a_topics in articles_topics.items():
-        futures = []
-        with tqdm(total=len(a_topics), desc="Questioning", unit="file") as pbar:
-            with ThreadPoolExecutor(max_workers=2) as executor:
-                for topics in a_topics:
-                    futures.append(executor.submit(generate_questions, chat_model, topics))
-                for future in as_completed(futures):
-                    questions, topics = future.result()
-                    pbar.update(1)
-                    save_questions(questions, topics, a_name, question_path)
-                print(f"done {a_name} questions.")
 # 3
 def gen_questions_with_topic_v3(topics_path, question_path, chat_model, chunk4_path) -> list[str]:
     if os.path.exists(question_path):
@@ -749,4 +815,110 @@ def gen_questions_with_topic_v3(topics_path, question_path, chat_model, chunk4_p
                     pbar.update(1)
                     save_questions_v3(questions, topics, a_name, question_path, chunk4_path)
                 print(f"done {a_name} questions.")
+
+# 33
+import json
+import os
+from tqdm import tqdm
+
+def convert_topics_to_jsonl(topics_path, output_jsonl_path):
+    """
+    将topics_path文件转换为jsonl格式的批量请求文件
+    
+    参数:
+        topics_path: 输入的topics文件路径
+        output_jsonl_path: 输出的jsonl文件路径
+    """
+    # 加载topics文件
+    articles_topics = load_articles(topics_path)
+    
+    # 创建输出文件
+    with open(output_jsonl_path, 'w', encoding='utf-8') as out_file:
+        request_id = 1  # 自定义ID计数器
+        
+        # 遍历所有文章和主题
+        for a_name, a_topics in articles_topics.items():
+            for topics in tqdm(a_topics, desc=f"Processing {a_name}"):
+                # 生成问题提示
+                messages = gen_question_prompt(topics)
+                
+                # 构建请求体
+                request_body = {
+                    "custom_id": f"request-{request_id}",
+                    "body": {
+                        "messages": messages,
+                    }
+                }
+                
+                # 写入jsonl文件
+                out_file.write(json.dumps(request_body, ensure_ascii=False) + '\n')
+                request_id += 1
+    
+    print(f"成功将 {topics_path} 转换为 {output_jsonl_path}")
+
+import json
+from tqdm import tqdm
+
+def process_response_and_save(response_path, topics_path, question_path, chunk4_path):
+    """
+    处理响应结果文件并保存到question_path
+    
+    参数:
+        response_path: 响应结果文件路径
+        topics_path: 原始topics文件路径
+        question_path: 输出question文件路径
+        chunk4_path: chunk4文件路径
+    """
+    # 加载原始topics数据
+    articles_topics = load_articles(topics_path)
+    
+    # 创建按custom_id索引的topics字典
+    topics_dict = {}
+    request_id = 1
+    for a_name, a_topics in articles_topics.items():
+        for topics in a_topics:
+            custom_id = f"request-{request_id}"
+            topics_dict[custom_id] = (a_name, topics)
+            request_id += 1
+    
+    # 加载响应结果文件
+    responses = []
+    with open(response_path, 'r', encoding='utf-8') as f:
+        for line in f:
+            responses.append(json.loads(line.strip()))
+    
+    # 处理每个响应
+    for response in tqdm(responses, desc="Processing responses"):
+        custom_id = response['custom_id']
+        
+        if custom_id not in topics_dict:
+            print(f"Warning: Custom ID {custom_id} not found in topics data")
+            continue
+        
+        a_name, topics = topics_dict[custom_id]
+        
+        # 解析响应内容
+        if response['error'] is not None:
+            print(f"Error in response {custom_id}: {response['error']}")
+            continue
+        
+        try:
+            response_body = response['response']['body']
+            content = response_body['choices'][0]['message']['content']
+            
+            # 清理和解析生成的questions
+            questions = clean_and_parse(content)
+            if questions is None:
+                print(f"Failed to parse questions for {custom_id}")
+                continue
+            
+            # 保存到question文件
+            save_questions_v3(questions, topics, a_name, question_path, chunk4_path)
+            
+        except (KeyError, IndexError, TypeError) as e:
+            print(f"Error processing response {custom_id}: {str(e)}")
+            continue
+
+
+
 

@@ -127,3 +127,52 @@ def gen_chunks(data_dir, chunks_path, start_idx=None, end_idx=None):
         count += len(chunks_dict)
     print(f"all chunks: {count}")
     return articles
+
+def read_titles_from_txt(input_file) -> list[str]:
+    """
+    从TXT文件中读取论文标题，每行一个标题，返回标题列表
+    
+    参数:
+        input_file: 输入的TXT文件名(默认为selected_papers.txt)
+    
+    返回:
+        list[str]: 论文标题列表
+    """
+    paper_titles = []
+    
+    try:
+        with open(input_file, 'r', encoding='utf-8') as f:
+            for line in f:
+                # 去除行末的换行符和空白字符
+                title = line.strip()
+                if title:  # 忽略空行
+                    paper_titles.append(title)
+                    
+        print(f"成功从 {input_file} 读取 {len(paper_titles)} 篇论文标题")
+        return paper_titles
+    
+    except FileNotFoundError:
+        print(f"错误：文件 {input_file} 不存在")
+        return []
+    except Exception as e:
+        print(f"读取文件时发生错误: {e}")
+        return []
+
+
+def gen_chunks_v2(data_dir, chunks_path, input_file):
+    if os.path.exists(chunks_path):
+        print(f"{chunks_path} exists. Skipping...")
+        return 
+    filenames = read_titles_from_txt(input_file)
+    articles = {}
+    count = 0
+    for filename in filenames:
+        data_path = os.path.join(data_dir, filename)
+        data_path = Path(data_path)
+        chunks_dict, a_name = build_or_load_chunks(data_path, "md", 512)
+        save_chunks(chunks_dict, a_name, chunks_path)
+        count += len(chunks_dict)
+    print(f"all chunks: {count}")
+    return articles
+
+
