@@ -159,11 +159,13 @@ def read_titles_from_txt(input_file) -> list[str]:
         return []
 
 
-def gen_chunks_v2(data_dir, chunks_path, input_file):
+def gen_chunks_v2(data_dir, chunks_path, input_file, start_idx=None, end_idx=None):
     if os.path.exists(chunks_path):
         print(f"{chunks_path} exists. Skipping...")
         return 
     filenames = read_titles_from_txt(input_file)
+    filenames = filenames[start_idx:end_idx]
+    print(f"filenames: {len(filenames)}")
     articles = {}
     count = 0
     for filename in filenames:

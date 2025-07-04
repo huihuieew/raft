@@ -5,6 +5,7 @@ from utils.common_utils import load_articles, get_chunkstr, get_chunk4
 from utils.retrieve_nodes import rerank_chunks
 import json
 import json5
+import re
 import random
 from typing import Any
 from jsonschema import validate, ValidationError
@@ -650,9 +651,130 @@ def clean_and_parse(json_str):
     try:
         return json5.loads(cleaned)  # 主要修改点
     except json.JSONDecodeError as e:  # 修改异常类型
-        # logging.error(f"JSON 解码错误: {e}")
         print(f"JSON Decode Error: {e}")
         return None
+def clean_and_parse_v2(json_str):
+    """
+    更健壮的 JSON 解析函数，处理以下情况：
+    1. Markdown 代码块标记 (```json 或 ```)
+    2. 字符串末尾的非 JSON 内容（如设计说明）
+    3. 多种引号格式和注释（使用 json5）
+    4. 前导/尾随空白字符
+    """
+    cleaned = json_str.strip()
+    
+    # 处理 Markdown 代码块
+    if cleaned.startswith('```') and cleaned.endswith('```'):
+        cleaned = cleaned[3:-3].strip()
+        if cleaned.lower().startswith('json'):
+            cleaned = cleaned[4:].strip()
+    
+    # 查找可能的 JSON 结束位置（处理末尾非 JSON 内容）
+    json_end_chars = {'{': '}', '[': ']'}
+    stack = []
+    json_end_index = None
+    
+    for i, char in enumerate(cleaned):
+        if char in json_end_chars:
+            stack.append(json_end_chars[char])
+        elif stack and char == stack[-1]:
+            stack.pop()
+            if not stack:  # 当栈为空时，表示 JSON 结构完整
+                json_end_index = i + 1
+                break
+    
+    # 如果检测到完整的 JSON 结构，截取到结束位置
+    if json_end_index is not None:
+        cleaned = cleaned[:json_end_index]
+    
+    try:
+        return json5.loads(cleaned)
+    except (json.JSONDecodeError, ValueError) as e:
+        print(f"JSON 解析错误: {e}")
+        print(f"正在尝试更宽松的解析...")
+        
+        # 尝试处理更多边界情况
+        try:
+            # 处理可能的多余逗号
+            cleaned = cleaned.replace(',]', ']').replace(',}', '}')
+            # 处理单引号（替换为双引号）
+            cleaned = cleaned.replace("'", '"')
+            return json5.loads(cleaned)
+        except Exception as e:
+            print(f"最终 JSON 解析失败: {e}")
+            return None
+def clean_and_parse_v3(json_str):
+    """
+    终极健壮版 JSON 解析函数，处理以下情况：
+    1. 开头和结尾的非 JSON 文本
+    2. Markdown 代码块标记 (```json 或 ```)
+    3. 多种引号格式和注释（使用 json5）
+    4. 前导/尾随空白字符
+    5. 自动检测 JSON 部分的起始和结束位置
+    """
+    cleaned = json_str.strip()
+    
+    # 处理 Markdown 代码块
+    if cleaned.startswith('```') and cleaned.endswith('```'):
+        cleaned = cleaned[3:-3].strip()
+        if cleaned.lower().startswith('json'):
+            cleaned = cleaned[4:].strip()
+    
+    # 方法1：使用正则表达式直接提取 JSON 部分
+    json_match = re.search(r'(\[.*\]|\{.*\})', cleaned, re.DOTALL)
+    if json_match:
+        cleaned = json_match.group(1)
+    else:
+        # 方法2：手动查找 JSON 起始位置（如果正则失败）
+        json_start_chars = {'[', '{'}
+        json_end_chars = {'{': '}', '[': ']'}
+        
+        start_index = None
+        stack = []
+        
+        # 查找第一个有效的 JSON 起始字符
+        for i, char in enumerate(cleaned):
+            if char in json_start_chars:
+                start_index = i
+                stack.append(json_end_chars[char])
+                break
+        
+        if start_index is not None:
+            # 继续查找匹配的结束字符
+            for i in range(start_index + 1, len(cleaned)):
+                char = cleaned[i]
+                if char in json_end_chars:
+                    stack.append(json_end_chars[char])
+                elif stack and char == stack[-1]:
+                    stack.pop()
+                    if not stack:  # 栈为空表示 JSON 结构完整
+                        cleaned = cleaned[start_index:i+1]
+                        break
+    
+    # 最终清理和解析
+    try:
+        # 先尝试直接解析
+        return json5.loads(cleaned)
+    except (json.JSONDecodeError, ValueError) as e:
+        print(f"初始 JSON 解析错误: {e}")
+        print("尝试修复常见问题...")
+        
+        # 尝试修复常见问题
+        try:
+            # 1. 处理单引号
+            cleaned = cleaned.replace("'", '"')
+            # 2. 处理多余逗号
+            cleaned = re.sub(r',\s*([}\]])', r'\1', cleaned)
+            # 3. 处理无引号的键
+            cleaned = re.sub(r'([\{\[,]\s*)([a-zA-Z_]\w*)(\s*:)', 
+                           lambda m: f'{m.group(1)}"{m.group(2)}"{m.group(3)}', 
+                           cleaned)
+            
+            return json5.loads(cleaned)
+        except Exception as e:
+            print(f"最终 JSON 解析失败: {e}")
+            return None
+
 def generate_questions(chat_completer: Any, topics: dict) -> str | None:
     """
     Generates the label / answer to `question` using `context` and deepseek.
@@ -668,7 +790,6 @@ def generate_questions(chat_completer: Any, topics: dict) -> str | None:
     questions = response.choices[0].message.content
     try:
         output_questions = clean_and_parse(questions)
-        # output_questions = json.loads(questions)
         validate(instance=output_questions, schema=QUESTION_SCHEMA)
     except (json.JSONDecodeError, ValidationError) as e:
         logging.error(f"Failed to parse response:\n{questions}\nError: {e}")
@@ -699,23 +820,20 @@ def sort_noisy_chunks(filename):
     with open(filename, 'w', encoding="utf-8") as f:
         json.dump(existing_questions, f, ensure_ascii=False, indent=4)
         print(f"转换sorted_chunks成功。")
+    
 def sort_noisy_chunks_v2(filename: str) -> None:
     """
     对问题中的噪声chunks进行重新排序并保存
     参数:
         filename: 包含问题的JSON文件路径
+    改动:
+        1. 将全局跳过逻辑改为按文章跳过
+        2. 添加文章级别的处理状态检测
     """
     try:
         # 1. 加载文件
         with open(filename, 'r', encoding="utf-8") as f:
             existing_questions = json.load(f)
-            
-            # 检查是否已经是处理过的数据
-            if any("score" in q["sorted_chunks"][0] 
-                  for questions in existing_questions.values() 
-                  for q in questions):
-                print("数据已处理过，跳过排序")
-                return
             
             # 2. 处理每个问题
             total_articles = len(existing_questions)
@@ -726,6 +844,11 @@ def sort_noisy_chunks_v2(filename: str) -> None:
                 
                 for a_name, a_topics in article_pbar:
                     article_pbar.set_postfix(article=a_name[:10])
+                    
+                    # 检查当前文章是否已处理过（任一问题有score则跳过整篇文章）
+                    if any("score" in q.get("sorted_chunks", [{}])[0] for q in a_topics):
+                        article_pbar.set_postfix(skip="已处理")
+                        continue
                     
                     # 使用leave=False避免嵌套进度条混乱
                     with tqdm(a_topics, 
@@ -768,6 +891,7 @@ def sort_noisy_chunks_v2(filename: str) -> None:
         return
     
     print(f"成功处理并保存文件: {filename}")
+
 
 def save_questions_v3(questions, topics, article_name, filename, chunk4_path):
     questions_list = []
@@ -907,7 +1031,7 @@ def process_response_and_save(response_path, topics_path, question_path, chunk4_
             content = response_body['choices'][0]['message']['content']
             
             # 清理和解析生成的questions
-            questions = clean_and_parse(content)
+            questions = clean_and_parse_v3(content)
             if questions is None:
                 print(f"Failed to parse questions for {custom_id}")
                 continue

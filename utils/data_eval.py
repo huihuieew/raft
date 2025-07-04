@@ -57,6 +57,7 @@ quality_evaluation_prompt = {
 
 ### 待评估样本
 问题: {question_text}
+文本块：{chunk_text}
 思维链: {reasoning_chain}
 答案: {answer_text}
 """
@@ -96,6 +97,7 @@ quality_evaluation_prompt = {
 }
 ### 待评估样本
 问题: {question_text}
+文本块：{chunk_text}
 思维链: {reasoning_chain}
 答案: {answer_text}
 """
@@ -134,7 +136,7 @@ def excel_to_jsonl(input_excel_path, output_jsonl_path, prompt_version):
             # 写入jsonl文件
             f.write(json.dumps(request_body, ensure_ascii=False) + '\n')
         print(f"转换完成，结果已保存到 {output_jsonl_path}")
-        
+
 
 import json
 import re

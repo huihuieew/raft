@@ -104,21 +104,21 @@ prompt_templates = {
             "format": "所有输出必须用中文，reasoning_chain和answer均需分点表述，确保逻辑条理性"
         }
     }""",
-    "deepseek-v5": """{
-        "instruction": "你作为半导体显示领域首席科学家，掌握TFT、OLED、LCD、QLED、EE、Design等显示技术的前沿知识和技术趋势，并且需基于严格的多维度验证流程生成回答：1. 先解析问题本质；2. 提取切片有效信息；3. 结合TFT/OLED前沿知识验证；4. 输出结论。所有技术细节需符合IEEE 2020-2025最新标准。",
+    "deepseek-v2": """{
+        "instruction": "你作为半导体显示领域首席科学家，掌握TFT、OLED、LCD、QLED、EE、Design等显示技术的前沿知识和技术趋势，并且需基于严格的多维度验证流程生成回答：1. 先解析问题本质；2. 提取切片有效信息；3. 结合TFT/OLED等前沿知识验证；4. 输出结论。所有技术细节需符合IEEE 2020-2025最新标准。",
         "input": {
             "context": "{context}",
             "question": "{question}"
         },
         "output": {
             "reasoning_content": "用中文完成以下步骤：1. 问题拆解（明确技术参数如迁移率/波长等）；2. 切片分析（标注有效chunk编号及关键数据）；3. 知识验证（对比SEMI/SID标准）；4. 逻辑推导（含物理合理性检查）。需包含：技术参数阈值（如LTPS退火温度≤600°C）、缺陷机理（如Mura成因）、成本因子（蒸镀工序缩减比例）",
-            "answer": "用中文分点呈现最终答案，要求：1. 技术准确性（如区分QD-OLED与Micro-LED特性）；2. 应用可行性（量化良率提升幅度）；3. 前沿趋势（引用2024年最新专利）。避免直接复述推理过程，重点呈现验证后的结论"
+            "answer": "用中文分点呈现最终答案，要求：1. 技术准确性（如区分QD-OLED与Micro-LED特性）；2. 应用可行性（量化良率提升幅度）；3. 前沿趋势（引用2024/2025年最新专利）。避免直接复述推理过程，重点呈现验证后的结论"
         },
         "requirements": {
             "criteria": {
                 "技术验证": "所有参数需通过三重验证：切片原始数据、行业标准（如SEMI MS5）、物理理论（如载流子迁移方程）",
                 "逻辑架构": "采用「问题-验证-结论」闭环结构，禁用假设性表述",
-                "价值呈现": "必须包含：工艺优化方案（如退火时间缩短20%）、缺陷规避方法（如TFT沟道设计防静电）"
+                "应用价值": "建议方案必须包含可行性评估（成本/良率/实施复杂度）"
             },
             "format": {
                 "reasoning_content": "隐藏式架构，用于内部验证",
@@ -183,7 +183,7 @@ prompt_templates = {
     "数据来源缺失时：触发保守表述协议（使用'典型值''行业基准'等安全表述）"
 ]
 }""",
-    "deepseek-v2": """{
+    "deepseek-v8": """{
 "instruction": "作为半导体显示领域首席专家，请严格遵循以下双重目标准则进行回答：1. 基础质量优先（保障相关性/一致性/术语准确性） 2. 技术深度达标（确保参数验证/领域知识）",
 "core_requirements": {
     "v2_quality_anchor": [
@@ -287,7 +287,7 @@ def save_answers(response, reasoning_content, question_dict, article_name, answe
     else:
         with open(answers_path, 'w', encoding="utf-8") as f:
             json.dump({article_name: [question_dict]}, f, ensure_ascii=False, indent=4)
-    print(f"Answers saved to {answers_path}")
+    # print(f"Answers saved to {answers_path}")
 
 def gen_answer_v3(questions_path, chat_model, answers_path):
     if os.path.exists(answers_path):
@@ -335,7 +335,7 @@ def convert_to_jsonl(questions_path, output_jsonl_path):
                     "custom_id": f"request-{request_id}",
                     "body": {
                         "messages": [
-                            {"role": "system", "content": "你是一个十分有帮助的RAG问题回答者，你可以根据问题和相关上下文提供答案。"},
+                            {"role": "system", "content": "你是一个专业的RAG代理（Retrieval-Augmented Generation agent），你的核心任务是**基于用户的问题和提供的相关上下文切片信息，提供准确且可靠的答案**。请注意：切片信息是可能相关的参考资料，内容可能庞大且杂乱，不一定包含目标答案，也可能包含干扰信息。**请务必仔细审阅每个切片内容，严格基于可验证的信息进行作答，避免引入错误信息。**"},
                             {"role": "user", "content": prompt}
                         ]
                     }

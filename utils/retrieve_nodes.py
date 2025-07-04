@@ -145,7 +145,10 @@ import torch
 model_name = r"C:\Users\Administrator\.cache\modelscope\hub\models\BAAI\bge-reranker-large"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = AutoModelForSequenceClassification.from_pretrained(model_name)
-
+# 检查是否有可用的GPU，如果有则将模型移动到GPU
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+print(f"device: {device}")
+model = model.to(device)
 def rerank_chunks(query, chunks):
     """
     对 chunks 进行重新排序
@@ -168,12 +171,14 @@ def rerank_chunks(query, chunks):
         truncation=True,
         return_tensors="pt",
     )
+    # 将特征张量移动到与模型相同的设备
+    features = {k: v.to(device) for k, v in features.items()}
     # 计算分数
     with torch.no_grad():
         scores = model(**features).logits.squeeze()
     # 将分数添加到每个 chunk 中
     for i, chunk in enumerate(chunks):
-        chunk["score"] = float(scores[i])
+        chunk["score"] = float(scores[i].cpu())  # 确保将分数移回CPU
     # 降序排序
     sorted_chunks = sorted(chunks, key=lambda x: x["score"], reverse=True)
     return sorted_chunks
