@@ -36,8 +36,8 @@ def syn_data(answers_path, syndatas_path):
                 "id": None,
                 "question": None,
                 "noisy_chunks": None,
-                "oracle_chunks": None,
-                "reasoning_answer": None
+                "content": None,
+                "reasoning_content": None
             }
             datasyn["id"] = str(uuid.uuid4())
             datasyn["question"] = question
@@ -76,7 +76,7 @@ def syn_data(answers_path, syndatas_path):
         save_syndatas(datasyn_list, syndatas_path)
         syndatas_path1 = syndatas_path.replace(".json", "_instruction.json")
         save_syndatas(datasyn_list1, syndatas_path1)
-        print(f"done {a_name} syndata.")
+        # print(f"done {a_name} syndata.")
 
 def syn_data_v2(answers_path, syndatas_path):
     if os.path.exists(syndatas_path):
@@ -121,4 +121,49 @@ def syn_data_v2(answers_path, syndatas_path):
         save_syndatas(datasyn_list1, syndatas_path1)
         print(f"done {a_name} syndata.")
 
+def syn_data_v3(answers_path, syndatas_path):
+    if os.path.exists(syndatas_path):
+        print(f"{syndatas_path} exists. Skipping...")
+        return
+    articles_answers = load_articles(answers_path)
+    for a_name,qa_dicts in articles_answers.items():
+        datasyn_list = []
+        datasyn_list1 = []
+        for qa_dict in qa_dicts:
+            sorted_chunks = qa_dict["sorted_chunks"]
+            question = qa_dict["question"]
+            reasoning_answer = f"<think>{qa_dict['reasoning_content']}\n</think>\n\n{qa_dict['content']}"
+            
+            # 合成数据            
+            datasyn = {
+                "id": None,
+                "question": None,
+                "noisy_chunks": None,
+                "content": None,
+                "reasoning_content": None
+            }
+            datasyn["id"] = str(uuid.uuid4())
+            datasyn["question"] = question
+            datasyn["content"] = qa_dict["content"]
+            datasyn["reasoning_content"] = qa_dict["reasoning_content"]
+            datasyn["noisy_chunks"] = sorted_chunks
+            datasyn_list.append(datasyn)
+            
+            datasyn1 = {
+                "instruction": "",
+                "input": "",
+                "output": ""
+            }
+            instruction_prompt = prompt_templates[os.getenv("PROMPT_KEY")]
+            ichunkstr = get_chunkstr(sorted_chunks)
+            instruction = instruction_prompt.replace("{context}", ichunkstr).replace("{question}", question)
+            datasyn1["instruction"] = instruction
+            datasyn1["output"] = reasoning_answer
+            datasyn_list1.append(datasyn1)
+        
+        # 保存合成数据
+        save_syndatas(datasyn_list, syndatas_path)
+        syndatas_path1 = syndatas_path.replace(".json", "_instruction.json")
+        save_syndatas(datasyn_list1, syndatas_path1)
+        print(f"done {a_name} syndata.")
 

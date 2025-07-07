@@ -137,6 +137,48 @@ def excel_to_jsonl(input_excel_path, output_jsonl_path, prompt_version):
             f.write(json.dumps(request_body, ensure_ascii=False) + '\n')
         print(f"转换完成，结果已保存到 {output_jsonl_path}")
 
+import json
+from typing import List, Dict, Any
+def syndatas_to_jsonl(syndatas_path: str, output_jsonl_path: str, prompt_version: str) -> None:
+    """
+    将syndatas_path文件转换为符合要求的jsonl格式文件
+    
+    参数:
+        syndatas_path: 输入syndatas文件路径
+        output_jsonl_path: 输出jsonl文件路径
+        prompt_version: 提示词版本标识
+    """
+    # 读取syndatas文件
+    with open(syndatas_path, 'r', encoding='utf-8') as f:
+        syndatas = json.load(f)
+    
+    # 确保prompt_version有效
+    if prompt_version not in quality_evaluation_prompt:
+        raise ValueError(f"无效的prompt_version: {prompt_version}")
+    
+    # 处理每条数据并写入jsonl文件
+    with open(output_jsonl_path, 'w', encoding='utf-8') as f_out:
+        for idx, item in enumerate(syndatas):
+            # 构建请求体
+            request_body = {
+                "custom_id": f"request-{idx + 1}",
+                "body": {
+                    "messages": [
+                        {
+                            "role": quality_evaluation_prompt[prompt_version]["role"],
+                            "content": quality_evaluation_prompt[prompt_version]["content"]
+                                .replace("{question_text}", item["question"])
+                                .replace("{reasoning_chain}", item["reasoning_content"])
+                                .replace("{answer_text}", item["content"])
+                        }
+                    ]
+                }
+            }
+            
+            # 写入jsonl文件
+            f_out.write(json.dumps(request_body, ensure_ascii=False) + '\n')
+    
+    print(f"转换完成，结果已保存到 {output_jsonl_path}")
 
 import json
 import re

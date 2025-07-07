@@ -272,7 +272,10 @@ def generate_label_with_sorted_chunk(chat_completer: Any, question_dict: dict) -
     return response, reasoning_content, question_dict
                
 def save_answers(response, reasoning_content, question_dict, article_name, answers_path):
-    question_dict["reasoning_answer"] = f"<think>{reasoning_content}\n</think>\n\n{response}"
+    question_dict["content"] = response
+    question_dict["reasoning_content"] = reasoning_content
+    # 删除 question_dict 的 oracle_chunk 属性
+    del question_dict["oracle_chunks"]
     # 判断 filename 是否存在，如果存在则追加写入，否则创建新文件
     if os.path.exists(answers_path):
         with open(answers_path, 'r', encoding="utf-8") as f:
